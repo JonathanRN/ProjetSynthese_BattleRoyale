@@ -70,7 +70,8 @@ namespace Playmode.Ennemy
             hitSensor = rootTransform.GetComponentInChildren<HitSensor>();
             handController = hand.GetComponent<HandController>();
 
-            strategy = new TurnAndShootStragegy(mover, handController);
+			//TEMPORARY
+			strategy = new IdleStrategy(mover, handController);
         }
 
         private void CreateStartingWeapon()
