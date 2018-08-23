@@ -51,7 +51,7 @@ namespace Playmode.Ennemy
             var stragegyProvider = new LoopingEnumerator<EnnemyStrategy>(DefaultStrategies);
             var colorProvider = new LoopingEnumerator<Color>(colors);
 
-            for (var i = 0; i < transform.childCount; i++)
+            for (var i = 0; i < 3; i++)
                 SpawnEnnemy(
                     transform.GetChild(i).position,
                     stragegyProvider.Next(),
