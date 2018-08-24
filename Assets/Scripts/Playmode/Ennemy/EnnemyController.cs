@@ -26,6 +26,7 @@ namespace Playmode.Ennemy
         private Destroyer destroyer;
         private EnnemySensor ennemySensor;
         private HitSensor hitSensor;
+		private PickableSensor pickableSensor;
         private HandController handController;
         private Transform transformer;
 
@@ -70,6 +71,7 @@ namespace Playmode.Ennemy
             var rootTransform = transform.root;
             ennemySensor = rootTransform.GetComponentInChildren<EnnemySensor>();
             hitSensor = rootTransform.GetComponentInChildren<HitSensor>();
+			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
             handController = hand.GetComponent<HandController>();
 
             strategy = new NormalStrategy(mover, handController,ennemySensor,transformer);
@@ -90,6 +92,7 @@ namespace Playmode.Ennemy
           //  ennemySensor.OnEnnemySightLost += OnEnnemySightLost;
             hitSensor.OnHit += OnHit;
             health.OnDeath += OnDeath;
+			pickableSensor.OnPickUp += OnPickUp;
         }
 
         private void Update()
@@ -103,9 +106,10 @@ namespace Playmode.Ennemy
          //   ennemySensor.OnEnnemySightLost -= OnEnnemySightLost;
             hitSensor.OnHit -= OnHit;
             health.OnDeath -= OnDeath;
-        }
+			pickableSensor.OnPickUp -= OnPickUp;
+		}
 
-        public void Configure(EnnemyStrategy strategy, Color color)
+		public void Configure(EnnemyStrategy strategy, Color color)
         {
             body.GetComponent<SpriteRenderer>().color = color;
             sight.GetComponent<SpriteRenderer>().color = color;
@@ -141,14 +145,20 @@ namespace Playmode.Ennemy
             destroyer.Destroy();
         }
 
-        //private void OnEnnemySeen(EnnemyController ennemy)
-        //{
-        //    Debug.Log("I've seen an ennemy!! Ya so dead noob!!!");
-        //}
+		private void OnPickUp(GameObject pickable)
+		{
+			Debug.Log("Item picked up: " + pickable.name);
+			Destroy(pickable);
+		}
 
-        //private void OnEnnemySightLost(EnnemyController ennemy)
-        //{
-        //    Debug.Log("I've lost sight of an ennemy...Yikes!!!");
-        //}
-    }
+		//private void OnEnnemySeen(EnnemyController ennemy)
+		//{
+		//    Debug.Log("I've seen an ennemy!! Ya so dead noob!!!");
+		//}
+
+		//private void OnEnnemySightLost(EnnemyController ennemy)
+		//{
+		//    Debug.Log("I've lost sight of an ennemy...Yikes!!!");
+		//}
+	}
 }

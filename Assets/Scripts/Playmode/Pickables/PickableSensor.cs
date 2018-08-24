@@ -8,7 +8,6 @@ namespace Playmode.Entity.Senses
 
 	public class PickableSensor : MonoBehaviour
 	{
-
 		public event PickableSensorEventHandler OnPickUp;
 
 		public void PickUp(GameObject pickable)

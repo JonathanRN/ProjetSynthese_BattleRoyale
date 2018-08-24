@@ -3,36 +3,68 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Playmode.Pickables
 {
 	public class PickableSpawner : MonoBehaviour
 	{
-        [SerializeField] private GameObject pickablePrefab;
+		[SerializeField] GameObject pickablePrefab;
 
-		private void Start()
+		[Header("Timer")]
+		[SerializeField] public float spawnTimeDelay = 5f;
+
+		private PickableController pickableController;
+		private GameObject[] pickables;
+
+		private void Awake()
 		{
-			SpawnPickable(transform.GetChild(GetRandomSpawnPoint()).position);
+			pickableController = pickablePrefab.GetComponent<PickableController>();
+			pickables = pickableController.pickables;
 		}
 
-		private void SpawnPickable(Vector3 position)
+		private void OnEnable()
 		{
-			Instantiate(pickablePrefab, position, Quaternion.identity)
-				.GetComponentInChildren<PickableController>()
-				.ConfigureSprite(GetRandomPickableType());
+			StartCoroutine(TimedPickableSpawner());
 		}
 
-		private int GetRandomSpawnPoint()
+		private IEnumerator TimedPickableSpawner()
 		{
-			return new System.Random().Next(0, transform.childCount);
+			while (true)
+			{
+				yield return new WaitForSeconds(spawnTimeDelay);
+
+				RemoveAllPickables();
+				for (int i = 0; i < transform.childCount; i++)
+				{
+					SpawnPickable(transform.GetChild(i));
+				}
+			}
 		}
 
-		private PickableTypes GetRandomPickableType()
+		private void SpawnPickable(Transform childTransform)
 		{
-			var random = Enum.GetValues(typeof(PickableTypes));
-			return (PickableTypes)random.GetValue(new System.Random()
-				.Next(random.Length));
+			Debug.Log(pickables.GetRandom().name.ToString());
+			Instantiate(pickables.GetRandom(), childTransform.position, Quaternion.identity, childTransform);
 		}
 
+		private void RemoveAllPickables()
+		{
+			for (int i = 0; i < transform.childCount; i++)
+			{
+				for (int j = 0; j < transform.GetChild(i).childCount; j++)
+				{
+					if (transform.GetChild(i).childCount == 1)
+					{
+						Destroy(transform.GetChild(i).GetChild(j).gameObject);
+					}
+				}
+			}
+		}
+
+		private int GetRandomChild()
+		{
+			return Random.Range(0, transform.childCount);
+		}
 	}
 }

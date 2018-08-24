@@ -4,5 +4,6 @@
     {
         public const string MainController = "MainController";
 		public const string Pickable = "Pickable";
+		public const string PickableSpawner = "PickableSpawner";
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MainController
   - Pickable
+  - PickableSpawner
   layers:
   - Default
   - TransparentFX
