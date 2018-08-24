@@ -51,17 +51,17 @@ namespace Playmode.Ennemy
             var stragegyProvider = new LoopingEnumerator<EnnemyStrategy>(DefaultStrategies);
             var colorProvider = new LoopingEnumerator<Color>(colors);
 
-            for (var i = 0; i < 3; i++)
-                SpawnEnnemy(
-                    transform.GetChild(i).position,
-                    stragegyProvider.Next(),
-                    colorProvider.Next()
-                );
-        }
+			for (var i = 0; i < transform.childCount; i++)
+				SpawnEnnemy(
+					transform.GetChild(i),
+					stragegyProvider.Next(),
+					colorProvider.Next()
+				);
+		}
 
-        private void SpawnEnnemy(Vector3 position, EnnemyStrategy strategy, Color color)
+        private void SpawnEnnemy(Transform childTransform, EnnemyStrategy strategy, Color color)
         {
-            Instantiate(ennemyPrefab, position, Quaternion.identity)
+            Instantiate(ennemyPrefab, childTransform.position, Quaternion.identity)
                 .GetComponentInChildren<EnnemyController>()
                 .Configure(strategy, color);
         }

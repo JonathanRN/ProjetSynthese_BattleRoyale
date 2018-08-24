@@ -44,7 +44,6 @@ namespace Playmode.Pickables
 
 		private void SpawnPickable(Transform childTransform)
 		{
-			Debug.Log(pickables.GetRandom().name.ToString());
 			Instantiate(pickables.GetRandom(), childTransform.position, Quaternion.identity, childTransform);
 		}
 

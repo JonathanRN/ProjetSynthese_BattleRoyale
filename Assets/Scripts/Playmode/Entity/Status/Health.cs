@@ -35,8 +35,15 @@ namespace Playmode.Entity.Status
 
         public void Hit(int hitPoints)
         {
-            HealthPoints -= hitPoints;
-        }
+			if (HealthPoints - hitPoints >= 100)
+			{
+				HealthPoints = 100;
+			}
+			else
+			{
+				HealthPoints -= hitPoints;
+			}
+		}
 
         private void NotifyDeath()
         {

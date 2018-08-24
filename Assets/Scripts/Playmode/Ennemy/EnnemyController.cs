@@ -22,7 +22,7 @@ namespace Playmode.Ennemy
         [Header("Behaviour")] [SerializeField] private GameObject startingWeaponPrefab;
         
 
-        private Health health;
+        public Health HealthPoints { get; set; }
         private Mover mover;
         private Destroyer destroyer;
         private EnnemySensor ennemySensor;
@@ -65,7 +65,7 @@ namespace Playmode.Ennemy
 
         private void InitializeComponent()
         {
-            health = GetComponent<Health>();
+            HealthPoints = GetComponent<Health>();
             mover = GetComponent<RootMover>();
             destroyer = GetComponent<RootDestroyer>();
             transformer = transform.root;
@@ -92,7 +92,7 @@ namespace Playmode.Ennemy
         private void OnEnable()
         {
             hitSensor.OnHit += OnHit;
-            health.OnDeath += OnDeath;
+            HealthPoints.OnDeath += OnDeath;
 			pickableSensor.OnPickUp += OnPickUp;
         }
 
@@ -105,7 +105,7 @@ namespace Playmode.Ennemy
         {
 
             hitSensor.OnHit -= OnHit;
-            health.OnDeath -= OnDeath;
+            HealthPoints.OnDeath -= OnDeath;
 			pickableSensor.OnPickUp -= OnPickUp;
 		}
 
@@ -135,7 +135,7 @@ namespace Playmode.Ennemy
         {
             Debug.Log("OW, I'm hurt! I'm really much hurt!!!");
 
-            health.Hit(hitPoints);
+            HealthPoints.Hit(hitPoints);
         }
 
         private void OnDeath()
@@ -148,6 +148,7 @@ namespace Playmode.Ennemy
 		private void OnPickUp(GameObject pickable)
 		{
 			Debug.Log("Item picked up: " + pickable.name);
+			pickable.GetComponentInChildren<PickableUse>().Use(gameObject);
 			Destroy(pickable);
 		}
 

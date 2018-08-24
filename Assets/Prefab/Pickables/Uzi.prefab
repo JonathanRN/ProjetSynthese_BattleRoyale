@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4380339383071470}
+  - component: {fileID: 114609833910390510}
   m_Layer: 0
   m_Name: Control
   m_TagString: Untagged
@@ -35,8 +36,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4144855422386694}
   - component: {fileID: 212004209594066252}
-  - component: {fileID: 61653108901336342}
   - component: {fileID: 114220189343216452}
+  - component: {fileID: 58030441716207140}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -92,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292117724259598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7976327, y: -0.6001567, z: -0.1171875}
+  m_LocalPosition: {x: -8.773946, y: -2.6637642, z: -0.1171875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4380339383071470}
@@ -100,8 +101,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61653108901336342
-BoxCollider2D:
+--- !u!58 &58030441716207140
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -112,19 +113,9 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0.05177673, y: -0.007962227}
   serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.64}
-  m_EdgeRadius: 0
+  m_Radius: 0.52312803
 --- !u!114 &114220189343216452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,6 +125,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84a6e150fc024d147991f5670f9d7a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114609833910390510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1072564245670084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455434c303f23324f8c0b7f418e8fe4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212004209594066252
