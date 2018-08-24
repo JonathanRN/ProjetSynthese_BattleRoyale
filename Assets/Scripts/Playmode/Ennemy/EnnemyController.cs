@@ -20,9 +20,20 @@ namespace Playmode.Ennemy
         [SerializeField] private Sprite cowboySprite;
         [SerializeField] private Sprite camperSprite;
         [Header("Behaviour")] [SerializeField] private GameObject startingWeaponPrefab;
-        
 
         public Health HealthPoints { get; set; }
+		[Header("Variables")]
+        [SerializeField]
+        public float outOfRangeRotationSpeed = 5f;
+        [SerializeField]
+        public float cameraHalfHeight = 8.5f;
+        [SerializeField]
+        public float cameraHalfWidth = 24.5f;
+        [SerializeField]
+        public float speed = 10f;
+
+        public float senseRotation = 1f;
+        private Health health;
         private Mover mover;
         private Destroyer destroyer;
         private EnnemySensor ennemySensor;
@@ -31,6 +42,7 @@ namespace Playmode.Ennemy
         private HandController handController;
         private Transform transformer;
         private TimedRotation timedRotation;
+        private Vector3 vectorBetweenEnemy;
 
         private IEnnemyStrategy strategy;
 
@@ -77,7 +89,7 @@ namespace Playmode.Ennemy
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
             handController = hand.GetComponent<HandController>();
 
-            strategy = new NormalStrategy(mover, handController,ennemySensor,transformer,timedRotation);
+            strategy = new NormalStrategy(mover, handController,ennemySensor,transformer,timedRotation,this);
         }
 
         private void CreateStartingWeapon()
@@ -91,9 +103,14 @@ namespace Playmode.Ennemy
 
         private void OnEnable()
         {
+            timedRotation.OnRotationChanged += OnRotationChanged;
             hitSensor.OnHit += OnHit;
             HealthPoints.OnDeath += OnDeath;
 			pickableSensor.OnPickUp += OnPickUp;
+        }
+        private void OnRotationChanged()
+        {
+            senseRotation *= -1;
         }
 
         private void Update()
@@ -152,14 +169,44 @@ namespace Playmode.Ennemy
 			Destroy(pickable);
 		}
 
-		//private void OnEnnemySeen(EnnemyController ennemy)
-		//{
-		//    Debug.Log("I've seen an ennemy!! Ya so dead noob!!!");
-		//}
+        public void MoveTowardsTarget(Transform target)
+        {
+            mover.Move(new Vector3(0, 3));
+            vectorBetweenEnemy = new Vector3(transformer.position.x - target.transform.position.x, transformer.position.y - target.transform.position.y);
+            if (Vector3.Dot(vectorBetweenEnemy, transformer.right) < -0.5)
+            {
+                mover.Rotate(1f * Time.deltaTime);
+            }
+            else if (Vector3.Dot(vectorBetweenEnemy, transformer.right) > 0.5)
+            {
+                mover.Rotate(-1f * Time.deltaTime);
+            }
+        }
 
-		//private void OnEnnemySightLost(EnnemyController ennemy)
-		//{
-		//    Debug.Log("I've lost sight of an ennemy...Yikes!!!");
-		//}
-	}
+        public void Roam()
+        {
+            mover.Move(new Vector3(0, speed * Time.deltaTime));
+
+            if (transformer.position.y >= cameraHalfHeight)
+            {
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * outOfRangeRotationSpeed);
+            }
+            else if (transformer.position.y <= -cameraHalfHeight)
+            {
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * outOfRangeRotationSpeed);
+            }
+            else if (transformer.position.x >= cameraHalfWidth)
+            {
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 90), Time.deltaTime * outOfRangeRotationSpeed);
+            }
+            else if (transformer.position.x <= -cameraHalfWidth)
+            {
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, -90), Time.deltaTime * outOfRangeRotationSpeed);
+            }
+            else
+            {
+                mover.Rotate(senseRotation);
+            }
+        }
+    }
 }
