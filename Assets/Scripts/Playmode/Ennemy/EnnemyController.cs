@@ -20,6 +20,7 @@ namespace Playmode.Ennemy
         [SerializeField] private Sprite cowboySprite;
         [SerializeField] private Sprite camperSprite;
         [Header("Behaviour")] [SerializeField] private GameObject startingWeaponPrefab;
+        
 
         private Health health;
         private Mover mover;
@@ -29,6 +30,7 @@ namespace Playmode.Ennemy
 		private PickableSensor pickableSensor;
         private HandController handController;
         private Transform transformer;
+        private TimedRotation timedRotation;
 
         private IEnnemyStrategy strategy;
 
@@ -67,6 +69,7 @@ namespace Playmode.Ennemy
             mover = GetComponent<RootMover>();
             destroyer = GetComponent<RootDestroyer>();
             transformer = transform.root;
+            timedRotation = GetComponent<TimedRotation>();
 
             var rootTransform = transform.root;
             ennemySensor = rootTransform.GetComponentInChildren<EnnemySensor>();
@@ -74,7 +77,7 @@ namespace Playmode.Ennemy
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
             handController = hand.GetComponent<HandController>();
 
-            strategy = new NormalStrategy(mover, handController,ennemySensor,transformer);
+            strategy = new NormalStrategy(mover, handController,ennemySensor,transformer,timedRotation);
         }
 
         private void CreateStartingWeapon()
@@ -88,8 +91,6 @@ namespace Playmode.Ennemy
 
         private void OnEnable()
         {
-          //  ennemySensor.OnEnnemySeen += OnEnnemySeen;
-          //  ennemySensor.OnEnnemySightLost += OnEnnemySightLost;
             hitSensor.OnHit += OnHit;
             health.OnDeath += OnDeath;
 			pickableSensor.OnPickUp += OnPickUp;
@@ -102,8 +103,7 @@ namespace Playmode.Ennemy
 
         private void OnDisable()
         {
-         //   ennemySensor.OnEnnemySeen -= OnEnnemySeen;
-         //   ennemySensor.OnEnnemySightLost -= OnEnnemySightLost;
+
             hitSensor.OnHit -= OnHit;
             health.OnDeath -= OnDeath;
 			pickableSensor.OnPickUp -= OnPickUp;
