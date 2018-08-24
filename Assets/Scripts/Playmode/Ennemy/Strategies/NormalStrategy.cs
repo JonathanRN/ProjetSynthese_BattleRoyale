@@ -28,6 +28,7 @@ namespace Playmode.Ennemy.Strategies
 
 			enemySensor.OnEnnemySeen += OnEnnemySeen;
 			enemySensor.OnEnnemySightLost += OnEnnemySightLost;
+            
         }
 
         private void OnEnnemySeen(EnnemyController ennemy)
@@ -52,7 +53,14 @@ namespace Playmode.Ennemy.Strategies
 			}
 			else
 			{
-				enemyController.Roam();
+                if (!enemyController.onFire)
+                {
+                    enemyController.Roam();
+                }
+                else
+                {
+                    enemyController.HitReact();
+                }
 			}
         }
     }

@@ -27,11 +27,13 @@ namespace Playmode.Ennemy
 		[SerializeField]
 		public float cameraHalfHeight = 8.5f;
 		[SerializeField]
-		public float cameraHalfWidth = 24.5f;
+		public float cameraHalfWidth = 20.5f;
 		[SerializeField]
 		public float speed = 10f;
 		public float senseRotation = 1f;
+        public bool onFire;
 
+        private float randomBehaviour;
 		public Health HealthPoints { get; set; }
         private Mover mover;
         private Destroyer destroyer;
@@ -42,6 +44,7 @@ namespace Playmode.Ennemy
         private Transform transformer;
         private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
+       
 
 		private IEnnemyStrategy strategy;
 
@@ -110,6 +113,8 @@ namespace Playmode.Ennemy
 
 		private void OnRotationChanged()
 		{
+            onFire = false;
+            randomBehaviour = UnityEngine.Random.Range(-1, 2);
 			senseRotation *= -1;
 		}
 
@@ -154,13 +159,20 @@ namespace Playmode.Ennemy
             }
             else
             {
-                mover.Rotate(senseRotation);
+                if (randomBehaviour > 0)
+                {
+                    mover.Rotate(senseRotation);
+                }
             }
 		}
 
+        public void HitReact()
+        {
+            mover.Rotate(1f);
+        }
+
 		private void OnDisable()
         {
-
             hitSensor.OnHit -= OnHit;
             HealthPoints.OnDeath -= OnDeath;
 			pickableSensor.OnPickUp -= OnPickUp;
@@ -193,6 +205,7 @@ namespace Playmode.Ennemy
             Debug.Log("OW, I'm hurt! I'm really much hurt!!!");
 
             HealthPoints.Hit(hitPoints);
+            onFire = true;
         }
 
         private void OnDeath()
@@ -208,15 +221,5 @@ namespace Playmode.Ennemy
 			pickable.GetComponentInChildren<PickableUse>().Use(gameObject);
 			Destroy(pickable);
 		}
-
-		//private void OnEnnemySeen(EnnemyController ennemy)
-		//{
-		//    Debug.Log("I've seen an ennemy!! Ya so dead noob!!!");
-		//}
-
-		//private void OnEnnemySightLost(EnnemyController ennemy)
-		//{
-		//    Debug.Log("I've lost sight of an ennemy...Yikes!!!");
-		//}
 	}
 }
