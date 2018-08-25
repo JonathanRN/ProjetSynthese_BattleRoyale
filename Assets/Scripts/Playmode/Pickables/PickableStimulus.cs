@@ -10,6 +10,11 @@ namespace Playmode.Entity.Senses
 		private void OnTriggerEnter2D(Collider2D other)
 		{
 			other.GetComponent<Entity.Senses.PickableSensor>()?.PickUp(transform.parent.gameObject);
-		}
+            if(other.tag == "Sight")
+            {
+                other.GetComponent<Entity.Senses.PickableSensor>()?.PickableSeen(transform.parent.gameObject);
+            }
+            
+        }
 	}
 }
