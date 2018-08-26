@@ -90,8 +90,7 @@ namespace Playmode.Ennemy
             hitSensor = rootTransform.GetComponentInChildren<HitSensor>();
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
             handController = hand.GetComponent<HandController>();
-
-			strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this,pickableSensor);
+            
 		}
 
         private void CreateStartingWeapon()
@@ -126,16 +125,21 @@ namespace Playmode.Ennemy
 		public void MoveTowardsTarget(Transform target)
 		{
 			mover.Move(new Vector3(0, 3));
-			vectorBetweenEnemy = new Vector3(transformer.position.x - target.transform.position.x, transformer.position.y - target.transform.position.y);
-			if (Vector3.Dot(vectorBetweenEnemy, transformer.right) < -0.5)
-			{
-				mover.Rotate(1f * Time.deltaTime);
-			}
-			else if (Vector3.Dot(vectorBetweenEnemy, transformer.right) > 0.5)
-			{
-				mover.Rotate(-1f * Time.deltaTime);
-			}
+            RotateTowardsTarget(target);
 		}
+
+        public void RotateTowardsTarget(Transform target)
+        {
+            vectorBetweenEnemy = new Vector3(transformer.position.x - target.transform.position.x, transformer.position.y - target.transform.position.y);
+            if (Vector3.Dot(vectorBetweenEnemy, transformer.right) < -0.5)
+            {
+                mover.Rotate(1f * Time.deltaTime);
+            }
+            else if (Vector3.Dot(vectorBetweenEnemy, transformer.right) > 0.5)
+            {
+                mover.Rotate(-1f * Time.deltaTime);
+            }
+        }
 
 		public void Roam()
 		{
@@ -143,19 +147,19 @@ namespace Playmode.Ennemy
 
             if (transformer.position.y >= cameraHalfHeight)
             {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime* outOfRangeRotationSpeed);
-			}
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * outOfRangeRotationSpeed);
+            }
             else if (transformer.position.y <= -cameraHalfHeight)
             {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime* outOfRangeRotationSpeed);
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * outOfRangeRotationSpeed);
             }
             else if (transformer.position.x >= cameraHalfWidth)
             {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 90), Time.deltaTime* outOfRangeRotationSpeed);
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 90), Time.deltaTime * outOfRangeRotationSpeed);
             }
             else if (transformer.position.x <= -cameraHalfWidth)
             {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, -90), Time.deltaTime* outOfRangeRotationSpeed);
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, -90), Time.deltaTime * outOfRangeRotationSpeed);
             }
             else
             {
@@ -164,7 +168,27 @@ namespace Playmode.Ennemy
                     mover.Rotate(senseRotation);
                 }
             }
-		}
+        }
+
+        public void OutOfMapHandler()
+        {
+            if (transformer.position.y >= cameraHalfHeight + 0.5f)
+            {
+                transform.SetPositionAndRotation(new Vector3(transformer.position.x, cameraHalfHeight - 0.2f), transformer.rotation);
+            }
+            else if (transformer.position.y <= -cameraHalfHeight - 0.5f)
+            {
+                transform.SetPositionAndRotation(new Vector3(transformer.position.x, cameraHalfHeight + 0.2f), transformer.rotation);
+            }
+            else if (transformer.position.x >= cameraHalfWidth + 0.5f)
+            {
+                transform.SetPositionAndRotation(new Vector3(cameraHalfWidth - 0.2f, transformer.position.y), transformer.rotation);
+            }
+            else if (transformer.position.x <= -cameraHalfWidth - 0.5f)
+            {
+                transform.SetPositionAndRotation(new Vector3(cameraHalfWidth + 0.2f, transformer.position.y), transformer.rotation);
+            }
+        }
 
         public void HitReact()
         {
@@ -187,15 +211,19 @@ namespace Playmode.Ennemy
             {
                 case EnnemyStrategy.Careful:
                     typeSign.GetComponent<SpriteRenderer>().sprite = carefulSprite;
+                    this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
                     break;
                 case EnnemyStrategy.Cowboy:
                     typeSign.GetComponent<SpriteRenderer>().sprite = cowboySprite;
+                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
                 case EnnemyStrategy.Camper:
                     typeSign.GetComponent<SpriteRenderer>().sprite = camperSprite;
+                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
                 default:
                     typeSign.GetComponent<SpriteRenderer>().sprite = normalSprite;
+                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
             }
         }
