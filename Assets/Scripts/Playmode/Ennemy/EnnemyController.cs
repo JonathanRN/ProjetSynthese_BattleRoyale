@@ -208,15 +208,5 @@ namespace Playmode.Ennemy
 			pickable.GetComponentInChildren<PickableUse>().Use(gameObject);
 			Destroy(pickable);
 		}
-
-		//private void OnEnnemySeen(EnnemyController ennemy)
-		//{
-		//    Debug.Log("I've seen an ennemy!! Ya so dead noob!!!");
-		//}
-
-		//private void OnEnnemySightLost(EnnemyController ennemy)
-		//{
-		//    Debug.Log("I've lost sight of an ennemy...Yikes!!!");
-		//}
 	}
 }
