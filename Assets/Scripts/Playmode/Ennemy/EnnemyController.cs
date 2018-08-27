@@ -27,11 +27,13 @@ namespace Playmode.Ennemy
 		[SerializeField]
 		public float cameraHalfHeight = 8.5f;
 		[SerializeField]
-		public float cameraHalfWidth = 24.5f;
+		public float cameraHalfWidth = 20.5f;
 		[SerializeField]
 		public float speed = 10f;
 		public float senseRotation = 1f;
+        public bool onFire;
 
+        private float randomBehaviour;
 		public Health HealthPoints { get; set; }
         private Mover mover;
         private Destroyer destroyer;
@@ -42,6 +44,7 @@ namespace Playmode.Ennemy
         private Transform transformer;
         private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
+       
 
 		private IEnnemyStrategy strategy;
 
@@ -110,6 +113,8 @@ namespace Playmode.Ennemy
 
 		private void OnRotationChanged()
 		{
+            onFire = false;
+            randomBehaviour = UnityEngine.Random.Range(-1, 2);
 			senseRotation *= -1;
 		}
 
@@ -121,16 +126,21 @@ namespace Playmode.Ennemy
 		public void MoveTowardsTarget(Transform target)
 		{
 			mover.Move(new Vector3(0, 3));
-			vectorBetweenEnemy = new Vector3(transformer.position.x - target.transform.position.x, transformer.position.y - target.transform.position.y);
-			if (Vector3.Dot(vectorBetweenEnemy, transformer.right) < -0.5)
-			{
-				mover.Rotate(1f * Time.deltaTime);
-			}
-			else if (Vector3.Dot(vectorBetweenEnemy, transformer.right) > 0.5)
-			{
-				mover.Rotate(-1f * Time.deltaTime);
-			}
+            RotateTowardsTarget(target);
 		}
+
+        public void RotateTowardsTarget(Transform target)
+        {
+            vectorBetweenEnemy = new Vector3(transformer.position.x - target.transform.position.x, transformer.position.y - target.transform.position.y);
+            if (Vector3.Dot(vectorBetweenEnemy, transformer.right) < -0.5)
+            {
+                mover.Rotate(1f * Time.deltaTime);
+            }
+            else if (Vector3.Dot(vectorBetweenEnemy, transformer.right) > 0.5)
+            {
+                mover.Rotate(-1f * Time.deltaTime);
+            }
+        }
 
 		public void Roam()
 		{
@@ -138,29 +148,56 @@ namespace Playmode.Ennemy
 
             if (transformer.position.y >= cameraHalfHeight)
             {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime* outOfRangeRotationSpeed);
-			}
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * outOfRangeRotationSpeed);
+            }
             else if (transformer.position.y <= -cameraHalfHeight)
             {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime* outOfRangeRotationSpeed);
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * outOfRangeRotationSpeed);
             }
             else if (transformer.position.x >= cameraHalfWidth)
             {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 90), Time.deltaTime* outOfRangeRotationSpeed);
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 90), Time.deltaTime * outOfRangeRotationSpeed);
             }
             else if (transformer.position.x <= -cameraHalfWidth)
             {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, -90), Time.deltaTime* outOfRangeRotationSpeed);
+                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, -90), Time.deltaTime * outOfRangeRotationSpeed);
             }
             else
             {
-                mover.Rotate(senseRotation);
+                if (randomBehaviour > 0)
+                {
+                    mover.Rotate(senseRotation);
+                }
             }
-		}
+        }
+
+        public void OutOfMapHandler()
+        {
+            if (transformer.position.y >= cameraHalfHeight + 0.5f)
+            {
+                transform.SetPositionAndRotation(new Vector3(transformer.position.x, cameraHalfHeight - 0.2f), transformer.rotation);
+            }
+            else if (transformer.position.y <= -cameraHalfHeight - 0.5f)
+            {
+                transform.SetPositionAndRotation(new Vector3(transformer.position.x, cameraHalfHeight + 0.2f), transformer.rotation);
+            }
+            else if (transformer.position.x >= cameraHalfWidth + 0.5f)
+            {
+                transform.SetPositionAndRotation(new Vector3(cameraHalfWidth - 0.2f, transformer.position.y), transformer.rotation);
+            }
+            else if (transformer.position.x <= -cameraHalfWidth - 0.5f)
+            {
+                transform.SetPositionAndRotation(new Vector3(cameraHalfWidth + 0.2f, transformer.position.y), transformer.rotation);
+            }
+        }
+
+        public void HitReact()
+        {
+            mover.Rotate(1f);
+        }
 
 		private void OnDisable()
         {
-
             hitSensor.OnHit -= OnHit;
             HealthPoints.OnDeath -= OnDeath;
 			pickableSensor.OnPickUp -= OnPickUp;
@@ -175,15 +212,19 @@ namespace Playmode.Ennemy
             {
                 case EnnemyStrategy.Careful:
                     typeSign.GetComponent<SpriteRenderer>().sprite = carefulSprite;
+                    this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
                     break;
                 case EnnemyStrategy.Cowboy:
                     typeSign.GetComponent<SpriteRenderer>().sprite = cowboySprite;
+                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
                 case EnnemyStrategy.Camper:
                     typeSign.GetComponent<SpriteRenderer>().sprite = camperSprite;
+                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
                 default:
                     typeSign.GetComponent<SpriteRenderer>().sprite = normalSprite;
+                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
             }
         }
@@ -193,6 +234,7 @@ namespace Playmode.Ennemy
             Debug.Log("OW, I'm hurt! I'm really much hurt!!!");
 
             HealthPoints.Hit(hitPoints);
+            onFire = true;
         }
 
         private void OnDeath()

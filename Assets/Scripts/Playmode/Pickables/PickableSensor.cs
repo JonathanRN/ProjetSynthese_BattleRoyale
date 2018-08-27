@@ -9,11 +9,17 @@ namespace Playmode.Entity.Senses
 	public class PickableSensor : MonoBehaviour
 	{
 		public event PickableSensorEventHandler OnPickUp;
+        public event PickableSensorEventHandler OnPickableSeen;
 
 		public void PickUp(GameObject pickable)
 		{
 			NotifyPickUp(pickable);
 		}
+
+        public void PickableSeen(GameObject pickable)
+        {
+            NotifyPickableSeen(pickable);
+        }
 
 		private void NotifyPickUp(GameObject pickable)
 		{
@@ -22,5 +28,13 @@ namespace Playmode.Entity.Senses
 				OnPickUp(pickable);
 			}
 		}
-	}
+
+        private void NotifyPickableSeen(GameObject pickable)
+        {
+            if (OnPickableSeen != null)
+            {
+                OnPickableSeen(pickable);
+            }
+        }
+    }
 }

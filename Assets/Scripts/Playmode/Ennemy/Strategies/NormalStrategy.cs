@@ -16,6 +16,7 @@ namespace Playmode.Ennemy.Strategies
         private EnnemySensor enemySensor;
         private GameObject target;
 		private Transform enemyTransformer;
+        private float distanceBetweenEnemy;
 
 		public NormalStrategy(Mover mover, HandController handController, EnnemySensor enemySensor, Transform transformer, TimedRotation timedRotation, EnnemyController enemyController)
 		{
@@ -28,6 +29,7 @@ namespace Playmode.Ennemy.Strategies
 
 			enemySensor.OnEnnemySeen += OnEnnemySeen;
 			enemySensor.OnEnnemySightLost += OnEnnemySightLost;
+            
         }
 
         private void OnEnnemySeen(EnnemyController ennemy)
@@ -43,16 +45,31 @@ namespace Playmode.Ennemy.Strategies
 		}
 
         public void Act()
-        {
-
+        {            
 			if (target != null)
 			{
-				enemyController.MoveTowardsTarget(target.transform);
+                enemyController.OutOfMapHandler();
+                distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
+                if (distanceBetweenEnemy <= 3f)
+                {
+                    enemyController.RotateTowardsTarget(target.transform);
+                }
+                else
+                {                    
+                    enemyController.MoveTowardsTarget(target.transform);
+                }
 				handController.Use();
 			}
 			else
 			{
-				enemyController.Roam();
+                if (!enemyController.onFire)
+                {
+                    enemyController.Roam();
+                }
+                else
+                {
+                    enemyController.HitReact();
+                }
 			}
         }
     }
