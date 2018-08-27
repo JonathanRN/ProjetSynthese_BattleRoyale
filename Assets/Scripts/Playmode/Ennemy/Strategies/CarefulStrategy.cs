@@ -18,7 +18,7 @@ namespace Playmode.Ennemy.Strategies
         private GameObject target;
         private Transform enemyTransformer;
         private float distanceBetweenEnemy;
-        private bool outOfMap;
+        private bool isOutOfMap;
         private bool needMedKit;
         private GameObject pickable;
 		private PickableType pickableType;
@@ -69,7 +69,7 @@ namespace Playmode.Ennemy.Strategies
 			{
 				if (target != null)
 				{
-					outOfMap = enemyController.CheckIfOutOfMap();					
+					isOutOfMap = enemyController.CheckIfOutOfMap();					
 					BackFromEnemyIfTooClose();
 
 					enemyController.RotateTowardsTarget(target.transform);
@@ -136,7 +136,7 @@ namespace Playmode.Ennemy.Strategies
 			distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
 			if (distanceBetweenEnemy < maxDistanceWantedBetweenEnemy)
 			{
-				if (!outOfMap)
+				if (!isOutOfMap)
 				{
 					mover.Move(new Vector3(0, -Mover.Clockwise));
 				}
