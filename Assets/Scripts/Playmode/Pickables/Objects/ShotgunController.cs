@@ -1,4 +1,5 @@
 ﻿using Playmode.Ennemy.BodyParts;
+using Playmode.Weapon;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class ShotgunController : PickableUse {
 	public override void Use(GameObject enemy)
 	{
 		Debug.Log("Used a shotgun!");
-		handController.Hold(transform.root.gameObject);
+	
+		HandController.currentWeapon = transform.root.gameObject;
 	}
 }

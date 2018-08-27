@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Playmode.Ennemy.BodyParts;
+using System;
 using UnityEngine;
 
 namespace Playmode.Weapon
@@ -7,6 +8,8 @@ namespace Playmode.Weapon
     {
         [Header("Behaviour")] [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float fireDelayInSeconds = 1f;
+
+		private HandController handController;
 
         private float lastTimeShotInSeconds;
 
@@ -33,13 +36,16 @@ namespace Playmode.Weapon
         {
             if (CanShoot)
             {
-				var rotation = transform.rotation;
+				var rotation = transform.root.rotation;
 
-                Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z, rotation.w));
-                Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 0.5f, rotation.w));
-                Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 1f, rotation.w));
-                //Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 0.5f, rotation.w));
-                //Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z + 0.5f, rotation.w));
+
+
+				Instantiate(bulletPrefab, transform.root.position, transform.root.rotation);
+				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z, rotation.w));
+				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z + 30, rotation.w));
+				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 1f, rotation.w));
+				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 0.5f, rotation.w));
+				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z + 0.5f, rotation.w));
 
 				lastTimeShotInSeconds = Time.time;
             }

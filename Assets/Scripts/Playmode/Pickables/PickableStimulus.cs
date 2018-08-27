@@ -11,11 +11,11 @@ namespace Playmode.Entity.Senses
 		{			
             if(other.tag == "Sight")
             {
-                other.GetComponent<Entity.Senses.PickableSensor>()?.PickableSeen(transform.parent.gameObject);
+                other.transform.root.GetComponentInChildren<Entity.Senses.PickableSensor>()?.PickableSeen(transform.parent.gameObject);
             }
             else
             {
-                other.GetComponent<Entity.Senses.PickableSensor>()?.PickUp(transform.parent.gameObject);
+                other.transform.root.GetComponentInChildren<Entity.Senses.PickableSensor>()?.PickUp(transform.parent.gameObject);
             }
         }
 	}

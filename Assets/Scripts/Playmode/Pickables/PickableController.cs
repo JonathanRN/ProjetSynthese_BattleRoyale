@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PickableController : MonoBehaviour {
 
+	public PickableTypes pickableType { get; set; }
 
 	[Header("Pickup prefabs")]
 	[SerializeField] public GameObject[] pickables;
-
 }

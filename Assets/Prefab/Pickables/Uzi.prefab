@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114238429742528832}
   - component: {fileID: 114014647863487342}
   - component: {fileID: 50964428450228624}
+  - component: {fileID: 114358057275978370}
   m_Layer: 0
   m_Name: Control
   m_TagString: Untagged
@@ -174,6 +175,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788a8a55e3694b4ab71d4056381d759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handPrefab: {fileID: 1201874307975926, guid: 88e89628113b2b04eb2c08e350ffdee9, type: 2}
+--- !u!114 &114358057275978370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1072564245670084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d8ae3b81e2ec8439fedba0d2908cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
 --- !u!212 &212004209594066252
 SpriteRenderer:
   m_ObjectHideFlags: 1

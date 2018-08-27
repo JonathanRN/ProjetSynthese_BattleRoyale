@@ -48,7 +48,7 @@ namespace Playmode.Ennemy.Strategies
 
         private void OnPickableSeen(GameObject pickable)
         {
-            Debug.Log("I've seen a PICKABLE!!");
+            Debug.Log("I've seen a " + pickable.GetComponentInChildren<PickableType>().GetType());
         }
 
         public void Act()

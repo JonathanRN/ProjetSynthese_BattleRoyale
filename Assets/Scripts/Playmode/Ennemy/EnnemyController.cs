@@ -250,9 +250,10 @@ namespace Playmode.Ennemy
 
 		private void OnPickUp(GameObject pickable)
 		{
-			Debug.Log("Item picked up: " + pickable.name);
-			pickable.GetComponentInChildren<PickableUse>().Use(gameObject);
-			Destroy(pickable);
+			Debug.Log("Item picked up: " + pickable.GetComponentInChildren<PickableType>().GetType());
+
+			pickable.gameObject.GetComponentInChildren<PickableUse>().Use(gameObject);
+			Destroy(pickable.gameObject);
 		}
 	}
 }
