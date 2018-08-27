@@ -60,7 +60,7 @@ namespace Playmode.Ennemy.Strategies
 			}
 			else
 			{
-                if (!enemyController.onFire)
+                if (!enemyController.IsUnderFire)
                 {
                     enemyController.Roam();
                 }

@@ -75,20 +75,13 @@ namespace Playmode.Ennemy.Strategies
 					enemyController.RotateTowardsTarget(target.transform);
 					handController.Use();
 				}
-				else if(pickable != null)
-				{
-					if (pickableType.GetType() != PickableTypes.MedicalKit)
-					{
-						enemyController.MoveTowardsTarget(pickable.transform);
-					}
-					else
-					{
-						enemyController.Roam();
-					}
-				}
 				else
 				{
-					if (!enemyController.onFire)
+                    if(pickable != null && pickableType.IsWeapon())
+                    {
+                        enemyController.MoveTowardsTarget(pickable.transform);
+                    }
+					if (!enemyController.IsUnderFire)
 					{
 						enemyController.Roam();
 					}
@@ -103,20 +96,16 @@ namespace Playmode.Ennemy.Strategies
         private bool CheckIfEnemyNeedsMedKit()
         {
             if(enemyController.HealthPoints.HealthPoints < 50)
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
 		private void SearchForMedKit()
 		{
 			if (pickable != null)
 			{
-				if (pickableType.GetType() == PickableTypes.MedicalKit)
+                if (pickableType.IsMedKit())
 				{
 					enemyController.MoveTowardsTarget(pickable.transform);
 				}
