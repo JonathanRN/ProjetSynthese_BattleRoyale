@@ -16,7 +16,6 @@ public class UziController : PickableUse {
 
 	public override void Use(GameObject enemy)
 	{
-		Debug.Log("Used a Uzi!");
 		HandController.currentWeapon = transform.root.gameObject;
 	}
 }

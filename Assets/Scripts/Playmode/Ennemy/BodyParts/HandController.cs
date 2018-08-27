@@ -30,7 +30,6 @@ namespace Playmode.Ennemy.BodyParts
                 gameObject.transform.localPosition = Vector3.zero;
                 
                 weapon = gameObject.GetComponentInChildren<WeaponController>();
-				currentWeapon = gameObject;
             }
             else
             {

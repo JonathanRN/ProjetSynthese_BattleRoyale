@@ -12,6 +12,8 @@ namespace Playmode.Weapon
 		private HandController handController;
 
         private float lastTimeShotInSeconds;
+		private int nbOfShotgunBullets;
+		private GameObject[] shotgunBullets;
 
         private bool CanShoot => Time.time - lastTimeShotInSeconds > fireDelayInSeconds;
 
@@ -30,25 +32,49 @@ namespace Playmode.Weapon
         private void InitializeComponent()
         {
             lastTimeShotInSeconds = 0;
+			nbOfShotgunBullets = 3;
+			shotgunBullets = new GameObject[nbOfShotgunBullets];
         }
 
         public void Shoot()
         {
-            if (CanShoot)
+			if (CanShoot)
             {
 				var rotation = transform.root.rotation;
 
-
-
-				Instantiate(bulletPrefab, transform.root.position, transform.root.rotation);
-				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z, rotation.w));
-				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z + 30, rotation.w));
-				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 1f, rotation.w));
-				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 0.5f, rotation.w));
-				//Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z + 0.5f, rotation.w));
+				UpdateAndShootWithCurrentWeapon();
 
 				lastTimeShotInSeconds = Time.time;
             }
         }
-    }
+
+		private void UpdateAndShootWithCurrentWeapon()
+		{
+			var weapon = HandController.currentWeapon;
+
+			if (weapon != null)
+			{
+				if (weapon.GetComponentInChildren<PickableType>().GetType() == Util.Values.PickableTypes.Shotgun)
+				{
+					fireDelayInSeconds = 1.5f;
+
+					var rotation = transform.root.rotation;
+
+					for (int i = 0; i < nbOfShotgunBullets; i++)
+					{
+						shotgunBullets[i] = Instantiate(bulletPrefab, transform.position, transform.rotation);
+					}
+				}
+				else if (weapon.GetComponentInChildren<PickableType>().GetType() == Util.Values.PickableTypes.Uzi)
+				{
+					fireDelayInSeconds = 0.1f;
+					Instantiate(bulletPrefab, transform.position, transform.rotation);
+				}
+			}
+			else
+			{
+				Instantiate(bulletPrefab, transform.position, transform.rotation); //Normal shot
+			}
+		}
+	}
 }
