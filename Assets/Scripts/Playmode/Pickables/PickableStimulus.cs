@@ -14,7 +14,6 @@ namespace Playmode.Entity.Senses
             {
                 other.GetComponent<Entity.Senses.PickableSensor>()?.PickableSeen(transform.parent.gameObject);
             }
-            
         }
 	}
 }

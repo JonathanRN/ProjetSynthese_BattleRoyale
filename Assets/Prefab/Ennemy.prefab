@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 212022067182938298}
   - component: {fileID: 60192341613569478}
   - component: {fileID: 114574195830500936}
+  - component: {fileID: 114801056344639034}
   m_Layer: 0
   m_Name: Sight
   m_TagString: Sight
@@ -112,7 +113,6 @@ GameObject:
   - component: {fileID: 58758988853505006}
   - component: {fileID: 114842752972343190}
   - component: {fileID: 114136075856512652}
-  - component: {fileID: 114915619438856196}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -420,6 +420,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: "Ce RigidBody2D est n\xE9cessaire pour que les \r\ntriggers se d\xE9clanchent
     m\xEAme s'ils sont en\r\nmouvement."
+--- !u!114 &114801056344639034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699645007186046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8315138ce77f3084da0b5346e0b5ffd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114842752972343190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,17 +451,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f7bb217c998d3b4f8bf914fef229f90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114915619438856196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1880469799408478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8315138ce77f3084da0b5346e0b5ffd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212022067182938298

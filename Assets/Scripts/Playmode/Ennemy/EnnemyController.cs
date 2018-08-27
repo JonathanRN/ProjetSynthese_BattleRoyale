@@ -91,7 +91,7 @@ namespace Playmode.Ennemy
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
             handController = hand.GetComponent<HandController>();
 
-			strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+			//strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
 		}
 
         private void CreateStartingWeapon()

@@ -10,5 +10,4 @@ public class PickableController : MonoBehaviour {
 	[Header("Pickup prefabs")]
 	[SerializeField] public GameObject[] pickables;
 
-
 }

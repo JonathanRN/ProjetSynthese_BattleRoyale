@@ -19,7 +19,7 @@ namespace Playmode.Ennemy.Strategies
         private Transform enemyTransformer;
         private float distanceBetweenEnemy;
 
-        public CarefulStrategy(Mover mover, HandController handController, EnnemySensor enemySensor, Transform transformer, TimedRotation timedRotation, EnnemyController enemyController,PickableSensor pickableSensor)
+        public CarefulStrategy(Mover mover, HandController handController, EnnemySensor enemySensor, Transform transformer, TimedRotation timedRotation, EnnemyController enemyController, PickableSensor pickableSensor)
         {
             this.mover = mover;
             this.handController = handController;
