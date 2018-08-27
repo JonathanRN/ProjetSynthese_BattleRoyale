@@ -91,7 +91,7 @@ namespace Playmode.Ennemy
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
             handController = hand.GetComponent<HandController>();
 
-			//strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+			strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this,pickableSensor);
 		}
 
         private void CreateStartingWeapon()
@@ -220,19 +220,19 @@ namespace Playmode.Ennemy
             {
                 case EnnemyStrategy.Careful:
                     typeSign.GetComponent<SpriteRenderer>().sprite = carefulSprite;
-                    this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
+                    //this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
                     break;
                 case EnnemyStrategy.Cowboy:
                     typeSign.GetComponent<SpriteRenderer>().sprite = cowboySprite;
-                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+                    //this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
                 case EnnemyStrategy.Camper:
                     typeSign.GetComponent<SpriteRenderer>().sprite = camperSprite;
-                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+                    //this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
                 default:
                     typeSign.GetComponent<SpriteRenderer>().sprite = normalSprite;
-                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+                    //this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
             }
         }

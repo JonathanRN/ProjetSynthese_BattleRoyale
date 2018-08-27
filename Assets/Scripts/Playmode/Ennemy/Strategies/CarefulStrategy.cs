@@ -18,7 +18,9 @@ namespace Playmode.Ennemy.Strategies
         private GameObject target;
         private Transform enemyTransformer;
         private float distanceBetweenEnemy;
-        private bool outOfMap = false;
+        private bool outOfMap;
+        private bool needMedKit;
+        private GameObject pickable;
 
         public CarefulStrategy(Mover mover, HandController handController, EnnemySensor enemySensor, Transform transformer, TimedRotation timedRotation, EnnemyController enemyController, PickableSensor pickableSensor)
         {
@@ -49,43 +51,76 @@ namespace Playmode.Ennemy.Strategies
         private void OnPickableSeen(GameObject pickable)
         {
             Debug.Log("I've seen a " + pickable.GetComponentInChildren<PickableType>().GetType());
-        }
+			this.pickable = pickable;
+		}
 
         public void Act()
         {
-            //if(enemyController.HealthPoints.HealthPoints <= 50)
-            //{
-            //    enemyController.Roam();
-            //}
-            if (target != null)
+            needMedKit = checkIfEnemyNeedsMedKit();
+			if (needMedKit)
+			{
+				if (pickable != null)
+				{
+					if (pickable.transform.root.name == "MedicalKit(Clone)")
+					{
+						enemyController.MoveTowardsTarget(pickable.transform);
+					}
+				}
+				else
+				{
+					enemyController.Roam();
+				}
+			}
+			else
+			{
+				if (target != null)
+				{
+					outOfMap = enemyController.OutOfMapHandler();
+					distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
+					if (distanceBetweenEnemy < 6)
+					{
+						if (!outOfMap)
+						{
+							mover.Move(new Vector3(0, -1));
+						}
+						else
+						{
+							mover.Move(new Vector3(0, 1));
+						}
+					}
+					enemyController.RotateTowardsTarget(target.transform);
+					handController.Use();
+				}
+				else if(pickable != null)
+				{
+					if (pickable.transform.root.name != "MedicalKit(Clone)")
+					{
+						enemyController.MoveTowardsTarget(pickable.transform);
+					}
+				}
+				else
+				{
+					if (!enemyController.onFire)
+					{
+						enemyController.Roam();
+					}
+					else
+					{
+						enemyController.HitReact();
+					}
+				}
+			}
+        }
+
+        private bool checkIfEnemyNeedsMedKit()
+        {
+            if(enemyController.HealthPoints.HealthPoints < 50)
             {
-                outOfMap = enemyController.OutOfMapHandler();
-                distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
-                if(distanceBetweenEnemy < 6)
-                {
-                    if (!outOfMap)
-                    {
-                        mover.Move(new Vector3(0, -5));
-                    }
-                    else
-                    {
-                        mover.Move(new Vector3(0, 5));
-                    }
-                }
-                //enemyController.MoveTowardsTarget(target.transform);
-                enemyController.RotateTowardsTarget(target.transform);
-                handController.Use();
+                return true;
             }
             else
             {
-                if (!enemyController.onFire)
-                {
-                    enemyController.Roam();
-                }
-                else
-                {
-                    enemyController.HitReact();
-                }
+                return false;
             }
         }
     }
