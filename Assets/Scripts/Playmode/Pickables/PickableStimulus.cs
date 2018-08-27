@@ -8,11 +8,14 @@ namespace Playmode.Entity.Senses
 	public class PickableStimulus : MonoBehaviour
 	{
 		private void OnTriggerEnter2D(Collider2D other)
-		{
-			other.GetComponent<Entity.Senses.PickableSensor>()?.PickUp(transform.parent.gameObject);
+		{			
             if(other.tag == "Sight")
             {
                 other.GetComponent<Entity.Senses.PickableSensor>()?.PickableSeen(transform.parent.gameObject);
+            }
+            else
+            {
+                other.GetComponent<Entity.Senses.PickableSensor>()?.PickUp(transform.parent.gameObject);
             }
         }
 	}

@@ -18,6 +18,7 @@ namespace Playmode.Ennemy.Strategies
         private GameObject target;
         private Transform enemyTransformer;
         private float distanceBetweenEnemy;
+        private bool outOfMap = false;
 
         public CarefulStrategy(Mover mover, HandController handController, EnnemySensor enemySensor, Transform transformer, TimedRotation timedRotation, EnnemyController enemyController, PickableSensor pickableSensor)
         {
@@ -60,11 +61,18 @@ namespace Playmode.Ennemy.Strategies
             //}
             if (target != null)
             {
-                enemyController.OutOfMapHandler();
+                outOfMap = enemyController.OutOfMapHandler();
                 distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
                 if(distanceBetweenEnemy < 6)
                 {
-                    mover.Move(new Vector3(0, -5));
+                    if (!outOfMap)
+                    {
+                        mover.Move(new Vector3(0, -5));
+                    }
+                    else
+                    {
+                        mover.Move(new Vector3(0, 5));
+                    }
                 }
                 //enemyController.MoveTowardsTarget(target.transform);
                 enemyController.RotateTowardsTarget(target.transform);
