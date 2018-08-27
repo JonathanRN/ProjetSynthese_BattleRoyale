@@ -46,7 +46,7 @@ namespace Playmode.Ennemy.Strategies
         {            
 			if (target != null)
 			{
-                enemyController.OutOfMapHandler();
+                enemyController.CheckIfOutOfMap();
                 distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
                 if (distanceBetweenEnemy <= 3f)
                 {
