@@ -171,23 +171,31 @@ namespace Playmode.Ennemy
             }
         }
 
-        public void OutOfMapHandler()
+        public bool OutOfMapHandler()
         {
             if (transformer.position.y >= cameraHalfHeight + 0.5f)
             {
                 transform.SetPositionAndRotation(new Vector3(transformer.position.x, cameraHalfHeight - 0.2f), transformer.rotation);
+                return true;
             }
             else if (transformer.position.y <= -cameraHalfHeight - 0.5f)
             {
                 transform.SetPositionAndRotation(new Vector3(transformer.position.x, cameraHalfHeight + 0.2f), transformer.rotation);
+                return true;
             }
             else if (transformer.position.x >= cameraHalfWidth + 0.5f)
             {
                 transform.SetPositionAndRotation(new Vector3(cameraHalfWidth - 0.2f, transformer.position.y), transformer.rotation);
+                return true;
             }
             else if (transformer.position.x <= -cameraHalfWidth - 0.5f)
             {
                 transform.SetPositionAndRotation(new Vector3(cameraHalfWidth + 0.2f, transformer.position.y), transformer.rotation);
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
