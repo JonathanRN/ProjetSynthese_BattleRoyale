@@ -27,7 +27,6 @@ public class HealthBarController : MonoBehaviour
 	{
 		health = transform.root.GetComponentInChildren<EnnemyController>().HealthPoints.HealthPoints;
 
-		Debug.Log(health / 100f);
 		localScale.x *= health/100f;
 		transform.localScale = localScale;
 	}

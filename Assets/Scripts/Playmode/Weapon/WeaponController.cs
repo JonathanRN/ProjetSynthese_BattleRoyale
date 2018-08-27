@@ -33,9 +33,15 @@ namespace Playmode.Weapon
         {
             if (CanShoot)
             {
-                Instantiate(bulletPrefab, transform.position, transform.rotation);
+				var rotation = transform.rotation;
 
-                lastTimeShotInSeconds = Time.time;
+                Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z, rotation.w));
+                Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 0.5f, rotation.w));
+                Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 1f, rotation.w));
+                //Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z - 0.5f, rotation.w));
+                //Instantiate(bulletPrefab, transform.position, new Quaternion(rotation.x, rotation.y, rotation.z + 0.5f, rotation.w));
+
+				lastTimeShotInSeconds = Time.time;
             }
         }
     }

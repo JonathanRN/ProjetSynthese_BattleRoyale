@@ -230,17 +230,13 @@ namespace Playmode.Ennemy
         }
 
         private void OnHit(int hitPoints)
-        {
-            Debug.Log("OW, I'm hurt! I'm really much hurt!!!");
-
+		{
             HealthPoints.Hit(hitPoints);
             onFire = true;
         }
 
         private void OnDeath()
         {
-            Debug.Log("Yaaaaarggg....!! I died....GG.");
-
             destroyer.Destroy();
         }
 

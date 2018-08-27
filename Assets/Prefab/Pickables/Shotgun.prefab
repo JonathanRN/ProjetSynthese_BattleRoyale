@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1399810628277264, guid: 5b3563603dcbbce449eb771ff30aba92,
     type: 2}
-  fireDelayInSeconds: 2
+  fireDelayInSeconds: 0.1
 --- !u!114 &114483289465313926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455434c303f23324f8c0b7f418e8fe4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handPrefab: {fileID: 1201874307975926, guid: 88e89628113b2b04eb2c08e350ffdee9, type: 2}
 --- !u!212 &212717548926692164
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -34,13 +34,11 @@ namespace Playmode.Ennemy.Strategies
 
         private void OnEnnemySeen(EnnemyController ennemy)
         {
-            Debug.Log("I've seen an ennemy!! Ya so dead noob!!!");
             target = ennemy.gameObject;
         }
 
         private void OnEnnemySightLost(EnnemyController ennemy)
         {
-            Debug.Log("I've lost sight of an ennemy...Yikes!!!");
 			target = null;
 		}
 
