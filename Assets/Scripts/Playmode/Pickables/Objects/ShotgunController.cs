@@ -15,9 +15,7 @@ public class ShotgunController : PickableUse {
 	}
 
 	public override void Use(GameObject enemy)
-	{
-		Debug.Log("Used a shotgun!");
-	
-		HandController.currentWeapon = transform.root.gameObject;
+	{ 	
+		HandController.currentWeapon = transform.parent.gameObject;
 	}
 }
