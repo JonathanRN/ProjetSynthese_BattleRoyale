@@ -31,10 +31,10 @@ namespace Playmode.Ennemy
 		[SerializeField]
 		public float speed = 10f;
 		public float senseRotation = 1f;
-        public bool onFire;
 
         private float randomBehaviour;
 		public Health HealthPoints { get; set; }
+        public bool IsUnderFire { get; set; }
         private Mover mover;
         private Destroyer destroyer;
         private EnnemySensor ennemySensor;
@@ -44,8 +44,9 @@ namespace Playmode.Ennemy
         private Transform transformer;
         private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
-       
 
+
+        
 		private IEnnemyStrategy strategy;
 
         private void Awake()
@@ -113,7 +114,7 @@ namespace Playmode.Ennemy
 
 		private void OnRotationChanged()
 		{
-            onFire = false;
+            IsUnderFire = false;
             randomBehaviour = UnityEngine.Random.Range(-1, 2);
 			senseRotation *= -1;
 		}
@@ -125,7 +126,7 @@ namespace Playmode.Ennemy
 
 		public void MoveTowardsTarget(Transform target)
 		{
-			mover.Move(new Vector3(0, 3));
+			mover.Move(new Vector3(0, 1));
             RotateTowardsTarget(target);
 		}
 
@@ -240,7 +241,7 @@ namespace Playmode.Ennemy
         private void OnHit(int hitPoints)
 		{
             HealthPoints.Hit(hitPoints);
-            onFire = true;
+            IsUnderFire = true;
         }
 
         private void OnDeath()
