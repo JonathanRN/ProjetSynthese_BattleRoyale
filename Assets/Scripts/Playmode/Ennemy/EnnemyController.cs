@@ -33,7 +33,7 @@ namespace Playmode.Ennemy
 		public float senseRotation = 1f;
 
         private float randomBehaviour;
-		public Health HealthPoints { get; set; }
+		public Health Health { get; set; }
         public bool IsUnderFire { get; set; }
         private Mover mover;
         private Destroyer destroyer;
@@ -44,7 +44,6 @@ namespace Playmode.Ennemy
         private Transform transformer;
         private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
-
 
         
 		private IEnnemyStrategy strategy;
@@ -80,7 +79,7 @@ namespace Playmode.Ennemy
 
         private void InitializeComponent()
         {
-            HealthPoints = GetComponent<Health>();
+            Health = GetComponent<Health>();
             mover = GetComponent<RootMover>();
             destroyer = GetComponent<RootDestroyer>();
             transformer = transform.root;
@@ -108,7 +107,7 @@ namespace Playmode.Ennemy
 		{
 			timedRotation.OnRotationChanged += OnRotationChanged;
 			hitSensor.OnHit += OnHit;
-			HealthPoints.OnDeath += OnDeath;
+			Health.OnDeath += OnDeath;
 			pickableSensor.OnPickUp += OnPickUp;
 		}
 
@@ -208,7 +207,7 @@ namespace Playmode.Ennemy
 		private void OnDisable()
         {
             hitSensor.OnHit -= OnHit;
-            HealthPoints.OnDeath -= OnDeath;
+            Health.OnDeath -= OnDeath;
 			pickableSensor.OnPickUp -= OnPickUp;
 		}
 
@@ -240,7 +239,7 @@ namespace Playmode.Ennemy
 
         private void OnHit(int hitPoints)
 		{
-            HealthPoints.Hit(hitPoints);
+            Health.Hit(hitPoints);
             IsUnderFire = true;
         }
 
