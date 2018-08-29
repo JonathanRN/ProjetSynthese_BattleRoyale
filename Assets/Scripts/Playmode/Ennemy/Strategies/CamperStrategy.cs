@@ -134,7 +134,7 @@ namespace Playmode.Ennemy.Strategies
 			}
 
 			//Move towards weapon
-			enemyController.MoveTowardsTarget(pickable.transform);
+			mover.MoveTowardsTarget(pickable.transform);
 				
 			hasPickedWeapon = (Vector3.Distance(enemyTransformer.root.position, pickable.transform.position) < 2);
 		}
@@ -159,7 +159,7 @@ namespace Playmode.Ennemy.Strategies
 		{
 			if (isNextToMedKit) return;
 			
-			enemyController.MoveTowardsTarget(lastMedKitFound.transform);
+			mover.MoveTowardsTarget(lastMedKitFound.transform);
 
 			isNextToMedKit = (Vector3.Distance(enemyTransformer.root.position, pickable.transform.position) < MinimumDistanceToPickable);
 		}

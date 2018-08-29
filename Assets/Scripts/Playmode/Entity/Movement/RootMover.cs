@@ -55,11 +55,7 @@ namespace Playmode.Movement
             {
                 Rotate(-1f * Time.deltaTime);
             }
-        }
-
-        public override void Roam()
-        {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

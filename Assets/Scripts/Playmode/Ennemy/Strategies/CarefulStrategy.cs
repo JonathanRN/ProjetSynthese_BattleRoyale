@@ -8,60 +8,61 @@ using Playmode.Util.Values;
 
 namespace Playmode.Ennemy.Strategies
 {
-    public class CarefulStrategy : IEnnemyStrategy
-    {
-        private readonly Mover mover;
-        private readonly HandController handController;
-        private EnnemyController enemyController;
-        private EnnemySensor enemySensor;
-        private PickableSensor pickableSensor;
-        private GameObject target;
-        private Transform enemyTransformer;
-        private float distanceBetweenEnemy;
-        private bool isOutOfMap;
-        private bool needMedKit;
-        private GameObject pickable;
+	public class CarefulStrategy : IEnnemyStrategy
+	{
+		private readonly Mover mover;
+		private readonly HandController handController;
+		private readonly EnnemyController enemyController;
+		private EnnemySensor enemySensor;
+		private PickableSensor pickableSensor;
+		private GameObject target;
+		private readonly Transform enemyTransformer;
+		private float distanceBetweenEnemy;
+		private bool isOutOfMap;
+		private bool needMedKit;
+		private GameObject pickable;
 		private PickableType pickableType;
-		[SerializeField]
-		private float maxDistanceWantedBetweenEnemy = 6;
+		[SerializeField] private const float maxDistanceWantedBetweenEnemy = 6;
+		[SerializeField] private const float minLifeBeforeSearchingMedKit = 50;
 
-        public CarefulStrategy(Mover mover, HandController handController, EnnemySensor enemySensor, Transform transformer, TimedRotation timedRotation, EnnemyController enemyController, PickableSensor pickableSensor)
-        {
-            this.mover = mover;
-            this.handController = handController;
+		public CarefulStrategy(Mover mover, HandController handController, EnnemySensor enemySensor,
+			Transform transformer, TimedRotation timedRotation, EnnemyController enemyController,
+			PickableSensor pickableSensor)
+		{
+			this.mover = mover;
+			this.handController = handController;
 
-            this.enemyTransformer = transformer;
-            this.enemySensor = enemySensor;
-            this.pickableSensor = pickableSensor;
-            this.enemyController = enemyController;
+			this.enemyTransformer = transformer;
+			this.enemySensor = enemySensor;
+			this.pickableSensor = pickableSensor;
+			this.enemyController = enemyController;
 
-            enemySensor.OnEnnemySeen += OnEnnemySeen;
-            enemySensor.OnEnnemySightLost += OnEnnemySightLost;
-            pickableSensor.OnPickableSeen += OnPickableSeen;
+			enemySensor.OnEnnemySeen += OnEnnemySeen;
+			enemySensor.OnEnnemySightLost += OnEnnemySightLost;
+			pickableSensor.OnPickableSeen += OnPickableSeen;
 
-        }
+		}
 
-        private void OnEnnemySeen(EnnemyController ennemy)
-        {
-            target = ennemy.gameObject;
-        }
+		private void OnEnnemySeen(EnnemyController ennemy)
+		{
+			target = ennemy.gameObject;
+		}
 
-        private void OnEnnemySightLost(EnnemyController ennemy)
-        {
-            target = null;
-        }
+		private void OnEnnemySightLost(EnnemyController ennemy)
+		{
+			target = null;
+		}
 
-        private void OnPickableSeen(GameObject pickable)
-        {
-            Debug.Log("I've seen a " + pickable.GetComponentInChildren<PickableType>().GetType());
+		private void OnPickableSeen(GameObject pickable)
+		{
+			Debug.Log("I've seen a " + pickable.GetComponentInChildren<PickableType>().GetType());
 			pickableType = pickable.GetComponentInChildren<PickableType>();
 			this.pickable = pickable;
 		}
 
-        public void Act()
-        {
-            needMedKit = CheckIfEnemyNeedsMedKit();
-			if (needMedKit)
+		public void Act()
+		{
+			if (DoesEnemyNeedMedKit())
 			{
 				SearchForMedKit();
 			}
@@ -69,50 +70,40 @@ namespace Playmode.Ennemy.Strategies
 			{
 				if (target != null)
 				{
-					isOutOfMap = enemyController.CheckIfOutOfMap();					
 					BackFromEnemyIfTooClose();
 
-					enemyController.RotateTowardsTarget(target.transform);
-					handController.Use();
+					enemyController.ShootTowardsTarget(target.transform);
 				}
-				else
+				else if(enemyController.IsUnderFire)
 				{
-                    if(pickable != null && pickableType.IsWeapon())
-                    {
-                        enemyController.MoveTowardsTarget(pickable.transform);
-                    }
-					if (!enemyController.IsUnderFire)
-					{
-						enemyController.Roam();
-					}
-					else
-					{
-						enemyController.HitReact();
-					}
+					enemyController.HitReact();
 				}
-			}
-        }
-
-        private bool CheckIfEnemyNeedsMedKit()
-        {
-            if(enemyController.Health.HealthPoints < 50)
-                return true;
-            else
-                return false;
-        }
-
-		private void SearchForMedKit()
-		{
-			if (pickable != null)
-			{
-                if (pickableType.IsMedKit())
+				else if(IsPickableAWeapon())
 				{
-					enemyController.MoveTowardsTarget(pickable.transform);
+					mover.MoveTowardsTarget(pickable.transform);
 				}
 				else
 				{
 					enemyController.Roam();
 				}
+			}
+		}
+
+		private bool IsPickableAWeapon()
+		{
+			return pickable != null && pickableType.IsWeapon();
+		}
+
+		private bool DoesEnemyNeedMedKit()
+		{
+			return enemyController.Health.HealthPoints < minLifeBeforeSearchingMedKit;
+		}
+
+		private void SearchForMedKit()
+		{
+			if (pickable != null && pickableType.IsMedKit())
+			{
+				mover.MoveTowardsTarget(pickable.transform);
 			}
 			else
 			{
@@ -122,18 +113,12 @@ namespace Playmode.Ennemy.Strategies
 
 		private void BackFromEnemyIfTooClose()
 		{
+			isOutOfMap = enemyController.IsEnemyOutOfMap();
 			distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
-			if (distanceBetweenEnemy < maxDistanceWantedBetweenEnemy)
-			{
-				if (!isOutOfMap)
-				{
-					mover.Move(new Vector3(0, -Mover.Clockwise));
-				}
-				else
-				{
-					mover.Move(new Vector3(0, Mover.Clockwise));
-				}
-			}
+
+			if (!(distanceBetweenEnemy < maxDistanceWantedBetweenEnemy)) return;
+
+			mover.Move(!isOutOfMap ? new Vector3(0, -Mover.Clockwise) : new Vector3(0, Mover.Clockwise));
 		}
-    }
+	}
 }
