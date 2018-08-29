@@ -1,5 +1,6 @@
 ﻿using Playmode.Ennemy.BodyParts;
 using System;
+using Playmode.Movement;
 using UnityEngine;
 
 namespace Playmode.Weapon
@@ -63,6 +64,7 @@ namespace Playmode.Weapon
 					for (int i = 0; i < nbOfShotgunBullets; i++)
 					{
 						shotgunBullets[i] = Instantiate(bulletPrefab, transform.position, transform.rotation);
+						shotgunBullets[i].transform.Rotate(Vector3.forward * 10 * i, Space.Self);
 					}
 				}
 				else if (weapon.GetComponentInChildren<PickableType>().GetType() == Util.Values.PickableTypes.Uzi)
