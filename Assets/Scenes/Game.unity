@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickablePrefab: {fileID: 1430604423605936, guid: cc7fe517e1656e14e83482e1e66d9951,
     type: 2}
-  spawnTimeDelay: 10
+  spawnTimeDelay: 3
 --- !u!4 &250605732
 Transform:
   m_ObjectHideFlags: 0

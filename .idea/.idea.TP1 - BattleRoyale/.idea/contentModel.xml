@@ -54,6 +54,7 @@
               <e p="EnnemySpawner.cs" t="Include" />
               <e p="HealthBarController.cs" t="Include" />
               <e p="Strategies" t="Include">
+                <e p="CamperStrategy.cs" t="Include" />
                 <e p="CarefulStrategy.cs" t="Include" />
                 <e p="IdleStrategy.cs" t="Include" />
                 <e p="IEnnemyStrategy.cs" t="Include" />
