@@ -95,7 +95,7 @@ namespace Playmode.Ennemy.Strategies
 
         private bool CheckIfEnemyNeedsMedKit()
         {
-            if(enemyController.HealthPoints.HealthPoints < 50)
+            if(enemyController.Health.HealthPoints < 50)
                 return true;
             else
                 return false;

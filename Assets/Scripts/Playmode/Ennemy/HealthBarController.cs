@@ -25,10 +25,7 @@ public class HealthBarController : MonoBehaviour
 
 	private void OnHit(int hitPoints)
 	{
-		health = transform.root.GetComponentInChildren<EnnemyController>().HealthPoints.HealthPoints;
-
-		localScale.x *= health/100f;
-		transform.localScale = localScale;
+		UpdateHealthBar();
 	}
 
 	private void Awake()
@@ -43,5 +40,13 @@ public class HealthBarController : MonoBehaviour
 	{
 		transform.position = transform.root.position + transform.up * 1.2f;
 		transform.rotation = rotation;
+	}
+
+	public void UpdateHealthBar()
+	{
+		health = transform.root.GetComponentInChildren<EnnemyController>().Health.HealthPoints;
+
+		localScale.x = health/100f;
+		transform.localScale = localScale;
 	}
 }
