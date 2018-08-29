@@ -43,23 +43,23 @@ namespace Playmode.Ennemy.Strategies
 		}
 
         public void Act()
-        {            
-			if (target != null)
+        {
+	        if (target != null)
 			{
-                enemyController.CheckIfOutOfMap();
+                enemyController.IsEnemyOutOfMap();
                 distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
                 if (distanceBetweenEnemy <= 3f)
                 {
-                    enemyController.RotateTowardsTarget(target.transform);
+                    mover.RotateTowardsTarget(target.transform);
                 }
                 else
                 {                    
-                    enemyController.MoveTowardsTarget(target.transform);
+                    mover.MoveTowardsTarget(target.transform);
                 }
 				handController.Use();
 			}
 			else
-			{
+	        {
                 if (!enemyController.IsUnderFire)
                 {
                     enemyController.Roam();

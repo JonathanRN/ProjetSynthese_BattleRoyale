@@ -14,18 +14,12 @@ public class PickableType : MonoBehaviour {
 
     public bool IsWeapon()
     {
-        if(type != PickableTypes.MedicalKit)
-            return true;
-        else
-            return false;
+        return type != PickableTypes.MedicalKit;
     }
 
     public bool IsMedKit()
     {
-        if (type == PickableTypes.MedicalKit)
-            return true;
-        else
-            return false;
+        return type == PickableTypes.MedicalKit;
     }
 
 }

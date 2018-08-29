@@ -34,17 +34,21 @@ namespace Playmode.Movement
 
         public override void MoveTowardsTarget(Transform target)
         {
-            throw new System.NotImplementedException();
+            Move(new Vector3(0, 1));
+            RotateTowardsTarget(target);
         }
 
         public override void RotateTowardsTarget(Transform target)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Roam()
-        {
-            throw new System.NotImplementedException();
+            var vectorBetweenEnemy = new Vector3(rootTransform.position.x - target.transform.position.x, rootTransform.position.y - target.transform.position.y);
+            if (Vector3.Dot(vectorBetweenEnemy, rootTransform.right) < -0.5)
+            {
+                Rotate(1f * Time.deltaTime);
+            }
+            else if (Vector3.Dot(vectorBetweenEnemy, rootTransform.right) > 0.5)
+            {
+                Rotate(-1f * Time.deltaTime);
+            }
         }
     }
 }

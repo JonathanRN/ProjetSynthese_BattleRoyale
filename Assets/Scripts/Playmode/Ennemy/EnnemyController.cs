@@ -91,7 +91,7 @@ namespace Playmode.Ennemy
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
             handController = hand.GetComponent<HandController>();
 
-			strategy = new CamperStrategy(mover, handController, ennemySensor, transformer, timedRotation, this,pickableSensor);
+			//strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this,pickableSensor);
 		}
 
         private void CreateStartingWeapon()
@@ -123,80 +123,44 @@ namespace Playmode.Ennemy
             strategy.Act();
         }
 
-		public void MoveTowardsTarget(Transform target)
-		{
-			mover.Move(new Vector3(0, 1));
-            RotateTowardsTarget(target);
-		}
-
-        public void RotateTowardsTarget(Transform target)
-        {
-            vectorBetweenEnemy = new Vector3(transformer.position.x - target.transform.position.x, transformer.position.y - target.transform.position.y);
-            if (Vector3.Dot(vectorBetweenEnemy, transformer.right) < -0.5)
-            {
-                mover.Rotate(1f * Time.deltaTime);
-            }
-            else if (Vector3.Dot(vectorBetweenEnemy, transformer.right) > 0.5)
-            {
-                mover.Rotate(-1f * Time.deltaTime);
-            }
-        }
-
 		public void Roam()
-		{
+		{		    
 			mover.Move(new Vector3(0, speed * Time.deltaTime));
 
-            if (transformer.position.y >= cameraHalfHeight)
+		    if (IsEnemyOutOfMap())
+		    {
+		        transformer.rotation = Quaternion.Slerp(transformer.rotation, RotationToGo(),
+		            Time.deltaTime * outOfRangeRotationSpeed);
+		    }
+		    else if(randomBehaviour > 0)
             {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 180), Time.deltaTime * outOfRangeRotationSpeed);
-            }
-            else if (transformer.position.y <= -cameraHalfHeight)
-            {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * outOfRangeRotationSpeed);
-            }
-            else if (transformer.position.x >= cameraHalfWidth)
-            {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, 90), Time.deltaTime * outOfRangeRotationSpeed);
-            }
-            else if (transformer.position.x <= -cameraHalfWidth)
-            {
-                transformer.rotation = Quaternion.Slerp(transformer.rotation, Quaternion.Euler(0, 0, -90), Time.deltaTime * outOfRangeRotationSpeed);
-            }
-            else
-            {
-                if (randomBehaviour > 0)
-                {
-                    mover.Rotate(senseRotation);
-                }
+                mover.Rotate(senseRotation);
             }
         }
 
-        public bool CheckIfOutOfMap()
+        public bool IsEnemyOutOfMap()
         {
-            if (transformer.position.y >= cameraHalfHeight + 0.5f)
-            {
-              //  transform.SetPositionAndRotation(new Vector3(transformer.position.x, cameraHalfHeight - 0.2f), transformer.rotation);
+            if (transformer.position.y >= cameraHalfHeight)
                 return true;
-            }
-            else if (transformer.position.y <= -cameraHalfHeight - 0.5f)
-            {
-              //  transform.SetPositionAndRotation(new Vector3(transformer.position.x, cameraHalfHeight + 0.2f), transformer.rotation);
+            if (transformer.position.y <= -cameraHalfHeight)
                 return true;
-            }
-            else if (transformer.position.x >= cameraHalfWidth + 0.5f)
-            {
-              //  transform.SetPositionAndRotation(new Vector3(cameraHalfWidth - 0.2f, transformer.position.y), transformer.rotation);
+            if (transformer.position.x >= cameraHalfWidth)
                 return true;
-            }
-            else if (transformer.position.x <= -cameraHalfWidth - 0.5f)
-            {
-              //  transform.SetPositionAndRotation(new Vector3(cameraHalfWidth + 0.2f, transformer.position.y), transformer.rotation);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return transformer.position.x <= -cameraHalfWidth;
+        }
+
+        private Quaternion RotationToGo()
+        {
+            var rotationDown = Quaternion.Euler(0, 0, 180);
+            var rotationUp = Quaternion.Euler(0, 0, 0);
+            var rotationLeft = Quaternion.Euler(0, 0, 90);
+            var rotationRight = Quaternion.Euler(0, 0, -90);
+            
+            if (transformer.position.y >= cameraHalfHeight)
+                return rotationDown;
+            if (transformer.position.y <= -cameraHalfHeight)
+                return rotationUp;
+            return transformer.position.x >= cameraHalfWidth ? rotationLeft : rotationRight;
         }
 
         public void HitReact()
@@ -220,19 +184,19 @@ namespace Playmode.Ennemy
             {
                 case EnnemyStrategy.Careful:
                     typeSign.GetComponent<SpriteRenderer>().sprite = carefulSprite;
-                    //this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
+                    this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
                     break;
                 case EnnemyStrategy.Cowboy:
                     typeSign.GetComponent<SpriteRenderer>().sprite = cowboySprite;
-                    //this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+                    this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this,pickableSensor);
                     break;
                 case EnnemyStrategy.Camper:
                     typeSign.GetComponent<SpriteRenderer>().sprite = camperSprite;
-                    //this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
                 default:
                     typeSign.GetComponent<SpriteRenderer>().sprite = normalSprite;
-                    //this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
             }
         }
@@ -255,5 +219,10 @@ namespace Playmode.Ennemy
 			pickable.gameObject.GetComponentInChildren<PickableUse>().Use(gameObject);
 			Destroy(pickable.gameObject);
 		}
+        public void ShootTowardsTarget(Transform target)
+        {
+            mover.RotateTowardsTarget(target);
+            handController.Use();
+        }
 	}
 }

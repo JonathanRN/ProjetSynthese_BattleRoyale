@@ -93,7 +93,7 @@ namespace Playmode.Ennemy.Strategies
 		{
 			if (pickable == null) return;
 			
-			enemyController.MoveTowardsTarget(pickable.transform);
+			mover.MoveTowardsTarget(pickable.transform);
 			
 			//TODO: set hasFoundMedKit to false when enemy is next to it
 		}
