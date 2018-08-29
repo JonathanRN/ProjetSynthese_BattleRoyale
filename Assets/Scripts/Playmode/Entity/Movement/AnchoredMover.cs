@@ -31,5 +31,20 @@ namespace Playmode.Movement
                 (direction < 0 ? rotateSpeed : -rotateSpeed) * Time.deltaTime
             );
         }
+
+        public override void MoveTowardsTarget(Transform target)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void RotateTowardsTarget(Transform target)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Roam()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

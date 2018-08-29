@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Utilisateur\.Rider2018.1\system\resharper-host\Local\Transient\ReSharperHost\v12\SolutionCaches\_TP1---BattleRoyale.1022680436.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Utilisateur\Desktop\Programmation\TP1---BattleRoyale" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="GitMerge-for-Unity-master" t="Include">
+          <e p="Editor" t="Include">
+            <e p="GameObjectExtensions.cs" t="Include" />
+            <e p="GameObjectMergeActions.cs" t="Include" />
+            <e p="GitMergeWindow.cs" t="Include" />
+            <e p="MergeAction.cs" t="Include" />
+            <e p="MergeActionChangeValues.cs" t="Include" />
+            <e p="MergeActionDeleteComponent.cs" t="Include" />
+            <e p="MergeActionDeleteGameObject.cs" t="Include" />
+            <e p="MergeActionExistence.cs" t="Include" />
+            <e p="MergeActionNewComponent.cs" t="Include" />
+            <e p="MergeActionNewGameObject.cs" t="Include" />
+            <e p="MergeActionParenting.cs" t="Include" />
+            <e p="MergeManager.cs" t="Include" />
+            <e p="MergeManagerPrefab.cs" t="Include" />
+            <e p="MergeManagerScene.cs" t="Include" />
+            <e p="ObjectDictionaries.cs" t="Include" />
+            <e p="ObjectExtensions.cs" t="Include" />
+            <e p="ObjectIDFinder.cs" t="Include" />
+            <e p="Resources" t="Include">
+              <e p="Licenses.txt" t="Include" />
+            </e>
+            <e p="Resources.cs" t="Include" />
+            <e p="SerializedPropertyExtensions.cs" t="Include" />
+            <e p="VCS.cs" t="Include" />
+            <e p="VCSException.cs" t="Include" />
+            <e p="VCSGit.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Playmode" t="Include">
+            <e p="Application" t="Include">
+              <e p="MainController.cs" t="Include" />
+            </e>
+            <e p="Bullet" t="Include">
+              <e p="BulletController.cs" t="Include" />
+            </e>
+            <e p="Ennemy" t="Include">
+              <e p="BodyParts" t="Include">
+                <e p="HandController.cs" t="Include" />
+              </e>
+              <e p="EnnemyController.cs" t="Include" />
+              <e p="EnnemySpawner.cs" t="Include" />
+              <e p="HealthBarController.cs" t="Include" />
+              <e p="Strategies" t="Include">
+                <e p="CarefulStrategy.cs" t="Include" />
+                <e p="IdleStrategy.cs" t="Include" />
+                <e p="IEnnemyStrategy.cs" t="Include" />
+                <e p="NormalStrategy.cs" t="Include" />
+                <e p="TurnAndShootStragegy.cs" t="Include" />
+              </e>
+              <e p="TimedRotation.cs" t="Include" />
+            </e>
+            <e p="Entity" t="Include">
+              <e p="Destruction" t="Include">
+                <e p="Destroyer.cs" t="Include" />
+                <e p="RootDestroyer.cs" t="Include" />
+              </e>
+              <e p="Movement" t="Include">
+                <e p="AnchoredMover.cs" t="Include" />
+                <e p="Mover.cs" t="Include" />
+                <e p="RootMover.cs" t="Include" />
+              </e>
+              <e p="Senses" t="Include">
+                <e p="EnnemySensor.cs" t="Include" />
+                <e p="EnnemyStimulus.cs" t="Include" />
+                <e p="HitSensor.cs" t="Include" />
+                <e p="HitStimulus.cs" t="Include" />
+              </e>
+              <e p="Status" t="Include">
+                <e p="Health.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Pickables" t="Include">
+              <e p="Objects" t="Include">
+                <e p="MedicalKitController.cs" t="Include" />
+                <e p="ShotgunController.cs" t="Include" />
+                <e p="UziController.cs" t="Include" />
+              </e>
+              <e p="PickableController.cs" t="Include" />
+              <e p="PickableSensor.cs" t="Include" />
+              <e p="PickableSpawner.cs" t="Include" />
+              <e p="PickableStimulus.cs" t="Include" />
+              <e p="PickableType.cs" t="Include" />
+              <e p="PickableUse.cs" t="Include" />
+            </e>
+            <e p="Util" t="Include">
+              <e p="Collections" t="Include">
+                <e p="LoopingEnumerator.cs" t="Include" />
+              </e>
+              <e p="Information" t="Include">
+                <e p="Comment.cs" t="Include" />
+              </e>
+              <e p="Values" t="Include">
+                <e p="ArrayExtensions.cs" t="Include" />
+                <e p="PickableTypes.cs" t="Include" />
+                <e p="Scenes.cs" t="Include" />
+                <e p="Tags.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Weapon" t="Include">
+              <e p="WeaponController.cs" t="Include" />
+            </e>
+          </e>
+          <e p="UI" t="Include">
+            <e p="HeadOnDisplay" t="Include">
+              <e p="DropTimerController.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+      <e p="TP1---BattleRoyale.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
