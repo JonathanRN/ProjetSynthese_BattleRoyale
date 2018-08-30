@@ -136,7 +136,7 @@ namespace Playmode.Ennemy.Strategies
 
 		private bool DoesEnemyNeedMedKit()
 		{
-			return enemyController.Health.HealthPoints < 50;
+			return enemyController.Health.HealthPoints < 30;
 		}
 	}
 }
