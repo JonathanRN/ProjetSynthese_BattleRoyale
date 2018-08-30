@@ -12,10 +12,8 @@ namespace Playmode.Ennemy.Strategies
 	public class CamperStrategy : IEnnemyStrategy
 	{
 		private readonly Mover mover;
-		private readonly HandController handController;
 		private EnnemyController enemyController;
-		private EnnemySensor enemySensor;
-		private PickableSensor pickableSensor;
+		private GameController gameController;
 		private GameObject target;
 		private Transform enemyTransformer;
 		private GameObject pickable;
@@ -27,16 +25,13 @@ namespace Playmode.Ennemy.Strategies
 		private const int MinimumDistanceToPickable = 2;
 
 		public CamperStrategy(Mover mover, HandController handController, EnnemySensor enemySensor,
-			Transform transformer, TimedRotation timedRotation, EnnemyController enemyController,
+			Transform transformer, EnnemyController enemyController, GameController gameController,
 			PickableSensor pickableSensor)
 		{
 			this.mover = mover;
-			this.handController = handController;
-
 			this.enemyTransformer = transformer;
-			this.enemySensor = enemySensor;
-			this.pickableSensor = pickableSensor;
 			this.enemyController = enemyController;
+			this.gameController = gameController;
 
 			enemySensor.OnEnnemySeen += OnEnnemySeen;
 			enemySensor.OnEnnemySightLost += OnEnnemySightLost;
@@ -83,16 +78,24 @@ namespace Playmode.Ennemy.Strategies
 
 			if (isNextToMedKit)
 			{
-				ScanAround();
 				if (target != null)
 				{
 					enemyController.ShootTowardsTarget(target.transform);
+				}
+				else
+				{
+					ScanAround();
 				}
 
 				if (DoesEnemyNeedMedKit())
 				{
 					PickUpSavedMedKit();
 				}
+			}
+
+			if (gameController.IsObjectOutOfMap(enemyTransformer.gameObject))
+			{
+				ResetAct();
 			}
 		}
 
@@ -137,6 +140,13 @@ namespace Playmode.Ennemy.Strategies
 		private bool DoesEnemyNeedMedKit()
 		{
 			return enemyController.Health.HealthPoints < 30;
+		}
+
+		private void ResetAct()
+		{
+			pickable = null;
+			target = null;
+			isNextToMedKit = false;
 		}
 	}
 }

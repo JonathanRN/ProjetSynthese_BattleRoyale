@@ -34,7 +34,6 @@ namespace Playmode.Weapon
         private void InitializeComponent()
         {
             lastTimeShotInSeconds = 0;
-			nbOfShotgunBullets = 3;
 			shotgunBullets = new GameObject[nbOfShotgunBullets];
         }
 	    
@@ -66,11 +65,11 @@ namespace Playmode.Weapon
 			    shotgunBullets[i] = Instantiate(bulletPrefab, transform.position, transform.rotation);
 			    if (i % 2 == 0)
 			    {
-				    shotgunBullets[i].transform.Rotate(Vector3.forward * 1.5f * i, Space.Self);
+				    shotgunBullets[i].transform.Rotate(Vector3.forward * 0.5f * i, Space.Self);
 			    }
 			    else
 			    {
-				    shotgunBullets[i].transform.Rotate(Vector3.forward * -1.5f * i, Space.Self);
+				    shotgunBullets[i].transform.Rotate(Vector3.forward * -0.5f * i, Space.Self);
 			    }
 		    }
 	    }

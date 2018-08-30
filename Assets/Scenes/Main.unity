@@ -152,21 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 20949617845223440, guid: 230ab0c34db524c43ae59c0592efac69,
-        type: 2}
-      propertyPath: m_TargetDisplay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114918554875078046, guid: 230ab0c34db524c43ae59c0592efac69,
-        type: 2}
-      propertyPath: timeBeforeShrink
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 114617103020761952, guid: 230ab0c34db524c43ae59c0592efac69,
-        type: 2}
-      propertyPath: shrinkingSpeed
-      value: 0.005
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 230ab0c34db524c43ae59c0592efac69, type: 2}
   m_IsPrefabAsset: 0

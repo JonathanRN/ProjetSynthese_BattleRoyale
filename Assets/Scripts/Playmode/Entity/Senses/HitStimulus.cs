@@ -3,24 +3,36 @@ using UnityEngine;
 
 namespace Playmode.Entity.Senses
 {
-    public class HitStimulus : MonoBehaviour
-    {
-        [Header("Behaviour")] [SerializeField] private int hitPoints = 10;
+	public delegate void HitStimulusEventHandler();
 
-        private void Awake()
-        {
-            ValidateSerializeFields();
-        }
+	public class HitStimulus : MonoBehaviour
+	{
+		[Header("Behaviour")] [SerializeField] private int hitPoints = 10;
 
-        private void ValidateSerializeFields()
-        {
-            if (hitPoints < 0)
-                throw new ArgumentException("Hit points can't be less than 0.");
-        }
+		public event HitStimulusEventHandler OnHit;
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            other.GetComponent<Entity.Senses.HitSensor>()?.Hit(hitPoints);
-        }
-    }
+		private void NotifyHit()
+		{
+			if (OnHit != null) OnHit();
+		}
+		
+		private void Awake()
+		{
+			ValidateSerializeFields();
+		}
+
+		private void ValidateSerializeFields()
+		{
+			if (hitPoints < 0)
+				throw new ArgumentException("Hit points can't be less than 0.");
+		}
+
+		private void OnTriggerEnter2D(Collider2D other)
+		{
+			if (other.GetComponent<HitSensor>() == null) return;
+			
+			other.GetComponent<Entity.Senses.HitSensor>()?.Hit(hitPoints);
+			NotifyHit();
+		}
+	}
 }

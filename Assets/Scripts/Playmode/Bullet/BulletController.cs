@@ -1,60 +1,79 @@
 ﻿using System;
 using Playmode.Entity.Destruction;
+using Playmode.Entity.Senses;
 using Playmode.Movement;
 using UnityEngine;
 
 namespace Playmode.Bullet
 {
-    public class BulletController : MonoBehaviour
-    {
-        [Header("Behaviour")] [SerializeField] private float lifeSpanInSeconds = 5f;
+	public class BulletController : MonoBehaviour
+	{
+		[Header("Behaviour")] [SerializeField] private float lifeSpanInSeconds = 5f;
 
-        private Mover mover;
-        private Destroyer destroyer;
-        private float timeSinceSpawnedInSeconds;
+		private Mover mover;
+		private Destroyer destroyer;
+		private float timeSinceSpawnedInSeconds;
 
-        private bool IsAlive => timeSinceSpawnedInSeconds < lifeSpanInSeconds;
+		private HitStimulus hitStimulus;
 
-        private void Awake()
-        {
-            ValidateSerialisedFields();
-            InitialzeComponent();
+		private bool IsAlive => timeSinceSpawnedInSeconds < lifeSpanInSeconds;
 
-            mover.MoveSpeed = 40;
-        }
+		private void Awake()
+		{
+			ValidateSerialisedFields();
+			InitialzeComponent();
 
-        private void ValidateSerialisedFields()
-        {
-            if (lifeSpanInSeconds < 0)
-                throw new ArgumentException("LifeSpan can't be lower than 0.");
-        }
+			mover.MoveSpeed = 40;
+		}
 
-        private void InitialzeComponent()
-        {
-            mover = GetComponent<RootMover>();
-            destroyer = GetComponent<RootDestroyer>();
+		private void OnEnable()
+		{
+			hitStimulus.OnHit += OnHit;
+		}
 
-            timeSinceSpawnedInSeconds = 0;
-        }
+		private void OnDisable()
+		{
+			hitStimulus.OnHit -= OnHit;
+		}
 
-        private void Update()
-        {
-            UpdateLifeSpan();
+		private void OnHit()
+		{
+			destroyer.Destroy();
+		}
 
-            Act();
-        }
+		private void ValidateSerialisedFields()
+		{
+			if (lifeSpanInSeconds < 0)
+				throw new ArgumentException("LifeSpan can't be lower than 0.");
+		}
 
-        private void UpdateLifeSpan()
-        {
-            timeSinceSpawnedInSeconds += Time.deltaTime;
-        }
+		private void InitialzeComponent()
+		{
+			mover = GetComponent<RootMover>();
+			destroyer = GetComponent<RootDestroyer>();
+			hitStimulus = transform.root.GetComponentInChildren<HitStimulus>();
 
-        private void Act()
-        {
-            if (IsAlive)
-                mover.Move(Mover.Foward);
-            else
-                destroyer.Destroy();
-        }
-    }
+			timeSinceSpawnedInSeconds = 0;
+		}
+
+		private void Update()
+		{
+			UpdateLifeSpan();
+
+			Act();
+		}
+
+		private void UpdateLifeSpan()
+		{
+			timeSinceSpawnedInSeconds += Time.deltaTime;
+		}
+
+		private void Act()
+		{
+			if (IsAlive)
+				mover.Move(Mover.Foward);
+			else
+				destroyer.Destroy();
+		}
+	}
 }

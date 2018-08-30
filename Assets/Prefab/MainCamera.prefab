@@ -52,7 +52,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0}
+  m_BackGroundColor: {r: 0.4528302, g: 0.41651833, b: 0.41651833, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoneMinSize: 6
-  shrinkingSpeed: 0.01
+  shrinkingSpeed: 0.005
 --- !u!114 &114918554875078046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,4 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e48f74cc54a5c64c817e6025337be97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeShrink: 10
+  timeBeforeShrink: 30

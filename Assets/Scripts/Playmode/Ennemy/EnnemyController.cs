@@ -191,7 +191,7 @@ namespace Playmode.Ennemy
 					break;
 				case EnnemyStrategy.Camper:
 					typeSign.GetComponent<SpriteRenderer>().sprite = camperSprite;
-					this.strategy = new CamperStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
+					this.strategy = new CamperStrategy(mover, handController, ennemySensor, transformer, this, gameController, pickableSensor);
 					break;
 				default:
 					typeSign.GetComponent<SpriteRenderer>().sprite = normalSprite;
