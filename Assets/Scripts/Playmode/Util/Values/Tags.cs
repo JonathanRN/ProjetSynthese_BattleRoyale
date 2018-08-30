@@ -6,6 +6,8 @@
         public const string GameController = "GameController";
         public const string MainCamera = "MainCamera";
 		public const string Pickable = "Pickable";
-		public const string PickableSpawner = "PickableSpawner";
+        public const string PickableSpawner = "PickableSpawner";
+        public const string Enemy = "Enemy";
+        
     }
 }

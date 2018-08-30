@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 50703390751095472}
   m_Layer: 0
   m_Name: Ennemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,9 +353,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 3
   rotateSpeed: 200
-  outOfRangeRotationSpeed: 5
-  cameraHalfHeight: 8.5
-  cameraHalfWidth: 20.5
 --- !u!114 &114365648383534028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,8 +391,6 @@ MonoBehaviour:
     type: 2}
   uziPrefab: {fileID: 1627777849954234, guid: 729cfaef3e02fe64da6f08b0a1aec225, type: 2}
   outOfRangeRotationSpeed: 5
-  cameraHalfHeight: 8.5
-  cameraHalfWidth: 20.5
   speed: 10
   senseRotation: 1
 --- !u!114 &114528511461670924
