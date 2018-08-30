@@ -9,16 +9,14 @@ public class TimedRotation : MonoBehaviour {
     public event RotationChangedEventHandler OnRotationChanged;
 
     [SerializeField]
-    private float maxTimeBeforeChangingRotation = 2.2f;
+    private float maxTimeBeforeChangingRotation = 1.2f;
     [SerializeField]
-    private float minTimeBeforeChangingRotation = 1.2f;
+    private float minTimeBeforeChangingRotation = 0.8f;
 
 
     private void OnEnable()
     {
-        StartCoroutine(ChangeRotationRoutine());
-        
-        
+        StartCoroutine(ChangeRotationRoutine());      
     }
 
     private IEnumerator ChangeRotationRoutine()

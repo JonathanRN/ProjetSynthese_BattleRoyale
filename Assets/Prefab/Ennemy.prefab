@@ -297,8 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19261ffb651a9f04b8572b85531e98d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTimeBeforeChangingRotation: 2.2
-  minTimeBeforeChangingRotation: 1.2
+  maxTimeBeforeChangingRotation: 1.2
+  minTimeBeforeChangingRotation: 0.8
 --- !u!114 &114083873472680612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,8 +332,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf3221db0a6417bb514b57e3c5c5818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4
   rotateSpeed: 200
+  outOfRangeRotationSpeed: 5
+  cameraHalfHeight: 8.5
+  cameraHalfWidth: 20.5
 --- !u!114 &114365648383534028
 MonoBehaviour:
   m_ObjectHideFlags: 1
