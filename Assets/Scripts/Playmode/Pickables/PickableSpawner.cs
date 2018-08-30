@@ -17,15 +17,23 @@ namespace Playmode.Pickables
 		private PickableController pickableController;
 		private GameObject[] pickables;
 
+		private GameController gameController;
+
 		private void Awake()
 		{
 			pickableController = pickablePrefab.GetComponent<PickableController>();
+			gameController = GameObject.FindWithTag(Tags.GameController).GetComponent<GameController>();
 			pickables = pickableController.pickables;
 		}
 
 		private void OnEnable()
 		{
 			StartCoroutine(TimedPickableSpawner());
+		}
+
+		private void Update()
+		{
+			DestroyOutOfMapSpawners();
 		}
 
 		private IEnumerator TimedPickableSpawner()
@@ -63,9 +71,16 @@ namespace Playmode.Pickables
 			}
 		}
 
-		private int GetRandomChild()
+		private void DestroyOutOfMapSpawners()
 		{
-			return Random.Range(0, transform.childCount);
+			for (int i = 0; i < transform.childCount; i++)
+			{
+				var child = transform.GetChild(i).gameObject;
+				if (gameController.IsObjectOutOfMap(child))
+				{
+					Destroy(child);
+				}
+			}
 		}
 	}
 }

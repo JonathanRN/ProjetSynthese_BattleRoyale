@@ -11,10 +11,8 @@ namespace Playmode.Ennemy.Strategies
 	public class CarefulStrategy : IEnnemyStrategy
 	{
 		private readonly Mover mover;
-		private readonly HandController handController;
 		private readonly EnnemyController enemyController;
-		private EnnemySensor enemySensor;
-		private PickableSensor pickableSensor;
+		private readonly GameController gameController;
 		private GameObject target;
 		private readonly Transform enemyTransformer;
 		private float distanceBetweenEnemy;
@@ -22,20 +20,19 @@ namespace Playmode.Ennemy.Strategies
 		private bool needMedKit;
 		private GameObject pickable;
 		private PickableType pickableType;
-		[SerializeField] private const float maxDistanceWantedBetweenEnemy = 6;
-		[SerializeField] private const float minLifeBeforeSearchingMedKit = 50;
+		
+		private const float maxDistanceWantedBetweenEnemy = 6;
+		private const float minLifeBeforeSearchingMedKit = 20;
 
-		public CarefulStrategy(Mover mover, HandController handController, EnnemySensor enemySensor,
-			Transform transformer, TimedRotation timedRotation, EnnemyController enemyController,
+		public CarefulStrategy(Mover mover, EnnemySensor enemySensor,
+			Transform transformer, EnnemyController enemyController, GameController gameController,
 			PickableSensor pickableSensor)
 		{
 			this.mover = mover;
-			this.handController = handController;
 
 			this.enemyTransformer = transformer;
-			this.enemySensor = enemySensor;
-			this.pickableSensor = pickableSensor;
 			this.enemyController = enemyController;
+			this.gameController = gameController;
 
 			enemySensor.OnEnnemySeen += OnEnnemySeen;
 			enemySensor.OnEnnemySightLost += OnEnnemySightLost;
@@ -115,7 +112,7 @@ namespace Playmode.Ennemy.Strategies
 
 		private void BackFromEnemyIfTooClose()
 		{
-			isOutOfMap = enemyController.IsEnemyOutOfMap();
+			isOutOfMap = gameController.IsObjectOutOfMap(enemyTransformer.gameObject);
 			distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
 
 			if (!(distanceBetweenEnemy < maxDistanceWantedBetweenEnemy)) return;

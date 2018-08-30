@@ -11,8 +11,12 @@ public class CameraController : MonoBehaviour
 	private bool zoneIsShrinking;
 	[SerializeField] private float zoneMinSize = 6f;
 	[SerializeField] private float shrinkingSpeed = 0.01f;
+	
+	public float CameraHalfHeight { get; set; }
+	public float CameraHalfWidth { get; set; }
 
-void Awake() {
+	void Awake()
+	{
 		camera = Camera.main;
 		zoneShrinkingTimer = GetComponent<ZoneShrinkingTimer>();
 	}
@@ -29,10 +33,17 @@ void Awake() {
 		{
 			camera.orthographicSize -= shrinkingSpeed;
 		}
+		FixCameraBounds();
 	}
 
 	private void OnZoneChanged()
 	{
 		zoneIsShrinking = !zoneIsShrinking;
+	}
+
+	private void FixCameraBounds()
+	{
+		CameraHalfHeight = camera.orthographicSize - 1.5f;
+		CameraHalfWidth = CameraHalfHeight * camera.aspect + 1.5f;
 	}
 }

@@ -32,7 +32,4 @@ public class TimedRotation : MonoBehaviour {
     {
         if (OnRotationChanged != null) OnRotationChanged();
     }
-    
-
-    
 }
