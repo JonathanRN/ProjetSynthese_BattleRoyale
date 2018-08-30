@@ -26,6 +26,6 @@ public class NumberOfPlayerLeftController : MonoBehaviour {
 
 	private void Update()
 	{
-		text.text = "OwO left:" + CountPlayersLeft().ToString();
+		text.text = "Enemies left: " + CountPlayersLeft().ToString();
 	}
 }
