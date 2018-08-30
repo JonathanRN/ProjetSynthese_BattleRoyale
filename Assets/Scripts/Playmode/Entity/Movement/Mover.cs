@@ -9,17 +9,17 @@ namespace Playmode.Movement
         public static readonly Vector3 Backward = Vector3.down;
         public const float Clockwise = 1f;
         
-        [SerializeField] protected float speed = 3f;
+        public float MoveSpeed = 4;
         [SerializeField] protected float rotateSpeed = 200f;
 
         protected void Awake()
         {
-            ValidateSerialisedFields();
+            ValidateSerialisedFields(); 
         }
 
         private void ValidateSerialisedFields()
         {
-            if (speed < 0)
+            if (MoveSpeed < 0)
                 throw new ArgumentException("Speed can't be lower than 0.");
             if (rotateSpeed < 0)
                 throw new ArgumentException("RotateSpeed can't be lower than 0.");

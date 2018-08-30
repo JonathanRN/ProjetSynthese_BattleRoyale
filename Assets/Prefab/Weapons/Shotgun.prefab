@@ -36,9 +36,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4040930786401092}
   m_Layer: 0
-  m_Name: StartingWeapon
+  m_Name: Shotgun
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -82,4 +82,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1399810628277264, guid: 5b3563603dcbbce449eb771ff30aba92,
     type: 2}
-  fireDelayInSeconds: 0.5
+  fireDelayInSeconds: 1.5
+  weaponType: 2

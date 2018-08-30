@@ -1,6 +1,7 @@
 ﻿using Playmode.Ennemy.BodyParts;
 using System;
 using Playmode.Movement;
+using Playmode.Util.Values;
 using UnityEngine;
 
 namespace Playmode.Weapon
@@ -8,15 +9,15 @@ namespace Playmode.Weapon
     public class WeaponController : MonoBehaviour
     {
         [Header("Behaviour")] [SerializeField] private GameObject bulletPrefab;
-        [SerializeField] private float fireDelayInSeconds = 1f;
-
-		private HandController handController;
+        [SerializeField] public float fireDelayInSeconds = 1f;
 
         private float lastTimeShotInSeconds;
-		private int nbOfShotgunBullets;
+		private int nbOfShotgunBullets = 6;
 		private GameObject[] shotgunBullets;
 
         private bool CanShoot => Time.time - lastTimeShotInSeconds > fireDelayInSeconds;
+
+	    [SerializeField] public PickableTypes weaponType;
 
         private void Awake()
         {
@@ -36,47 +37,42 @@ namespace Playmode.Weapon
 			nbOfShotgunBullets = 3;
 			shotgunBullets = new GameObject[nbOfShotgunBullets];
         }
-
+	    
         public void Shoot()
         {
-			if (CanShoot)
-            {
-				var rotation = transform.root.rotation;
+	        if (!CanShoot) return;
 
-				UpdateAndShootWithCurrentWeapon();
+	        if (weaponType == PickableTypes.Shotgun)
+	        {
+		        ShootWithShotgun();
+	        }
+	        else
+	        {
+		        Instantiate(bulletPrefab, transform.position, transform.rotation);
+	        }
 
-				lastTimeShotInSeconds = Time.time;
-            }
+	        lastTimeShotInSeconds = Time.time;
         }
 
-		private void UpdateAndShootWithCurrentWeapon()
-		{
-			var weapon = HandController.currentWeapon;
+	    public PickableTypes GetWeaponType()
+	    {
+		    return weaponType;
+	    }
 
-			if (weapon != null)
-			{
-				if (weapon.GetComponentInChildren<PickableType>().GetType() == Util.Values.PickableTypes.Shotgun)
-				{
-					fireDelayInSeconds = 1.5f;
-
-					var rotation = transform.root.rotation;
-
-					for (int i = 0; i < nbOfShotgunBullets; i++)
-					{
-						shotgunBullets[i] = Instantiate(bulletPrefab, transform.position, transform.rotation);
-						shotgunBullets[i].transform.Rotate(Vector3.forward * 10 * i, Space.Self);
-					}
-				}
-				else if (weapon.GetComponentInChildren<PickableType>().GetType() == Util.Values.PickableTypes.Uzi)
-				{
-					fireDelayInSeconds = 0.1f;
-					Instantiate(bulletPrefab, transform.position, transform.rotation);
-				}
-			}
-			else
-			{
-				Instantiate(bulletPrefab, transform.position, transform.rotation); //Normal shot
-			}
-		}
+	    private void ShootWithShotgun()
+	    {
+		    for (int i = 0; i < nbOfShotgunBullets; i++)
+		    {
+			    shotgunBullets[i] = Instantiate(bulletPrefab, transform.position, transform.rotation);
+			    if (i % 2 == 0)
+			    {
+				    shotgunBullets[i].transform.Rotate(Vector3.forward * 1.5f * i, Space.Self);
+			    }
+			    else
+			    {
+				    shotgunBullets[i].transform.Rotate(Vector3.forward * -1.5f * i, Space.Self);
+			    }
+		    }
+	    }
 	}
 }

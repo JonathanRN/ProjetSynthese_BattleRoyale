@@ -5,13 +5,6 @@ namespace Playmode.Movement
     public class RootMover : Mover
     {
         private Transform rootTransform;
-        
-        [SerializeField]
-        public float outOfRangeRotationSpeed = 5f;
-        [SerializeField]
-        public float cameraHalfHeight = 8.5f;
-        [SerializeField]
-        public float cameraHalfWidth = 20.5f;
 
         private new void Awake()
         {
@@ -27,7 +20,7 @@ namespace Playmode.Movement
 
         public override void Move(Vector3 direction)
         {
-            rootTransform.Translate(direction.normalized * speed * Time.deltaTime);
+            rootTransform.Translate(direction.normalized * MoveSpeed * Time.deltaTime);
         }
 
         public override void Rotate(float direction)

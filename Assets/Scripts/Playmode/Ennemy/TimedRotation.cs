@@ -17,8 +17,6 @@ public class TimedRotation : MonoBehaviour {
     private void OnEnable()
     {
         StartCoroutine(ChangeRotationRoutine());
-        
-        
     }
 
     private IEnumerator ChangeRotationRoutine()

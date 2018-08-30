@@ -19,10 +19,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4380339383071470}
-  - component: {fileID: 114238429742528832}
-  - component: {fileID: 114014647863487342}
   - component: {fileID: 50964428450228624}
   - component: {fileID: 114358057275978370}
+  - component: {fileID: 114218154584993940}
   m_Layer: 0
   m_Name: Control
   m_TagString: Untagged
@@ -139,7 +138,7 @@ CircleCollider2D:
   m_Offset: {x: 0.05177673, y: -0.007962227}
   serializedVersion: 2
   m_Radius: 0.52312803
---- !u!114 &114014647863487342
+--- !u!114 &114218154584993940
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,12 +146,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1072564245670084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c94bdc5e30d40d0b8ac80c5d43ecaea, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bdcc07cb4e8f0a4b896a2b85c9dd64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1399810628277264, guid: 5b3563603dcbbce449eb771ff30aba92,
-    type: 2}
-  fireDelayInSeconds: 0.1
 --- !u!114 &114220189343216452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,18 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a6e150fc024d147991f5670f9d7a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114238429742528832
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1072564245670084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c788a8a55e3694b4ab71d4056381d759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handPrefab: {fileID: 1201874307975926, guid: 88e89628113b2b04eb2c08e350ffdee9, type: 2}
 --- !u!114 &114358057275978370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d8ae3b81e2ec8439fedba0d2908cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 3
 --- !u!212 &212004209594066252
 SpriteRenderer:
   m_ObjectHideFlags: 1

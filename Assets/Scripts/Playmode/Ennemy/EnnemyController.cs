@@ -5,6 +5,8 @@ using Playmode.Entity.Destruction;
 using Playmode.Entity.Senses;
 using Playmode.Entity.Status;
 using Playmode.Movement;
+using Playmode.Util.Values;
+using Playmode.Weapon;
 using UnityEngine;
 
 namespace Playmode.Ennemy
@@ -15,11 +17,16 @@ namespace Playmode.Ennemy
         [SerializeField] private GameObject hand;
         [SerializeField] private GameObject sight;
         [SerializeField] private GameObject typeSign;
+        
         [Header("Type Images")] [SerializeField] private Sprite normalSprite;
         [SerializeField] private Sprite carefulSprite;
         [SerializeField] private Sprite cowboySprite;
         [SerializeField] private Sprite camperSprite;
-        [Header("Behaviour")] [SerializeField] private GameObject startingWeaponPrefab;
+        
+        [Header("Weapons")]
+        [SerializeField] private GameObject startingWeaponPrefab;
+        [SerializeField] private GameObject shotgunPrefab;
+        [SerializeField] private GameObject uziPrefab;
 
 		[Header("Variables")]
 		[SerializeField]
@@ -41,10 +48,13 @@ namespace Playmode.Ennemy
         private HitSensor hitSensor;
 		private PickableSensor pickableSensor;
         private HandController handController;
+        private WeaponController weaponController;
         private Transform transformer;
         private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
 
+        public int nbOfShotgunHolding { get; set; }
+        public int nbOfUziHolding { get; set; }
         
 		private IEnnemyStrategy strategy;
 
@@ -75,6 +85,10 @@ namespace Playmode.Ennemy
                 throw new ArgumentException("Type sprites must be provided. Camper is missing.");
             if (startingWeaponPrefab == null)
                 throw new ArgumentException("StartingWeapon prefab must be provided.");
+            if (shotgunPrefab == null)
+                throw new ArgumentException("StartingWeapon prefab must be provided.");
+            if (uziPrefab == null)
+                throw new ArgumentException("StartingWeapon prefab must be provided.");
         }
 
         private void InitializeComponent()
@@ -90,9 +104,9 @@ namespace Playmode.Ennemy
             hitSensor = rootTransform.GetComponentInChildren<HitSensor>();
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
             handController = hand.GetComponent<HandController>();
+            weaponController = hand.GetComponentInChildren<WeaponController>();
 
-			strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this,pickableSensor);
-
+			strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
 		}
 
         private void CreateStartingWeapon()
@@ -185,19 +199,19 @@ namespace Playmode.Ennemy
             {
                 case EnnemyStrategy.Careful:
                     typeSign.GetComponent<SpriteRenderer>().sprite = carefulSprite;
-                    this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
+                    //this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
                     break;
                 case EnnemyStrategy.Cowboy:
                     typeSign.GetComponent<SpriteRenderer>().sprite = cowboySprite;
-                    this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this,pickableSensor);
+                    //this.strategy = new CarefulStrategy(mover, handController, ennemySensor, transformer, timedRotation, this,pickableSensor);
                     break;
                 case EnnemyStrategy.Camper:
                     typeSign.GetComponent<SpriteRenderer>().sprite = camperSprite;
-                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+                    //this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
                 default:
                     typeSign.GetComponent<SpriteRenderer>().sprite = normalSprite;
-                    this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+                    //this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
                     break;
             }
         }
@@ -215,15 +229,36 @@ namespace Playmode.Ennemy
 
 		private void OnPickUp(GameObject pickable)
 		{
-			Debug.Log("Item picked up: " + pickable.GetComponentInChildren<PickableType>().GetType());
+		    var type = pickable.GetComponentInChildren<PickableType>().GetType();
+		    
+			Debug.Log("Item picked up: " + type);
 
+		    if (type == PickableTypes.Shotgun)
+		    {
+		        HoldWeapon(shotgunPrefab);
+		    }
+		    else if (type == PickableTypes.Uzi)
+		    {
+		        HoldWeapon(uziPrefab);
+		    }
+		    
 			pickable.gameObject.GetComponentInChildren<PickableUse>().Use(gameObject);
 			Destroy(pickable.gameObject);
 		}
+        
         public void ShootTowardsTarget(Transform target)
         {
             mover.RotateTowardsTarget(target);
             handController.Use();
         }
-	}
+
+        private void HoldWeapon(GameObject weaponToHold)
+        {
+            handController.Hold(Instantiate(
+                weaponToHold,
+                Vector3.zero,
+                Quaternion.identity
+            ));
+        }
+    }
 }

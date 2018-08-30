@@ -21,12 +21,10 @@ namespace Playmode.Ennemy.Strategies
 		private GameObject pickable;
 		private PickableType pickableType;
 
-		private bool hasFoundMedKit;
-		private bool hasFoundWeapon;
-		private bool hasPickedWeapon;
+		private float currentRotationDirection = 1f;
 		private bool isNextToMedKit;
+		private GameObject savedMedKit;
 		private const int MinimumDistanceToPickable = 2;
-		private GameObject lastMedKitFound;
 
 		public CamperStrategy(Mover mover, HandController handController, EnnemySensor enemySensor,
 			Transform transformer, TimedRotation timedRotation, EnnemyController enemyController,
@@ -69,74 +67,41 @@ namespace Playmode.Ennemy.Strategies
 			est trop basse, il utilise le MedicalKit et se met à la recherche d’un autre MedicalKit. S’il croise
 			une arme, il se dirige tout de suite dessus.*/
 			
-			if (hasFoundMedKit)
+			if (HasFoundMedKit())
 			{
-				if (!hasPickedWeapon)
-				{
-					LookForWeapon();
-				}
-
-				if (!hasFoundWeapon)
-				{
-					RoamAround();
-				}
+				MoveNextToMedKit();
 			}
-			else if (!hasPickedWeapon)
+			else if (!isNextToMedKit && !HasFoundWeapon())
 			{
-				FindMedKit();
 				RoamAround();
 			}
 
-			if (hasPickedWeapon)
+			if (HasFoundWeapon() && !isNextToMedKit)
 			{
-				hasFoundMedKit = false;
-				MoveNextToFoundMedKit();
-			}
-
-			if (isNextToMedKit && hasPickedWeapon)
-			{
-				ScanAround();
-				//shoot
-			}
-			
-			/*if (HasFoundMedKit())
-			{
-				lastMedKitFound = pickable;
-				Debug.Log("I found a medkit!");
-				MoveNextToFoundMedKit();
-				//LookForWeapon();
-
-				/*if (hasPickedWeapon)
-				{
-					Debug.Log("Now moving back to medkit.");
-					MoveNextToFoundMedKit();
-				}#1#
-			}
-			else if(!isNextToMedKit)
-			{
-				RoamAround();
+				mover.MoveTowardsTarget(pickable.transform);
 			}
 
 			if (isNextToMedKit)
 			{
 				ScanAround();
-				//shoot
-			}*/
+				if (target != null)
+				{
+					enemyController.ShootTowardsTarget(target.transform);
+				}
+
+				if (DoesEnemyNeedMedKit())
+				{
+					PickUpSavedMedKit();
+				}
+			}
 		}
 
-		private void LookForWeapon()
+		private void PickUpSavedMedKit()
 		{
-			FindWeapon();
-			
-			if (!hasFoundWeapon)
+			if (savedMedKit != null)
 			{
-				return;
+				mover.MoveTowardsTarget(savedMedKit.transform);
 			}
-
-			//Move towards weapon
-			mover.MoveTowardsTarget(pickable.transform);
-				
-			hasPickedWeapon = (Vector3.Distance(enemyTransformer.root.position, pickable.transform.position) < 2);
 		}
 
 		private void ScanAround()
@@ -144,29 +109,34 @@ namespace Playmode.Ennemy.Strategies
 			mover.Rotate(Mover.Clockwise);
 		}
 
-		private void FindMedKit()
+		private bool HasFoundMedKit()
 		{
-			hasFoundMedKit = pickable != null && pickableType.IsMedKit();
-			lastMedKitFound = pickable;
+			return pickable != null && pickableType.IsMedKit();
 		}
 
-		private void FindWeapon()
+		private bool HasFoundWeapon()
 		{
-			hasFoundWeapon = pickable != null && pickableType.IsWeapon();
+			return pickable != null && pickableType.IsWeapon();
 		}
 
-		private void MoveNextToFoundMedKit()
+		private void MoveNextToMedKit()
 		{
 			if (isNextToMedKit) return;
 			
-			mover.MoveTowardsTarget(lastMedKitFound.transform);
+			mover.MoveTowardsTarget(pickable.transform);
 
 			isNextToMedKit = (Vector3.Distance(enemyTransformer.root.position, pickable.transform.position) < MinimumDistanceToPickable);
+			savedMedKit = pickable;
 		}
 		
 		private void RoamAround()
 		{
 			enemyController.Roam();
+		}
+
+		private bool DoesEnemyNeedMedKit()
+		{
+			return enemyController.Health.HealthPoints < 50;
 		}
 	}
 }

@@ -19,6 +19,8 @@ namespace Playmode.Bullet
         {
             ValidateSerialisedFields();
             InitialzeComponent();
+
+            mover.MoveSpeed = 40;
         }
 
         private void ValidateSerialisedFields()

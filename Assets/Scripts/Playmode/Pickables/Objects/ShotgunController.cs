@@ -1,21 +1,12 @@
-﻿using Playmode.Ennemy.BodyParts;
-using Playmode.Weapon;
+﻿using Playmode.Ennemy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotgunController : PickableUse {
-
-	[SerializeField] private GameObject handPrefab;
-	private HandController handController;
-
-	private void Awake()
-	{
-		handController = handPrefab.GetComponent<HandController>();
-	}
-
+public class ShotgunController : PickableUse
+{
 	public override void Use(GameObject enemy)
-	{ 	
-		HandController.currentWeapon = transform.parent.gameObject;
+	{
+		
 	}
 }

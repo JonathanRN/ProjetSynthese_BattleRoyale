@@ -20,7 +20,7 @@ namespace Playmode.Movement
 
         public override void Move(Vector3 direction)
         {
-            transform.Translate(direction.normalized * speed * Time.deltaTime);
+            transform.Translate(direction.normalized * MoveSpeed * Time.deltaTime);
         }
 
         public override void Rotate(float direction)

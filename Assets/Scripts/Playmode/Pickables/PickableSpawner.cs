@@ -34,7 +34,6 @@ namespace Playmode.Pickables
 			{
 				yield return new WaitForSeconds(spawnTimeDelay);
 
-				RemoveAllPickables();
 				for (int i = 0; i < transform.childCount; i++)
 				{
 					SpawnPickable(transform.GetChild(i));
@@ -44,7 +43,10 @@ namespace Playmode.Pickables
 
 		private void SpawnPickable(Transform childTransform)
 		{
-			Instantiate(pickables.GetRandom(), childTransform.position, Quaternion.identity, childTransform);
+			if (childTransform.childCount <= 0)
+			{
+				Instantiate(pickables.GetRandom(), childTransform.position, Quaternion.identity, childTransform);
+			}
 		}
 
 		private void RemoveAllPickables()

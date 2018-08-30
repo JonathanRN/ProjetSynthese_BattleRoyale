@@ -68,6 +68,7 @@ namespace Playmode.Ennemy.Strategies
 			}
 			else
 			{
+				mover.MoveSpeed = 4;
 				if (target != null)
 				{
 					BackFromEnemyIfTooClose();
@@ -101,6 +102,7 @@ namespace Playmode.Ennemy.Strategies
 
 		private void SearchForMedKit()
 		{
+			mover.MoveSpeed = 5;
 			if (pickable != null && pickableType.IsMedKit())
 			{
 				mover.MoveTowardsTarget(pickable.transform);
