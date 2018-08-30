@@ -43,6 +43,7 @@
             <e p="Bullet" t="Include">
               <e p="BulletController.cs" t="Include" />
             </e>
+            <e p="CameraController.cs" t="Include" />
             <e p="Ennemy" t="Include">
               <e p="BodyParts" t="Include">
                 <e p="HandController.cs" t="Include" />
@@ -53,6 +54,7 @@
               <e p="Strategies" t="Include">
                 <e p="CamperStrategy.cs" t="Include" />
                 <e p="CarefulStrategy.cs" t="Include" />
+                <e p="CowboyStrategy.cs" t="Include" />
                 <e p="IdleStrategy.cs" t="Include" />
                 <e p="IEnnemyStrategy.cs" t="Include" />
                 <e p="NormalStrategy.cs" t="Include" />
@@ -110,6 +112,7 @@
             <e p="Weapon" t="Include">
               <e p="WeaponController.cs" t="Include" />
             </e>
+            <e p="ZoneShrinkingTimer.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="HeadOnDisplay" t="Include">

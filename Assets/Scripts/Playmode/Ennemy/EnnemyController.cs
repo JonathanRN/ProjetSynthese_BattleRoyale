@@ -31,10 +31,8 @@ namespace Playmode.Ennemy
 		[Header("Variables")]
 		[SerializeField]
 		public float outOfRangeRotationSpeed = 5f;
-		[SerializeField]
-		public float cameraHalfHeight = 8.5f;
-		[SerializeField]
-		public float cameraHalfWidth = 20.5f;
+		public float cameraHalfHeight ;
+		public float cameraHalfWidth;
 		[SerializeField]
 		public float speed = 10f;
 		public float senseRotation = 1f;
@@ -52,6 +50,8 @@ namespace Playmode.Ennemy
         private Transform transformer;
         private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
+        private Camera camera;
+        private CircleCollider2D bodyCollider;
 
         public int nbOfShotgunHolding { get; set; }
         public int nbOfUziHolding { get; set; }
@@ -98,6 +98,11 @@ namespace Playmode.Ennemy
             destroyer = GetComponent<RootDestroyer>();
             transformer = transform.root;
             timedRotation = GetComponent<TimedRotation>();
+            camera = Camera.main;
+            bodyCollider = transform.parent.GetComponentInChildren<CircleCollider2D>();
+
+            cameraHalfHeight = camera.orthographicSize - (bodyCollider.bounds.size.y);
+            cameraHalfWidth = cameraHalfHeight * camera.aspect;
 
             var rootTransform = transform.root;
             ennemySensor = rootTransform.GetComponentInChildren<EnnemySensor>();
@@ -136,6 +141,8 @@ namespace Playmode.Ennemy
 		private void Update()
         {
             strategy.Act();
+            cameraHalfHeight = camera.orthographicSize - (bodyCollider.bounds.size.y);
+            cameraHalfWidth = cameraHalfHeight * camera.aspect;
         }
 
 		public void Roam()
