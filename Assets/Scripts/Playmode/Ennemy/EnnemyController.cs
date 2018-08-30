@@ -19,6 +19,7 @@ namespace Playmode.Ennemy
 		[SerializeField] private GameObject hand;
 		[SerializeField] private GameObject sight;
 		[SerializeField] private GameObject typeSign;
+		[SerializeField] private GameObject hitParticlesPrefab;
 
 		[Header("Type Images")] [SerializeField]
 		private Sprite normalSprite;
@@ -164,7 +165,7 @@ namespace Playmode.Ennemy
 
 		public void HitReact()
 		{
-			mover.Rotate(1f);
+			mover.Rotate(Mover.Clockwise);
 		}
 
 		private void OnDisable()
@@ -204,6 +205,8 @@ namespace Playmode.Ennemy
 		{
 			Health.Hit(hitPoints);
 			IsUnderFire = true;
+
+			Instantiate(hitParticlesPrefab, transformer.position, transformer.rotation);
 		}
 
 		private void OnDeath()

@@ -78,18 +78,17 @@ namespace Playmode.Ennemy.Strategies
 
 			if (isNextToMedKit)
 			{
-				if (target != null)
+				if (DoesEnemyNeedMedKit())
+				{
+					PickUpSavedMedKit();
+				}
+				else if (target != null)
 				{
 					enemyController.ShootTowardsTarget(target.transform);
 				}
 				else
 				{
 					ScanAround();
-				}
-
-				if (DoesEnemyNeedMedKit())
-				{
-					PickUpSavedMedKit();
 				}
 			}
 
