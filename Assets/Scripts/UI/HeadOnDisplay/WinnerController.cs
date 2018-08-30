@@ -23,7 +23,7 @@ public class WinnerController : MonoBehaviour
 	private void Update()
 	{
 		if (!numberOfPlayerLeftController.ThereIsAWinner()) return;
-		text.text = "Winner Winner Chickem Dinner";
+		text.text = "Winner Winner Chicken Dinner";
 		DisableObjects();
 	}
 
