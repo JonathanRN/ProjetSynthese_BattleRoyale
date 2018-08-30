@@ -8,7 +8,8 @@ public class CameraController : MonoBehaviour
 	// Use this for initialization
 	private Camera camera;
 	private ZoneShrinkingTimer zoneShrinkingTimer;
-	private bool zoneIsShrinking;
+	public bool zoneIsShrinking;
+	[SerializeField] public float zoneChangeDelay =30f;
 	[SerializeField] private float zoneMinSize = 6f;
 	[SerializeField] private float shrinkingSpeed = 0.01f;
 	

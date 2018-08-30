@@ -61,6 +61,7 @@
                 <e p="TurnAndShootStragegy.cs" t="Include" />
               </e>
               <e p="TimedRotation.cs" t="Include" />
+              <e p="WeaponIconController.cs" t="Include" />
             </e>
             <e p="Entity" t="Include">
               <e p="Destruction" t="Include">
@@ -82,6 +83,7 @@
                 <e p="Health.cs" t="Include" />
               </e>
             </e>
+            <e p="GameController.cs" t="Include" />
             <e p="Pickables" t="Include">
               <e p="Objects" t="Include">
                 <e p="MedicalKitController.cs" t="Include" />
@@ -117,6 +119,9 @@
           <e p="UI" t="Include">
             <e p="HeadOnDisplay" t="Include">
               <e p="DropTimerController.cs" t="Include" />
+              <e p="NextZoneTimerController.cs" t="Include" />
+              <e p="NumberOfPlayerLeftController.cs" t="Include" />
+              <e p="WinnerController.cs" t="Include" />
             </e>
           </e>
         </e>
