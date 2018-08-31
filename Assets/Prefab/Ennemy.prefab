@@ -317,8 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19261ffb651a9f04b8572b85531e98d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTimeBeforeChangingRotation: 1.2
-  minTimeBeforeChangingRotation: 0.8
+  maxTimeBeforeChangingRotation: 0.5
+  minTimeBeforeChangingRotation: 0.2
 --- !u!114 &114083873472680612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,6 +406,7 @@ MonoBehaviour:
   uziPrefab: {fileID: 1627777849954234, guid: 729cfaef3e02fe64da6f08b0a1aec225, type: 2}
   outOfRangeRotationSpeed: 5
   speed: 10
+  waterSpeed: 1
   senseRotation: 1
 --- !u!114 &114528511461670924
 MonoBehaviour:
