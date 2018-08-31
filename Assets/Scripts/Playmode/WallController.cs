@@ -8,7 +8,8 @@ public class WallController : MonoBehaviour
 	private EdgeCollider2D wall;
 	public Vector2[] newVerticies;
 	private CameraController cameraController;
-	[SerializeField]private float wallAdjustX = 3f;
+	
+	[SerializeField] private float wallAdjustX = 3f;
 	[SerializeField] private float wallAdjustY = 3f;
 
 	// Use this for initialization
@@ -43,7 +44,7 @@ public class WallController : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 		AdjustPointsToCamera();
-		getPointsToDebug();
+		//getPointsToDebug();
 		setPoints();
 	}
 }

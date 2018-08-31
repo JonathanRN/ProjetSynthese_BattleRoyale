@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Playmode.Ennemy.BodyParts;
 using Playmode.Ennemy.Strategies;
 using Playmode.Entity.Destruction;
@@ -33,15 +34,16 @@ namespace Playmode.Ennemy
 		[SerializeField] private GameObject uziPrefab;
 
 		[Header("Variables")] [SerializeField] public float outOfRangeRotationSpeed = 5f;
-		[SerializeField] public float speed = 10f;
-		[SerializeField] public float waterSpeed = 1f;
-		
+		[SerializeField] public float speed = 1f;
+		[SerializeField] public float waterSpeed = 1.5f;
+
 		public float senseRotation = 1f;
 		private float originalMoveSpeed;
 
 		private float randomBehaviour;
 		public Health Health { get; set; }
 		public bool IsUnderFire { get; set; }
+		
 		private Mover mover;
 		private Destroyer destroyer;
 		private EnnemySensor ennemySensor;
@@ -52,12 +54,12 @@ namespace Playmode.Ennemy
 		private Transform transformer;
 		private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
-		private WaterController waterController;
 
 		private GameController gameController;
 		private CameraController cameraController;
 
 		private IEnnemyStrategy strategy;
+		private Coroutine underFireRoutine;
 
 		private void Awake()
 		{
@@ -108,7 +110,6 @@ namespace Playmode.Ennemy
 			sightController = sight.GetComponent<SightController>();
 			gameController = GameObject.FindWithTag(Tags.GameController).GetComponent<GameController>();
 			cameraController = GameObject.FindWithTag(Tags.MainCamera).GetComponent<CameraController>();
-			waterController = GameObject.FindWithTag(Tags.Background).GetComponentInChildren<WaterController>();
 
 			originalMoveSpeed = mover.MoveSpeed;
 		}
@@ -128,22 +129,17 @@ namespace Playmode.Ennemy
 			hitSensor.OnHit += OnHit;
 			Health.OnDeath += OnDeath;
 			pickableSensor.OnPickUp += OnPickUp;
-			waterController.OnEnter += OnEnterWater;
-			waterController.OnExit += OnExitWater;
 		}
-		
+
 		private void OnDisable()
 		{
 			hitSensor.OnHit -= OnHit;
 			Health.OnDeath -= OnDeath;
 			pickableSensor.OnPickUp -= OnPickUp;
-			waterController.OnEnter -= OnEnterWater;
-			waterController.OnExit -= OnExitWater;
 		}
 
 		private void OnRotationChanged()
 		{
-			IsUnderFire = false;
 			randomBehaviour = UnityEngine.Random.Range(-1, 2);
 			senseRotation *= -1;
 		}
@@ -158,7 +154,7 @@ namespace Playmode.Ennemy
 			mover.Move(new Vector3(0, speed * Time.deltaTime));
 			handController.transform.rotation = transformer.rotation;
 			sightController.transform.rotation = transformer.rotation;
-		
+
 			if (gameController.IsObjectOutOfMap(transformer.gameObject))
 			{
 				transformer.rotation = Quaternion.Slerp(transformer.rotation, RotationToGo(),
@@ -170,6 +166,7 @@ namespace Playmode.Ennemy
 			}
 		}
 
+		//TODO RENAME
 		private Quaternion RotationToGo()
 		{
 			var rotationDown = Quaternion.Euler(0, 0, 180);
@@ -198,19 +195,45 @@ namespace Playmode.Ennemy
 			{
 				case EnnemyStrategy.Careful:
 					typeSign.GetComponent<SpriteRenderer>().sprite = carefulSprite;
-					this.strategy = new CarefulStrategy(mover, ennemySensor, transformer, this,  gameController,handController, pickableSensor);
+					this.strategy = new CarefulStrategy(
+						mover,
+						ennemySensor,
+						transformer,
+						this,
+						gameController,
+						handController,
+						pickableSensor
+					);
 					break;
 				case EnnemyStrategy.Cowboy:
 					typeSign.GetComponent<SpriteRenderer>().sprite = cowboySprite;
-					this.strategy = new CowboyStrategy(mover,ennemySensor, transformer, this, pickableSensor);
+					this.strategy = new CowboyStrategy(
+						mover, 
+						ennemySensor, 
+						transformer, 
+						this, 
+						pickableSensor
+					);
 					break;
 				case EnnemyStrategy.Camper:
 					typeSign.GetComponent<SpriteRenderer>().sprite = camperSprite;
-					this.strategy = new CamperStrategy(mover, ennemySensor, transformer, this,gameController,pickableSensor);
+					this.strategy = new CamperStrategy(mover, 
+						ennemySensor, 
+						transformer, 
+						this, 
+						gameController,
+						pickableSensor
+					);
 					break;
 				default:
 					typeSign.GetComponent<SpriteRenderer>().sprite = normalSprite;
-					this.strategy = new NormalStrategy(mover, handController, ennemySensor, transformer, timedRotation, this);
+					this.strategy = new NormalStrategy(mover, 
+						handController, 
+						ennemySensor, 
+						transformer, 
+						timedRotation,
+						this
+					);
 					break;
 			}
 		}
@@ -218,9 +241,26 @@ namespace Playmode.Ennemy
 		private void OnHit(int hitPoints)
 		{
 			Health.Hit(hitPoints);
-			IsUnderFire = true;
+			StartUnderFireBehaviour();
 
 			Instantiate(hitParticlesPrefab, transformer.position, transformer.rotation, transformer);
+		}
+
+		private void StartUnderFireBehaviour()
+		{			
+			IsUnderFire = true;
+
+			if (underFireRoutine != null)
+				StopCoroutine(underFireRoutine);
+
+			underFireRoutine = StartCoroutine(CancelUnderFireRoutine());
+		}
+
+		private IEnumerator CancelUnderFireRoutine()
+		{
+			yield return new WaitForSeconds(1f);
+			IsUnderFire = false;
+			underFireRoutine = null;
 		}
 
 		private void OnDeath()
@@ -231,7 +271,7 @@ namespace Playmode.Ennemy
 		private void OnPickUp(GameObject pickable)
 		{
 			var type = pickable.GetComponentInChildren<PickableType>();
-			
+
 			if (type.GetType() == PickableTypes.Shotgun)
 			{
 				HoldWeapon(shotgunPrefab);
@@ -241,18 +281,8 @@ namespace Playmode.Ennemy
 				HoldWeapon(uziPrefab);
 			}
 
-			pickable.gameObject.GetComponentInChildren<PickableUse>().Use(gameObject);
+			pickable.gameObject.GetComponentInChildren<Pickable>().Use(gameObject);
 			Destroy(pickable.gameObject);
-		}
-
-		private void OnEnterWater()
-		{
-			mover.MoveSpeed = waterSpeed;
-		}
-
-		private void OnExitWater()
-		{
-			mover.MoveSpeed = originalMoveSpeed;
 		}
 
 		public void ShootTowardsTarget(Transform target)
@@ -268,6 +298,16 @@ namespace Playmode.Ennemy
 				Vector3.zero,
 				Quaternion.identity
 			));
+		}
+
+		public void SetSpeedToSwim()
+		{
+			mover.MoveSpeed = waterSpeed;
+		}
+
+		public void SetSpeedToWalk()
+		{
+			mover.MoveSpeed = originalMoveSpeed;
 		}
 	}
 }

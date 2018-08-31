@@ -11,6 +11,8 @@ namespace Playmode.Entity.Senses
 		public event PickableSensorEventHandler OnPickUp;
         public event PickableSensorEventHandler OnPickableSeen;
 
+		public bool IsSight => gameObject.CompareTag("Sight");
+		
 		public void PickUp(GameObject pickable)
 		{
 			NotifyPickUp(pickable);

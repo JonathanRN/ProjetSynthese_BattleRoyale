@@ -2,7 +2,7 @@
 
 namespace Playmode.Pickables.Objects
 {
-	public class ShotgunController : PickableUse
+	public class ShotgunController : Pickable
 	{
 		public override void Use(GameObject enemy)
 		{

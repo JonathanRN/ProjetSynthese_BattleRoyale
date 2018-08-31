@@ -1,10 +1,12 @@
 ﻿using Playmode.Ennemy;
 using System.Collections;
 using System.Collections.Generic;
+using Playmode.Util.Values;
 using UnityEngine;
 
-public class MedicalKitController : PickableUse
+public class MedicalKitController : Pickable
 {
+	//public override PickableTypes Type => PickableTypes.MedicalKit;
 
 	public override void Use(GameObject enemy)
 	{

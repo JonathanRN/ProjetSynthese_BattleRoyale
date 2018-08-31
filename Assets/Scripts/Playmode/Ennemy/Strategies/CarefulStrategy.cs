@@ -26,8 +26,12 @@ namespace Playmode.Ennemy.Strategies
 		private const float maxDistanceWantedBetweenEnemy = 6;
 		private const float minLifeBeforeSearchingMedKit = 20;
 
-		public CarefulStrategy(Mover mover, EnnemySensor enemySensor,
-			Transform transformer, EnnemyController enemyController, GameController gameController,HandController handController,
+		public CarefulStrategy(Mover mover, 
+			EnnemySensor enemySensor,
+			Transform transformer, 
+			EnnemyController enemyController, 
+			GameController gameController,
+			HandController handController,
 			PickableSensor pickableSensor)
 		{
 			this.mover = mover;
