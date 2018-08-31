@@ -12,6 +12,7 @@ namespace Playmode.Ennemy.Strategies
 	{
 		private readonly Mover mover;
 		private readonly EnnemyController enemyController;
+		private HandController handController;
 		private readonly GameController gameController;
 		private GameObject target;
 		private readonly Transform enemyTransformer;
@@ -25,7 +26,7 @@ namespace Playmode.Ennemy.Strategies
 		private const float minLifeBeforeSearchingMedKit = 20;
 
 		public CarefulStrategy(Mover mover, EnnemySensor enemySensor,
-			Transform transformer, EnnemyController enemyController, GameController gameController,
+			Transform transformer, EnnemyController enemyController, GameController gameController,HandController handController,
 			PickableSensor pickableSensor)
 		{
 			this.mover = mover;
@@ -33,6 +34,7 @@ namespace Playmode.Ennemy.Strategies
 			this.enemyTransformer = transformer;
 			this.enemyController = enemyController;
 			this.gameController = gameController;
+			this.handController = handController;
 
 			enemySensor.OnEnnemySeen += OnEnnemySeen;
 			enemySensor.OnEnnemySightLost += OnEnnemySightLost;
@@ -112,12 +114,17 @@ namespace Playmode.Ennemy.Strategies
 
 		private void BackFromEnemyIfTooClose()
 		{
-			isOutOfMap = gameController.IsObjectOutOfMap(enemyTransformer.gameObject);
 			distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
 
 			if (!(distanceBetweenEnemy < maxDistanceWantedBetweenEnemy)) return;
 
-			mover.Move(!isOutOfMap ? new Vector3(0, -Mover.Clockwise) : new Vector3(0, Mover.Clockwise));
+			mover.RotateTowardsTarget(target.transform);
+			mover.Move(new Vector3(0,-1));
+			if (Random.Range(-1, 2) == 1)
+			{
+				mover.Move(Vector3.right);
+			}
+				
 		}
 	}
 }

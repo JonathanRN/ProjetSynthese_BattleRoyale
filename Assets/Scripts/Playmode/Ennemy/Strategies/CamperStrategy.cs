@@ -24,7 +24,7 @@ namespace Playmode.Ennemy.Strategies
 		private GameObject savedMedKit;
 		private const int MinimumDistanceToPickable = 2;
 
-		public CamperStrategy(Mover mover, HandController handController, EnnemySensor enemySensor,
+		public CamperStrategy(Mover mover, EnnemySensor enemySensor,
 			Transform transformer, EnnemyController enemyController, GameController gameController,
 			PickableSensor pickableSensor)
 		{

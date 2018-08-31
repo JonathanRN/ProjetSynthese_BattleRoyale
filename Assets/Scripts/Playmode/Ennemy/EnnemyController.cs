@@ -46,6 +46,7 @@ namespace Playmode.Ennemy
 		private HitSensor hitSensor;
 		private PickableSensor pickableSensor;
 		private HandController handController;
+		private SightController sightController;
 		private Transform transformer;
 		private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
@@ -101,8 +102,10 @@ namespace Playmode.Ennemy
 			hitSensor = rootTransform.GetComponentInChildren<HitSensor>();
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
 			handController = hand.GetComponent<HandController>();
+			sightController = sight.GetComponent<SightController>();
 			gameController = GameObject.FindWithTag(Tags.GameController).GetComponent<GameController>();
 			cameraController = GameObject.FindWithTag(Tags.MainCamera).GetComponent<CameraController>();
+			
 		}
 
 		private void CreateStartingWeapon()
@@ -137,7 +140,9 @@ namespace Playmode.Ennemy
 		public void Roam()
 		{
 			mover.Move(new Vector3(0, speed * Time.deltaTime));
-
+			handController.transform.rotation = transformer.rotation;
+			sightController.transform.rotation = transformer.rotation;
+		
 			if (gameController.IsObjectOutOfMap(transformer.gameObject))
 			{
 				transformer.rotation = Quaternion.Slerp(transformer.rotation, RotationToGo(),
@@ -184,15 +189,15 @@ namespace Playmode.Ennemy
 			{
 				case EnnemyStrategy.Careful:
 					typeSign.GetComponent<SpriteRenderer>().sprite = carefulSprite;
-					this.strategy = new CarefulStrategy(mover, ennemySensor, transformer, this,  gameController, pickableSensor);
+					this.strategy = new CarefulStrategy(mover, ennemySensor, transformer, this,  gameController,handController, pickableSensor);
 					break;
 				case EnnemyStrategy.Cowboy:
 					typeSign.GetComponent<SpriteRenderer>().sprite = cowboySprite;
-					this.strategy = new CowboyStrategy(mover, handController, ennemySensor, transformer, timedRotation, this, pickableSensor);
+					this.strategy = new CowboyStrategy(mover,ennemySensor, transformer, this, pickableSensor);
 					break;
 				case EnnemyStrategy.Camper:
 					typeSign.GetComponent<SpriteRenderer>().sprite = camperSprite;
-					this.strategy = new CamperStrategy(mover, handController, ennemySensor, transformer, this, gameController, pickableSensor);
+					this.strategy = new CamperStrategy(mover, ennemySensor, transformer, this,gameController,pickableSensor);
 					break;
 				default:
 					typeSign.GetComponent<SpriteRenderer>().sprite = normalSprite;
@@ -220,13 +225,14 @@ namespace Playmode.Ennemy
 
 			Debug.Log("Item picked up: " + type);
 
-			if (type == PickableTypes.Shotgun)
+			switch (type)
 			{
-				HoldWeapon(shotgunPrefab);
-			}
-			else if (type == PickableTypes.Uzi)
-			{
-				HoldWeapon(uziPrefab);
+				case PickableTypes.Shotgun:
+					HoldWeapon(shotgunPrefab);
+					break;
+				case PickableTypes.Uzi:
+					HoldWeapon(uziPrefab);
+					break;
 			}
 
 			pickable.gameObject.GetComponentInChildren<PickableUse>().Use(gameObject);
@@ -235,7 +241,7 @@ namespace Playmode.Ennemy
 
 		public void ShootTowardsTarget(Transform target)
 		{
-			mover.RotateTowardsTarget(target);
+			handController.AimTowards(target.gameObject);
 			handController.Use();
 		}
 
