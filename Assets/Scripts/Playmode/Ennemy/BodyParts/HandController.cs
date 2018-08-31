@@ -10,6 +10,7 @@ namespace Playmode.Ennemy.BodyParts
 	{
 		private Mover mover;
 		public WeaponController weaponController;
+		private SightController sightController;
 
 		private void Awake()
 		{
@@ -19,6 +20,7 @@ namespace Playmode.Ennemy.BodyParts
 		private void InitializeComponent()
 		{
 			mover = GetComponent<AnchoredMover>();
+			sightController = transform.parent.GetComponentInChildren<SightController>();
 		}
 		
 		public void Hold(GameObject gameObject)
@@ -40,8 +42,16 @@ namespace Playmode.Ennemy.BodyParts
 
 		public void AimTowards(GameObject target)
 		{
-			//TODO : Utilisez ce que vous savez des vecteurs(rien) pour implémenter cette méthode
-			throw new NotImplementedException();
+			var vectorBetweenEnemy = new Vector3(transform.position.x - target.transform.position.x, transform.position.y - target.transform.position.y);
+			if (Vector3.Dot(vectorBetweenEnemy, transform.right) < -0.5)
+			{
+				transform.Rotate(Vector3.forward,-1);
+			}
+			else if (Vector3.Dot(vectorBetweenEnemy, transform.right) > 0.5)
+			{
+				transform.Rotate(Vector3.forward,1);
+			}
+			sightController.CheckTowards(target);
 		}
 
 		public void Use()

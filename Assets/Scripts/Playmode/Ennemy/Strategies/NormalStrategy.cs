@@ -17,6 +17,7 @@ namespace Playmode.Ennemy.Strategies
 		private GameObject target;
 		private Transform enemyTransformer;
 		private float distanceBetweenEnemy;
+		private float maxDistanceBetweenEnemy = 5f;
 
 		public NormalStrategy(Mover mover, HandController handController, EnnemySensor enemySensor,
 			Transform transformer, TimedRotation timedRotation, EnnemyController enemyController)
@@ -46,15 +47,15 @@ namespace Playmode.Ennemy.Strategies
 			if (target != null)
 			{
 				distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
-				if (distanceBetweenEnemy <= 3f)
+				if (distanceBetweenEnemy <= maxDistanceBetweenEnemy)
 				{
-					mover.RotateTowardsTarget(target.transform);
+					enemyController.ShootTowardsTarget(target.transform);
+				    mover.Move(Vector3.left);
 				}
 				else
 				{
 					mover.MoveTowardsTarget(target.transform);
-				}
-
+				}				
 				handController.Use();
 			}
 			else

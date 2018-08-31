@@ -11,6 +11,7 @@ namespace Playmode
 
 		public event WaterCollisionEventHandler OnEnter;
 		public event WaterCollisionEventHandler OnExit;
+		public event WaterCollisionEventHandler OnStay;
 
 		private void NotifyEnter()
 		{
@@ -22,13 +23,18 @@ namespace Playmode
 			if (OnExit != null) OnExit();
 		}
 
+		private void NotifyStay()
+		{
+			if (OnStay != null) OnStay();
+		}
+
 		private void OnTriggerEnter2D(Collider2D other)
 		{
 			if (other.GetComponent<HitSensor>() == null) return;
 			NotifyEnter();
 		}
 
-		private void OnTriggerExit(Collider other)
+		private void OnTriggerExit2D(Collider2D other)
 		{
 			if (other.GetComponent<HitSensor>() == null) return;
 			NotifyExit();

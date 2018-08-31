@@ -12,7 +12,6 @@ namespace Playmode.Ennemy.Strategies
 	{
 
 		private readonly Mover mover;
-		private readonly HandController handController;
 		private readonly EnnemyController enemyController;
 		private EnnemySensor enemySensor;
 		private PickableSensor pickableSensor;
@@ -24,12 +23,11 @@ namespace Playmode.Ennemy.Strategies
 		[SerializeField] private const float maxDistanceWantedBetweenEnemy = 6;
 		[SerializeField] private const float minLifeBeforeSearchingMedKit = 50;
 
-		public CowboyStrategy(Mover mover, HandController handController, EnnemySensor enemySensor,
-			Transform transformer, TimedRotation timedRotation, EnnemyController enemyController,
+		public CowboyStrategy(Mover mover, EnnemySensor enemySensor,
+			Transform transformer, EnnemyController enemyController,
 			PickableSensor pickableSensor)
 		{
 			this.mover = mover;
-			this.handController = handController;
 
 			this.enemyTransformer = transformer;
 			this.enemySensor = enemySensor;

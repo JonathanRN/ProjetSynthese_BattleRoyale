@@ -47,6 +47,7 @@
             <e p="Ennemy" t="Include">
               <e p="BodyParts" t="Include">
                 <e p="HandController.cs" t="Include" />
+                <e p="SightController.cs" t="Include" />
               </e>
               <e p="EnnemyController.cs" t="Include" />
               <e p="EnnemySpawner.cs" t="Include" />
@@ -111,6 +112,7 @@
                 <e p="Tags.cs" t="Include" />
               </e>
             </e>
+            <e p="WallController.cs" t="Include" />
             <e p="Weapon" t="Include">
               <e p="WeaponController.cs" t="Include" />
             </e>
