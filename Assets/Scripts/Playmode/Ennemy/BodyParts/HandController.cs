@@ -57,5 +57,10 @@ namespace Playmode.Ennemy.BodyParts
 				Destroy(transform.GetChild(i).gameObject);
 			}
 		}
+
+		public WeaponController GetCurrentHoldingWeapon()
+		{
+			return weaponController != null ? weaponController : null;
+		}
 	}
 }

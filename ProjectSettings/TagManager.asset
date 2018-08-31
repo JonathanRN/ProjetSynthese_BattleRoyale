@@ -9,6 +9,7 @@ TagManager:
   - PickableSpawner
   - Sight
   - Enemy
+  - Background
   layers:
   - Default
   - TransparentFX

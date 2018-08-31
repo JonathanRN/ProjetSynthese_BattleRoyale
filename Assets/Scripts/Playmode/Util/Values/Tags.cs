@@ -8,6 +8,7 @@
 		public const string Pickable = "Pickable";
         public const string PickableSpawner = "PickableSpawner";
         public const string Enemy = "Enemy";
-        
+        public const string Background = "Background";
+
     }
 }
