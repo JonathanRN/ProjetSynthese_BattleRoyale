@@ -45,6 +45,7 @@
             </e>
             <e p="CameraController.cs" t="Include" />
             <e p="Ennemy" t="Include">
+              <e p="BloodSplashController.cs" t="Include" />
               <e p="BodyParts" t="Include">
                 <e p="HandController.cs" t="Include" />
                 <e p="SightController.cs" t="Include" />
@@ -90,6 +91,7 @@
                 <e p="MedicalKitController.cs" t="Include" />
                 <e p="ShotgunController.cs" t="Include" />
                 <e p="UziController.cs" t="Include" />
+                <e p="WeaponChange.cs" t="Include" />
               </e>
               <e p="PickableController.cs" t="Include" />
               <e p="PickableSensor.cs" t="Include" />
@@ -113,6 +115,7 @@
               </e>
             </e>
             <e p="WallController.cs" t="Include" />
+            <e p="WaterController.cs" t="Include" />
             <e p="Weapon" t="Include">
               <e p="WeaponController.cs" t="Include" />
             </e>

@@ -17,6 +17,7 @@ namespace Playmode.Ennemy.Strategies
 		private GameObject target;
 		private readonly Transform enemyTransformer;
 		private float distanceBetweenEnemy;
+		private float speedWhenBacking = 2;
 		private bool isOutOfMap;
 		private bool needMedKit;
 		private GameObject pickable;
@@ -71,7 +72,6 @@ namespace Playmode.Ennemy.Strategies
 				if (target != null)
 				{
 					BackFromEnemyIfTooClose();
-					mover.Move(Vector3.right);
 					enemyController.ShootTowardsTarget(target.transform);
 				}
 				else if(enemyController.IsUnderFire)
@@ -116,10 +116,16 @@ namespace Playmode.Ennemy.Strategies
 		{
 			distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
 
-			if (!(distanceBetweenEnemy < maxDistanceWantedBetweenEnemy)) return;
-
-			mover.RotateTowardsTarget(target.transform);
-			mover.Move(new Vector3(0,-1));
+			if ((distanceBetweenEnemy < maxDistanceWantedBetweenEnemy))
+			{
+				mover.RotateTowardsTarget(target.transform);
+				mover.MoveSpeed = speedWhenBacking;
+				mover.Move(new Vector3(0,-1));
+			}
+			else
+			{
+				mover.MoveTowardsTarget(target.transform);
+			}
 				
 		}
 	}

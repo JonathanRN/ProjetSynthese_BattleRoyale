@@ -59,10 +59,19 @@ namespace Playmode.Ennemy.Strategies
 
 		public void Act()
 		{
+			
 			if (HasTarget())
 			{
-				enemyController.ShootTowardsTarget(target.transform);
-				mover.Move(Vector3.right);
+				distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
+				if (distanceBetweenEnemy < maxDistanceWantedBetweenEnemy)
+				{
+					mover.Move(Vector3.right);
+				}
+				else
+				{
+					mover.MoveTowardsTarget(target.transform);
+				}
+				enemyController.ShootTowardsTarget(target.transform);			
 			}
 			else if(enemyController.IsUnderFire)
 			{
