@@ -1,12 +1,12 @@
-﻿using Playmode.Ennemy;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ShotgunController : PickableUse
+namespace Playmode.Pickables.Objects
 {
-	public override void Use(GameObject enemy)
+	public class ShotgunController : PickableUse
 	{
+		public override void Use(GameObject enemy)
+		{
 		
+		}
 	}
 }

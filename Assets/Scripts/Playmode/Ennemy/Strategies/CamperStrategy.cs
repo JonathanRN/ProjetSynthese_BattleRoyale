@@ -81,6 +81,7 @@ namespace Playmode.Ennemy.Strategies
 				if (DoesEnemyNeedMedKit())
 				{
 					PickUpSavedMedKit();
+					ResetAct();
 				}
 				else if (target != null)
 				{

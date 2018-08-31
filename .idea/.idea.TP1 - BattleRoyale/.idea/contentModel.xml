@@ -47,6 +47,7 @@
             <e p="Bullet" t="Include">
               <e p="BulletController.cs" t="Include" />
             </e>
+            <e p="CameraController.cs" t="Include" />
             <e p="Ennemy" t="Include">
               <e p="BodyParts" t="Include">
                 <e p="HandController.cs" t="Include" />
@@ -57,6 +58,7 @@
               <e p="Strategies" t="Include">
                 <e p="CamperStrategy.cs" t="Include" />
                 <e p="CarefulStrategy.cs" t="Include" />
+                <e p="CowboyStrategy.cs" t="Include" />
                 <e p="IdleStrategy.cs" t="Include" />
                 <e p="IEnnemyStrategy.cs" t="Include" />
                 <e p="NormalStrategy.cs" t="Include" />
@@ -85,6 +87,7 @@
                 <e p="Health.cs" t="Include" />
               </e>
             </e>
+            <e p="GameController.cs" t="Include" />
             <e p="Pickables" t="Include">
               <e p="Objects" t="Include">
                 <e p="MedicalKitController.cs" t="Include" />
@@ -115,10 +118,14 @@
             <e p="Weapon" t="Include">
               <e p="WeaponController.cs" t="Include" />
             </e>
+            <e p="ZoneShrinkingTimer.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="HeadOnDisplay" t="Include">
               <e p="DropTimerController.cs" t="Include" />
+              <e p="NextZoneTimerController.cs" t="Include" />
+              <e p="NumberOfPlayerLeftController.cs" t="Include" />
+              <e p="WinnerController.cs" t="Include" />
             </e>
           </e>
         </e>

@@ -33,9 +33,11 @@ namespace Playmode.Ennemy
 		[SerializeField] private GameObject uziPrefab;
 
 		[Header("Variables")] [SerializeField] public float outOfRangeRotationSpeed = 5f;
-
 		[SerializeField] public float speed = 10f;
+		[SerializeField] public float waterSpeed = 1f;
+		
 		public float senseRotation = 1f;
+		private float originalMoveSpeed;
 
 		private float randomBehaviour;
 		public Health Health { get; set; }
@@ -50,6 +52,7 @@ namespace Playmode.Ennemy
 		private Transform transformer;
 		private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
+		private WaterController waterController;
 
 		private GameController gameController;
 		private CameraController cameraController;
@@ -105,7 +108,9 @@ namespace Playmode.Ennemy
 			sightController = sight.GetComponent<SightController>();
 			gameController = GameObject.FindWithTag(Tags.GameController).GetComponent<GameController>();
 			cameraController = GameObject.FindWithTag(Tags.MainCamera).GetComponent<CameraController>();
-			
+			waterController = GameObject.FindWithTag(Tags.Background).GetComponentInChildren<WaterController>();
+
+			originalMoveSpeed = mover.MoveSpeed;
 		}
 
 		private void CreateStartingWeapon()
@@ -123,6 +128,17 @@ namespace Playmode.Ennemy
 			hitSensor.OnHit += OnHit;
 			Health.OnDeath += OnDeath;
 			pickableSensor.OnPickUp += OnPickUp;
+			waterController.OnEnter += OnEnterWater;
+			waterController.OnExit += OnExitWater;
+		}
+		
+		private void OnDisable()
+		{
+			hitSensor.OnHit -= OnHit;
+			Health.OnDeath -= OnDeath;
+			pickableSensor.OnPickUp -= OnPickUp;
+			waterController.OnEnter -= OnEnterWater;
+			waterController.OnExit -= OnExitWater;
 		}
 
 		private void OnRotationChanged()
@@ -173,13 +189,6 @@ namespace Playmode.Ennemy
 			mover.Rotate(Mover.Clockwise);
 		}
 
-		private void OnDisable()
-		{
-			hitSensor.OnHit -= OnHit;
-			Health.OnDeath -= OnDeath;
-			pickableSensor.OnPickUp -= OnPickUp;
-		}
-
 		public void Configure(EnnemyStrategy strategy, Color color)
 		{
 			body.GetComponent<SpriteRenderer>().color = color;
@@ -211,7 +220,7 @@ namespace Playmode.Ennemy
 			Health.Hit(hitPoints);
 			IsUnderFire = true;
 
-			Instantiate(hitParticlesPrefab, transformer.position, transformer.rotation);
+			Instantiate(hitParticlesPrefab, transformer.position, transformer.rotation, transformer);
 		}
 
 		private void OnDeath()
@@ -221,22 +230,29 @@ namespace Playmode.Ennemy
 
 		private void OnPickUp(GameObject pickable)
 		{
-			var type = pickable.GetComponentInChildren<PickableType>().GetType();
-
-			Debug.Log("Item picked up: " + type);
-
-			switch (type)
+			var type = pickable.GetComponentInChildren<PickableType>();
+			
+			if (type.GetType() == PickableTypes.Shotgun)
 			{
-				case PickableTypes.Shotgun:
-					HoldWeapon(shotgunPrefab);
-					break;
-				case PickableTypes.Uzi:
-					HoldWeapon(uziPrefab);
-					break;
+				HoldWeapon(shotgunPrefab);
+			}
+			else if (type.GetType() == PickableTypes.Uzi)
+			{
+				HoldWeapon(uziPrefab);
 			}
 
 			pickable.gameObject.GetComponentInChildren<PickableUse>().Use(gameObject);
 			Destroy(pickable.gameObject);
+		}
+
+		private void OnEnterWater()
+		{
+			mover.MoveSpeed = waterSpeed;
+		}
+
+		private void OnExitWater()
+		{
+			mover.MoveSpeed = originalMoveSpeed;
 		}
 
 		public void ShootTowardsTarget(Transform target)
