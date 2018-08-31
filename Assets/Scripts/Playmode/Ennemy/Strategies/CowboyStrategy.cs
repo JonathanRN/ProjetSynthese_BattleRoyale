@@ -62,6 +62,7 @@ namespace Playmode.Ennemy.Strategies
 			if (HasTarget())
 			{
 				enemyController.ShootTowardsTarget(target.transform);
+				mover.Move(Vector3.right);
 			}
 			else if(enemyController.IsUnderFire)
 			{

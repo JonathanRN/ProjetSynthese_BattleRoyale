@@ -71,7 +71,7 @@ namespace Playmode.Ennemy.Strategies
 				if (target != null)
 				{
 					BackFromEnemyIfTooClose();
-
+					mover.Move(Vector3.right);
 					enemyController.ShootTowardsTarget(target.transform);
 				}
 				else if(enemyController.IsUnderFire)
@@ -120,10 +120,6 @@ namespace Playmode.Ennemy.Strategies
 
 			mover.RotateTowardsTarget(target.transform);
 			mover.Move(new Vector3(0,-1));
-			if (Random.Range(-1, 2) == 1)
-			{
-				mover.Move(Vector3.right);
-			}
 				
 		}
 	}
