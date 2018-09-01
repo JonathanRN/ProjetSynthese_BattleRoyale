@@ -11,6 +11,7 @@ namespace Playmode.Movement
         
         public float MoveSpeed = 4;
         [SerializeField] protected float rotateSpeed = 200f;
+        [SerializeField] protected float outOfRangeRotationSpeed = 5f;
 
         protected void Awake()
         {
@@ -32,6 +33,10 @@ namespace Playmode.Movement
         public abstract void MoveTowardsTarget(Transform target);
 
         public abstract void RotateTowardsTarget(Transform target);
+
+        public abstract void RotateTowardsARotation(Quaternion rotation);
+
+        public abstract void HitReact();
 
     }
 }

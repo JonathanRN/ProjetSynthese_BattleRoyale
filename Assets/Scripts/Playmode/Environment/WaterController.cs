@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Playmode.Entity.Senses;
+﻿using Playmode.Entity.Senses;
 using UnityEngine;
 
-namespace Playmode
+namespace Playmode.Environment
 {
 	public delegate void WaterCollisionEventHandler();
 

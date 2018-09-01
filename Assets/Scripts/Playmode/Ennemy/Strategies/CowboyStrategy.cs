@@ -42,6 +42,7 @@ namespace Playmode.Ennemy.Strategies
 
 		private void OnEnnemySeen(EnnemyController ennemy)
 		{
+			if (target != null) return;
 			target = ennemy.gameObject;
 		}
 
@@ -75,7 +76,7 @@ namespace Playmode.Ennemy.Strategies
 			}
 			else if(enemyController.IsUnderFire)
 			{
-				enemyController.HitReact();
+				mover.HitReact();
 			}
 			else if (IsPickableAWeapon())
 			{

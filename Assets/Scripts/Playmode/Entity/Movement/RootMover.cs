@@ -50,5 +50,16 @@ namespace Playmode.Movement
             }
             
         }
+
+        public override void RotateTowardsARotation(Quaternion rotation)
+        {
+            rootTransform.rotation = Quaternion.Slerp(rootTransform.rotation, rotation,
+                Time.deltaTime * outOfRangeRotationSpeed);
+        }
+
+        public override void HitReact()
+        {
+            Rotate(Clockwise);
+        }
     }
 }

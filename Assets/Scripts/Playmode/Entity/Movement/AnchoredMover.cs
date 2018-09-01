@@ -50,5 +50,15 @@ namespace Playmode.Movement
                 Rotate(-1f * Time.deltaTime);
             }
         }
+
+        public override void RotateTowardsARotation(Quaternion rotation)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void HitReact()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
