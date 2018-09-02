@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Kevin\.Rider2018.1\system\resharper-host\Local\Transient\ReSharperHost\v12\SolutionCaches\_TP1---BattleRoyale.-956050351.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Kevin\Documents\Unity Projects\TP1---BattleRoyale" t="IncludeRecursive">
+    <e p="C:\Users\Utilisateur\.Rider2018.1\system\resharper-host\Local\Transient\ReSharperHost\v12\SolutionCaches\_TP1---BattleRoyale.1022680436.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Utilisateur\Desktop\Programmation\TP1---BattleRoyale" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -43,7 +43,6 @@
             <e p="Bullet" t="Include">
               <e p="BulletController.cs" t="Include" />
             </e>
-            <e p="CameraController.cs" t="Include" />
             <e p="Ennemy" t="Include">
               <e p="BloodSplashController.cs" t="Include" />
               <e p="BodyParts" t="Include">
@@ -85,7 +84,13 @@
                 <e p="Health.cs" t="Include" />
               </e>
             </e>
-            <e p="GameController.cs" t="Include" />
+            <e p="Environment" t="Include">
+              <e p="CameraController.cs" t="Include" />
+              <e p="GameController.cs" t="Include" />
+              <e p="WallController.cs" t="Include" />
+              <e p="WaterController.cs" t="Include" />
+              <e p="ZoneShrinkingTimer.cs" t="Include" />
+            </e>
             <e p="Pickables" t="Include">
               <e p="Objects" t="Include">
                 <e p="MedicalKitController.cs" t="Include" />
@@ -114,12 +119,9 @@
                 <e p="Tags.cs" t="Include" />
               </e>
             </e>
-            <e p="WallController.cs" t="Include" />
-            <e p="WaterController.cs" t="Include" />
             <e p="Weapon" t="Include">
               <e p="WeaponController.cs" t="Include" />
             </e>
-            <e p="ZoneShrinkingTimer.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="HeadOnDisplay" t="Include">

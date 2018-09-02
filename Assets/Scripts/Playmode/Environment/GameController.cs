@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Playmode.Util.Values;
+﻿using Playmode.Util.Values;
 using UnityEngine;
 
-namespace Playmode
+namespace Playmode.Environment
 {
 	public class GameController : MonoBehaviour
 	{

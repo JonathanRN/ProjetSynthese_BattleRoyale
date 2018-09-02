@@ -5,6 +5,7 @@ using Playmode.Ennemy.Strategies;
 using Playmode.Entity.Destruction;
 using Playmode.Entity.Senses;
 using Playmode.Entity.Status;
+using Playmode.Environment;
 using Playmode.Movement;
 using Playmode.Util.Values;
 using Playmode.Weapon;
@@ -157,8 +158,7 @@ namespace Playmode.Ennemy
 
 			if (gameController.IsObjectOutOfMap(transformer.gameObject))
 			{
-				transformer.rotation = Quaternion.Slerp(transformer.rotation, RotationToGo(),
-					Time.deltaTime * outOfRangeRotationSpeed);
+				mover.RotateTowardsARotation(RotationToGo());
 			}
 			else if (randomBehaviour > 0)
 			{
@@ -179,11 +179,6 @@ namespace Playmode.Ennemy
 			if (transformer.position.y <= -cameraController.CameraHalfHeight)
 				return rotationUp;
 			return transformer.position.x >= cameraController.CameraHalfWidth ? rotationLeft : rotationRight;
-		}
-
-		public void HitReact()
-		{
-			mover.Rotate(Mover.Clockwise);
 		}
 
 		public void Configure(EnnemyStrategy strategy, Color color)

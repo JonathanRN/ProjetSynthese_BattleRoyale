@@ -4,6 +4,7 @@ using UnityEngine;
 using Playmode.Ennemy.BodyParts;
 using Playmode.Movement;
 using Playmode.Entity.Senses;
+using Playmode.Environment;
 using Playmode.Util.Values;
 
 namespace Playmode.Ennemy.Strategies
@@ -49,6 +50,7 @@ namespace Playmode.Ennemy.Strategies
 
 		private void OnEnnemySeen(EnnemyController ennemy)
 		{
+			if (target != null) return;
 			target = ennemy.gameObject;
 		}
 
@@ -80,7 +82,7 @@ namespace Playmode.Ennemy.Strategies
 				}
 				else if(enemyController.IsUnderFire)
 				{
-					enemyController.HitReact();
+					mover.HitReact();
 				}
 				else if(IsPickableAWeapon())
 				{

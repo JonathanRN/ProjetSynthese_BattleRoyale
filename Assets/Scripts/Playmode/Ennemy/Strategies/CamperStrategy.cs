@@ -4,6 +4,7 @@ using Playmode.Ennemy;
 using Playmode.Ennemy.BodyParts;
 using Playmode.Ennemy.Strategies;
 using Playmode.Entity.Senses;
+using Playmode.Environment;
 using Playmode.Movement;
 using UnityEngine;
 
@@ -40,6 +41,7 @@ namespace Playmode.Ennemy.Strategies
 
 		private void OnEnnemySeen(EnnemyController ennemy)
 		{
+			if (target != null) return;
 			target = ennemy.gameObject;
 		}
 
