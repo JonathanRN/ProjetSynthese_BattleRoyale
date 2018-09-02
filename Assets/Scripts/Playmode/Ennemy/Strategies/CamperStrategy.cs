@@ -10,54 +10,14 @@ using UnityEngine;
 
 namespace Playmode.Ennemy.Strategies
 {
-	public class CamperStrategy : IEnnemyStrategy
+	public class CamperStrategy : BaseEnnemyStrategy
 	{
-		private readonly Mover mover;
-		private EnnemyController enemyController;
-		private GameController gameController;
-		private GameObject target;
-		private Transform enemyTransformer;
-		private GameObject pickable;
-		private PickableType pickableType;
-
 		private float currentRotationDirection = 1f;
 		private bool isNextToMedKit;
 		private GameObject savedMedKit;
 		private const int MinimumDistanceToPickable = 2;
 
-		public CamperStrategy(Mover mover, EnnemySensor enemySensor,
-			Transform transformer, EnnemyController enemyController, GameController gameController,
-			PickableSensor pickableSensor)
-		{
-			this.mover = mover;
-			this.enemyTransformer = transformer;
-			this.enemyController = enemyController;
-			this.gameController = gameController;
-
-			enemySensor.OnEnnemySeen += OnEnnemySeen;
-			enemySensor.OnEnnemySightLost += OnEnnemySightLost;
-			pickableSensor.OnPickableSeen += OnPickableSeen;
-		}
-
-		private void OnEnnemySeen(EnnemyController ennemy)
-		{
-			if (target != null) return;
-			target = ennemy.gameObject;
-		}
-
-		private void OnEnnemySightLost(EnnemyController ennemy)
-		{
-			target = null;
-		}
-
-		private void OnPickableSeen(GameObject pickable)
-		{
-			Debug.Log("I've seen a " + pickable.GetComponentInChildren<PickableType>().GetType());
-			pickableType = pickable.GetComponentInChildren<PickableType>();
-			this.pickable = pickable;
-		}
-
-		public void Act()
+		protected override void Act()
 		{
 			/*Trouillard. Tente en premier lieu de trouver un MedicalKit. Une fois trouvé, il s’installe à côté
 			et commence à tirer sur tout ce qui passe dans son champ de vision, sans bouger. Si sa vie
@@ -95,7 +55,7 @@ namespace Playmode.Ennemy.Strategies
 				}
 			}
 
-			if (gameController.IsObjectOutOfMap(enemyTransformer.gameObject))
+			if (gameController.IsObjectOutOfMap(transform.gameObject))
 			{
 				ResetAct();
 			}
@@ -130,7 +90,7 @@ namespace Playmode.Ennemy.Strategies
 			
 			mover.MoveTowardsTarget(pickable.transform);
 
-			isNextToMedKit = (Vector3.Distance(enemyTransformer.root.position, pickable.transform.position) < MinimumDistanceToPickable);
+			isNextToMedKit = (Vector3.Distance(transform.root.position, pickable.transform.position) < MinimumDistanceToPickable);
 			savedMedKit = pickable;
 		}
 		

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Playmode.Ennemy.Strategies
 {
-	public class IdleStrategy : IEnnemyStrategy
+	public class IdleStrategy : BaseEnnemyStrategy
 	{
 
 		private readonly Mover mover;

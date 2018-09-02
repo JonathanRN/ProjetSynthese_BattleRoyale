@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Playmode.Ennemy.Strategies
 {
-    public class TurnAndShootStragegy : IEnnemyStrategy
+    public class TurnAndShootStragegy : BaseEnnemyStrategy
     {
         private readonly Mover mover;
         private readonly HandController handController;

@@ -53,11 +53,11 @@
               <e p="EnnemySpawner.cs" t="Include" />
               <e p="HealthBarController.cs" t="Include" />
               <e p="Strategies" t="Include">
+                <e p="BaseEnnemyStrategy.cs" t="Include" />
                 <e p="CamperStrategy.cs" t="Include" />
                 <e p="CarefulStrategy.cs" t="Include" />
                 <e p="CowboyStrategy.cs" t="Include" />
                 <e p="IdleStrategy.cs" t="Include" />
-                <e p="IEnnemyStrategy.cs" t="Include" />
                 <e p="NormalStrategy.cs" t="Include" />
                 <e p="TurnAndShootStragegy.cs" t="Include" />
               </e>
@@ -98,12 +98,12 @@
                 <e p="UziController.cs" t="Include" />
                 <e p="WeaponChange.cs" t="Include" />
               </e>
+              <e p="Pickable.cs" t="Include" />
               <e p="PickableController.cs" t="Include" />
               <e p="PickableSensor.cs" t="Include" />
               <e p="PickableSpawner.cs" t="Include" />
               <e p="PickableStimulus.cs" t="Include" />
               <e p="PickableType.cs" t="Include" />
-              <e p="PickableUse.cs" t="Include" />
             </e>
             <e p="Util" t="Include">
               <e p="Collections" t="Include">
@@ -119,6 +119,8 @@
                 <e p="Tags.cs" t="Include" />
               </e>
             </e>
+            <e p="WallController.cs" t="Include" />
+            <e p="WaterZone.cs" t="Include" />
             <e p="Weapon" t="Include">
               <e p="WeaponController.cs" t="Include" />
             </e>

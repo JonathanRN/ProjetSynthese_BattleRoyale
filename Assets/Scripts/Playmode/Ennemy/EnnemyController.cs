@@ -59,7 +59,7 @@ namespace Playmode.Ennemy
 		private GameController gameController;
 		private CameraController cameraController;
 
-		private IEnnemyStrategy strategy;
+		private BaseEnnemyStrategy strategy;
 		private Coroutine underFireRoutine;
 
 		private void Awake()
@@ -145,11 +145,6 @@ namespace Playmode.Ennemy
 			senseRotation *= -1;
 		}
 
-		private void Update()
-		{
-			strategy.Act();
-		}
-
 		public void Roam()
 		{
 			mover.Move(new Vector3(0, speed * Time.deltaTime));
@@ -190,45 +185,19 @@ namespace Playmode.Ennemy
 			{
 				case EnnemyStrategy.Careful:
 					typeSign.GetComponent<SpriteRenderer>().sprite = carefulSprite;
-					this.strategy = new CarefulStrategy(
-						mover,
-						ennemySensor,
-						transformer,
-						this,
-						gameController,
-						handController,
-						pickableSensor
-					);
+					gameObject.AddComponent<CarefulStrategy>();
 					break;
 				case EnnemyStrategy.Cowboy:
 					typeSign.GetComponent<SpriteRenderer>().sprite = cowboySprite;
-					this.strategy = new CowboyStrategy(
-						mover, 
-						ennemySensor, 
-						transformer, 
-						this, 
-						pickableSensor
-					);
+					gameObject.AddComponent<CowboyStrategy>();
 					break;
 				case EnnemyStrategy.Camper:
 					typeSign.GetComponent<SpriteRenderer>().sprite = camperSprite;
-					this.strategy = new CamperStrategy(mover, 
-						ennemySensor, 
-						transformer, 
-						this, 
-						gameController,
-						pickableSensor
-					);
+					gameObject.AddComponent<CamperStrategy>();
 					break;
 				default:
 					typeSign.GetComponent<SpriteRenderer>().sprite = normalSprite;
-					this.strategy = new NormalStrategy(mover, 
-						handController, 
-						ennemySensor, 
-						transformer, 
-						timedRotation,
-						this
-					);
+					gameObject.AddComponent<NormalStrategy>();
 					break;
 			}
 		}
@@ -283,6 +252,11 @@ namespace Playmode.Ennemy
 		public void ShootTowardsTarget(Transform target)
 		{
 			handController.AimTowards(target.gameObject);
+			handController.Use();
+		}
+		
+		public void Shoot()
+		{
 			handController.Use();
 		}
 

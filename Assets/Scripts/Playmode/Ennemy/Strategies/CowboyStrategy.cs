@@ -8,63 +8,14 @@ using Playmode.Util.Values;
 
 namespace Playmode.Ennemy.Strategies
 {
-	public class CowboyStrategy : IEnnemyStrategy
+	public class CowboyStrategy : BaseEnnemyStrategy
 	{
-
-		private readonly Mover mover;
-		private readonly EnnemyController enemyController;
-		private EnnemySensor enemySensor;
-		private PickableSensor pickableSensor;
-		private GameObject target;
-		private readonly Transform enemyTransformer;
-		private float distanceBetweenEnemy;
-		private GameObject pickable;
-		private PickableType pickableType;
-		[SerializeField] private const float maxDistanceWantedBetweenEnemy = 6;
-		[SerializeField] private const float minLifeBeforeSearchingMedKit = 50;
-
-		public CowboyStrategy(Mover mover, EnnemySensor enemySensor,
-			Transform transformer, EnnemyController enemyController,
-			PickableSensor pickableSensor)
-		{
-			this.mover = mover;
-
-			this.enemyTransformer = transformer;
-			this.enemySensor = enemySensor;
-			this.pickableSensor = pickableSensor;
-			this.enemyController = enemyController;
-
-			enemySensor.OnEnnemySeen += OnEnnemySeen;
-			enemySensor.OnEnnemySightLost += OnEnnemySightLost;
-			pickableSensor.OnPickableSeen += OnPickableSeen;
-
-		}
-
-		private void OnEnnemySeen(EnnemyController ennemy)
-		{
-			if (target != null) return;
-			target = ennemy.gameObject;
-		}
-
-		private void OnEnnemySightLost(EnnemyController ennemy)
-		{
-			target = null;
-		}
-
-		private void OnPickableSeen(GameObject pickable)
-		{
-			Debug.Log("I've seen a " + pickable.GetComponentInChildren<PickableType>().GetType());
-			pickableType = pickable.GetComponentInChildren<PickableType>();
-			this.pickable = pickable;
-		}
-
-		public void Act()
+		protected override void Act()
 		{
 			
 			if (HasTarget())
 			{
-				distanceBetweenEnemy = Vector3.Distance(enemyTransformer.position, target.transform.position);
-				if (distanceBetweenEnemy < maxDistanceWantedBetweenEnemy)
+				if (distanceBetweenEnemy < maxDistanceBetweenEnemy)
 				{
 					mover.Move(Vector3.right);
 				}
