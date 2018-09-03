@@ -19,7 +19,7 @@ namespace Playmode.Ennemy.BodyParts
 
 		private void InitializeComponent()
 		{
-			mover = GetComponent<AnchoredMover>();
+			mover = GetComponent<RootMover>();
 			sightController = transform.parent.GetComponentInChildren<SightController>();
 		}
 		
@@ -42,16 +42,25 @@ namespace Playmode.Ennemy.BodyParts
 
 		public void AimTowards(GameObject target)
 		{
-			var vectorBetweenEnemy = new Vector3(transform.position.x - target.transform.position.x, transform.position.y - target.transform.position.y);
-			if (Vector3.Dot(vectorBetweenEnemy, transform.right) < -0.5)
+			if (!DoesEnemyAimHimself())
 			{
-				transform.Rotate(Vector3.forward,-1);
+				var vectorBetweenEnemy = new Vector3(transform.position.x - target.transform.position.x,
+					transform.position.y - target.transform.position.y);
+				if (Vector3.Dot(vectorBetweenEnemy, transform.right) < -0.5)
+				{
+					transform.Rotate(Vector3.forward, -1);
+				}
+				else if (Vector3.Dot(vectorBetweenEnemy, transform.right) > 0.5)
+				{
+					transform.Rotate(Vector3.forward, 1);
+				}
+
+				sightController.CheckTowards(target);
 			}
-			else if (Vector3.Dot(vectorBetweenEnemy, transform.right) > 0.5)
+			else
 			{
-				transform.Rotate(Vector3.forward,1);
+				transform.parent.rotation = transform.rotation;
 			}
-			sightController.CheckTowards(target);
 		}
 
 		public void Use()
@@ -71,6 +80,11 @@ namespace Playmode.Ennemy.BodyParts
 		public WeaponController GetCurrentHoldingWeapon()
 		{
 			return weaponController != null ? weaponController : null;
+		}
+
+		private bool DoesEnemyAimHimself()
+		{
+			return transform.rotation.z > 145 || transform.rotation.z < -145;
 		}
 	}
 }

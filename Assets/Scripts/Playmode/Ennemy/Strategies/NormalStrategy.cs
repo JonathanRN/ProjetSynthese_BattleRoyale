@@ -11,10 +11,16 @@ namespace Playmode.Ennemy.Strategies
 {
 	public class NormalStrategy : BaseEnnemyStrategy
 	{
-		
+		private void Start()
+		{
+			maxDistanceBetweenEnemy = 3f;
+		}
+
 		protected override void Act()
 		{
-			if (target != null)
+			CalculateDistanceBetweenEnemies();
+			
+			if (HasTarget())
 			{				
 				if (distanceBetweenEnemy <= maxDistanceBetweenEnemy)
 				{

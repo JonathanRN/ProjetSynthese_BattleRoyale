@@ -11,7 +11,7 @@ namespace Playmode.Ennemy.Strategies
     {
         protected Mover mover;
         protected EnnemyController enemyController;
-        protected GameController gameController;
+        protected CameraController cameraController;
         protected EnnemySensor enemySensor;
         protected GameObject target;
         protected PickableSensor pickableSensor;
@@ -25,7 +25,7 @@ namespace Playmode.Ennemy.Strategies
         {
             mover = GetComponent<RootMover>();
             enemyController = GetComponent<EnnemyController>();
-            gameController = GameObject.FindWithTag(Tags.GameController).GetComponent<GameController>();
+            cameraController = GameObject.FindWithTag(Tags.MainCamera).GetComponent<CameraController>();
             pickableSensor = transform.root.GetComponentInChildren<PickableSensor>();
             enemySensor = transform.root.GetComponentInChildren<EnnemySensor>();
             
@@ -41,10 +41,7 @@ namespace Playmode.Ennemy.Strategies
         
         protected virtual void Act()
         {
-            if (target != null)
-            {
-                distanceBetweenEnemy = Vector3.Distance(transform.position, target.transform.position);
-            }
+ 
         }
         
         protected void OnEnnemySeen(EnnemyController ennemy)
@@ -62,6 +59,24 @@ namespace Playmode.Ennemy.Strategies
             Debug.Log("I've seen a " + pickable.GetComponentInChildren<PickableType>().GetType());
             pickableType = pickable.GetComponentInChildren<PickableType>();
             this.pickable = pickable;
+        }
+        
+        protected bool IsPickableAWeapon()
+        {
+            return pickable != null && pickableType.IsWeapon();
+        }
+
+        protected void CalculateDistanceBetweenEnemies()
+        {
+            if (HasTarget())
+            {
+                distanceBetweenEnemy = Vector3.Distance(transform.position, target.transform.position);
+            }
+        }
+        
+        protected bool HasTarget()
+        {
+            return target != null;
         }
     }
 

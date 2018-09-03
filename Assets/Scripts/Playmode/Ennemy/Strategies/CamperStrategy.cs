@@ -55,7 +55,7 @@ namespace Playmode.Ennemy.Strategies
 				}
 			}
 
-			if (gameController.IsObjectOutOfMap(transform.gameObject))
+			if (cameraController.IsObjectOutOfMap(transform.gameObject))
 			{
 				ResetAct();
 			}

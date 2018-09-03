@@ -47,7 +47,6 @@ namespace Playmode.Ennemy
 		
 		private Mover mover;
 		private Destroyer destroyer;
-		private EnnemySensor ennemySensor;
 		private HitSensor hitSensor;
 		private PickableSensor pickableSensor;
 		private HandController handController;
@@ -55,8 +54,7 @@ namespace Playmode.Ennemy
 		private Transform transformer;
 		private TimedRotation timedRotation;
 		private Vector3 vectorBetweenEnemy;
-
-		private GameController gameController;
+		
 		private CameraController cameraController;
 
 		private BaseEnnemyStrategy strategy;
@@ -104,12 +102,10 @@ namespace Playmode.Ennemy
 			timedRotation = GetComponent<TimedRotation>();
 
 			var rootTransform = transform.root;
-			ennemySensor = rootTransform.GetComponentInChildren<EnnemySensor>();
 			hitSensor = rootTransform.GetComponentInChildren<HitSensor>();
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
 			handController = hand.GetComponent<HandController>();
 			sightController = sight.GetComponent<SightController>();
-			gameController = GameObject.FindWithTag(Tags.GameController).GetComponent<GameController>();
 			cameraController = GameObject.FindWithTag(Tags.MainCamera).GetComponent<CameraController>();
 
 			originalMoveSpeed = mover.MoveSpeed;
@@ -147,13 +143,12 @@ namespace Playmode.Ennemy
 
 		public void Roam()
 		{
-			mover.Move(new Vector3(0, speed * Time.deltaTime));
-			handController.transform.rotation = transformer.rotation;
-			sightController.transform.rotation = transformer.rotation;
+			mover.Move(Mover.Foward);			
+			RotateAllToForward();
 
-			if (gameController.IsObjectOutOfMap(transformer.gameObject))
+			if (cameraController.IsObjectOutOfMap(transformer.gameObject))
 			{
-				mover.RotateTowardsARotation(RotationToGo());
+				mover.RotateTowardsARotation(OutOfMapRotation());
 			}
 			else if (randomBehaviour > 0)
 			{
@@ -161,8 +156,13 @@ namespace Playmode.Ennemy
 			}
 		}
 
-		//TODO RENAME
-		private Quaternion RotationToGo()
+		private void RotateAllToForward()
+		{
+			handController.transform.rotation = transformer.rotation;
+			sightController.transform.rotation = transformer.rotation;
+		}
+
+		private Quaternion OutOfMapRotation()
 		{
 			var rotationDown = Quaternion.Euler(0, 0, 180);
 			var rotationUp = Quaternion.Euler(0, 0, 0);
@@ -231,6 +231,7 @@ namespace Playmode.Ennemy
 		{
 			destroyer.Destroy();
 		}
+		
 
 		private void OnPickUp(GameObject pickable)
 		{
