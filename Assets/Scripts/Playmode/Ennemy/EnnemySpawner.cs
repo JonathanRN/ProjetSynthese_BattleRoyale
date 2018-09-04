@@ -62,7 +62,7 @@ namespace Playmode.Ennemy
         private void SpawnEnnemy(Transform childTransform, EnnemyStrategy strategy, Color color)
         {
             Instantiate(ennemyPrefab, childTransform.position, Quaternion.identity)
-                .GetComponentInChildren<EnnemyController>()
+                .GetComponentInChildren<Enemy>()
                 .Configure(strategy, color);
         }
     }

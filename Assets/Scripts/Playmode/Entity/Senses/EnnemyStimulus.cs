@@ -5,7 +5,7 @@ namespace Playmode.Entity.Senses
 {
     public class EnnemyStimulus : MonoBehaviour
     {
-        private EnnemyController ennemy;
+        private Enemy ennemy;
 
         private void Awake()
         {
@@ -14,7 +14,7 @@ namespace Playmode.Entity.Senses
 
         private void InitializeComponent()
         {
-            ennemy = transform.root.GetComponentInChildren<EnnemyController>();
+            ennemy = transform.root.GetComponentInChildren<Enemy>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)

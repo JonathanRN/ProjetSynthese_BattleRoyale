@@ -53,15 +53,15 @@
                 <e p="HandController.cs" t="Include" />
                 <e p="SightController.cs" t="Include" />
               </e>
-              <e p="EnnemyController.cs" t="Include" />
+              <e p="Enemy.cs" t="Include" />
               <e p="EnnemySpawner.cs" t="Include" />
               <e p="HealthBarController.cs" t="Include" />
               <e p="Strategies" t="Include">
+                <e p="BaseEnnemyStrategy.cs" t="Include" />
                 <e p="CamperStrategy.cs" t="Include" />
                 <e p="CarefulStrategy.cs" t="Include" />
                 <e p="CowboyStrategy.cs" t="Include" />
                 <e p="IdleStrategy.cs" t="Include" />
-                <e p="IEnnemyStrategy.cs" t="Include" />
                 <e p="NormalStrategy.cs" t="Include" />
                 <e p="TurnAndShootStragegy.cs" t="Include" />
               </e>

@@ -44,7 +44,7 @@ public class HealthBarController : MonoBehaviour
 
 	public void UpdateHealthBar()
 	{
-		health = transform.root.GetComponentInChildren<EnnemyController>().Health.HealthPoints;
+		health = transform.root.GetComponentInChildren<Enemy>().Health.HealthPoints;
 
 		localScale.x = health/100f;
 		transform.localScale = localScale;

@@ -10,7 +10,7 @@ namespace Playmode.Ennemy.Strategies
     public class BaseEnnemyStrategy : MonoBehaviour
     {
         protected Mover mover;
-        protected EnnemyController enemyController;
+        protected Enemy enemyController;
         protected GameController gameController;
         protected EnnemySensor enemySensor;
         protected GameObject target;
@@ -24,7 +24,7 @@ namespace Playmode.Ennemy.Strategies
         private void Awake()
         {
             mover = GetComponent<RootMover>();
-            enemyController = GetComponent<EnnemyController>();
+            enemyController = GetComponent<Enemy>();
             gameController = GameObject.FindWithTag(Tags.GameController).GetComponent<GameController>();
             pickableSensor = transform.root.GetComponentInChildren<PickableSensor>();
             enemySensor = transform.root.GetComponentInChildren<EnnemySensor>();
@@ -47,13 +47,13 @@ namespace Playmode.Ennemy.Strategies
             }
         }
         
-        protected void OnEnnemySeen(EnnemyController ennemy)
+        protected void OnEnnemySeen(Enemy ennemy)
         {
             if (target != null) return;
             target = ennemy.gameObject;
         }
 
-        protected void OnEnnemySightLost(EnnemyController ennemy)
+        protected void OnEnnemySightLost(Enemy ennemy)
         {
             target = null;
         }

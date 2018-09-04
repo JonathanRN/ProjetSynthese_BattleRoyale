@@ -12,14 +12,14 @@ namespace Playmode
 		{
 			if (other.GetComponent<HitSensor>() == null) return;
 			
-			other.transform.root.GetComponentInChildren<EnnemyController>().SetSpeedToSwim();
+			other.transform.root.GetComponentInChildren<Enemy>().SetSpeedToSwim();
 		}
 
 		private void OnTriggerExit2D(Collider2D other)
 		{
 			if (other.GetComponent<HitSensor>() == null) return;
 			
-			other.transform.root.GetComponentInChildren<EnnemyController>().SetSpeedToWalk();
+			other.transform.root.GetComponentInChildren<Enemy>().SetSpeedToWalk();
 		}
 	}
 }

@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Playmode.Ennemy
 {
-	public class EnnemyController : MonoBehaviour
+	public class Enemy : MonoBehaviour
 	{
 		[Header("Body Parts")] [SerializeField]
 		private GameObject body;
