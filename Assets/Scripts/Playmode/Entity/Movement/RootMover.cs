@@ -27,7 +27,7 @@ namespace Playmode.Movement
         {
             rootTransform.Rotate(
                 Vector3.forward,
-                (direction < 0 ? rotateSpeed : -rotateSpeed) * Time.deltaTime
+                (direction < 0 ? RotateSpeed : -RotateSpeed) * Time.deltaTime
             );
         }
 

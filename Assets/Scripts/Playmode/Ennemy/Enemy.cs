@@ -213,6 +213,7 @@ namespace Playmode.Ennemy
 		private void StartUnderFireBehaviour()
 		{			
 			IsUnderFire = true;
+			mover.RotateSpeed = Mover.hitReactRotateSpeed;
 
 			if (underFireRoutine != null)
 				StopCoroutine(underFireRoutine);
@@ -225,6 +226,7 @@ namespace Playmode.Ennemy
 			yield return new WaitForSeconds(1f);
 			IsUnderFire = false;
 			underFireRoutine = null;
+			mover.RotateSpeed = Mover.normalRotateSpeed;
 		}
 
 		private void OnDeath()

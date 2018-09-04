@@ -7,10 +7,14 @@ namespace Playmode.Movement
     {
         public static readonly Vector3 Foward = Vector3.up;
         public static readonly Vector3 Backward = Vector3.down;
+        
         public const float Clockwise = 1f;
+        public const float normalRotateSpeed = 200f;
+        public const float hitReactRotateSpeed = 400f;
         
         public float MoveSpeed = 4;
-        [SerializeField] protected float rotateSpeed = 200f;
+        public float RotateSpeed = normalRotateSpeed;
+
         [SerializeField] protected float outOfRangeRotationSpeed = 5f;
 
         protected void Awake()
@@ -22,7 +26,7 @@ namespace Playmode.Movement
         {
             if (MoveSpeed < 0)
                 throw new ArgumentException("Speed can't be lower than 0.");
-            if (rotateSpeed < 0)
+            if (RotateSpeed < 0)
                 throw new ArgumentException("RotateSpeed can't be lower than 0.");
         }
 

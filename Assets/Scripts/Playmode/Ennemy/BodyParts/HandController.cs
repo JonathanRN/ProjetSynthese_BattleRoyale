@@ -48,11 +48,11 @@ namespace Playmode.Ennemy.BodyParts
 					transform.position.y - target.transform.position.y);
 				if (Vector3.Dot(vectorBetweenEnemy, transform.right) < -0.5)
 				{
-					transform.Rotate(Vector3.forward, -1);
+					transform.root.Rotate(Vector3.forward, -1);
 				}
 				else if (Vector3.Dot(vectorBetweenEnemy, transform.right) > 0.5)
 				{
-					transform.Rotate(Vector3.forward, 1);
+					transform.root.Rotate(Vector3.forward, 1);
 				}
 
 				sightController.CheckTowards(target);

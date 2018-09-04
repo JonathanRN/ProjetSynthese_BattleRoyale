@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Utilisateur\.Rider2018.1\system\resharper-host\Local\Transient\ReSharperHost\v12\SolutionCaches\_TP1---BattleRoyale.1022680436.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Utilisateur\Desktop\Programmation\TP1---BattleRoyale" t="IncludeRecursive">
+    <e p="C:\Users\Kevin\.Rider2018.1\system\resharper-host\Local\Transient\ReSharperHost\v12\SolutionCaches\_TP1---BattleRoyale.-956050351.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Kevin\Documents\Unity Projects\TP1---BattleRoyale" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -49,7 +49,7 @@
                 <e p="HandController.cs" t="Include" />
                 <e p="SightController.cs" t="Include" />
               </e>
-              <e p="EnnemyController.cs" t="Include" />
+              <e p="Enemy.cs" t="Include" />
               <e p="EnnemySpawner.cs" t="Include" />
               <e p="HealthBarController.cs" t="Include" />
               <e p="Strategies" t="Include">
