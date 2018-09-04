@@ -12,12 +12,13 @@ namespace Playmode.Ennemy.Strategies
 	public class CarefulStrategy : BaseEnnemyStrategy
 	{
 		private float speedWhenBacking = 2;
-		private bool isOutOfMap;
+		private float speedWhenWounded = 5;
 		private bool needMedKit;		
 		private const float minLifeBeforeSearchingMedKit = 20;
 
 		protected override void Act()
 		{
+			CalculateDistanceBetweenEnemies();
 			if (DoesEnemyNeedMedKit())
 			{
 				SearchForMedKit();
@@ -25,7 +26,7 @@ namespace Playmode.Ennemy.Strategies
 			else
 			{
 				mover.MoveSpeed = 4;
-				if (target != null)
+				if (HasTarget())
 				{
 					BackFromEnemyIfTooClose();
 					enemyController.ShootTowardsTarget(target.transform);
@@ -45,10 +46,7 @@ namespace Playmode.Ennemy.Strategies
 			}
 		}
 
-		private bool IsPickableAWeapon()
-		{
-			return pickable != null && pickableType.IsWeapon();
-		}
+
 
 		private bool DoesEnemyNeedMedKit()
 		{
@@ -57,7 +55,7 @@ namespace Playmode.Ennemy.Strategies
 
 		private void SearchForMedKit()
 		{
-			mover.MoveSpeed = 5;
+			mover.MoveSpeed = speedWhenWounded;
 			if (pickable != null && pickableType.IsMedKit())
 			{
 				mover.MoveTowardsTarget(pickable.transform);
@@ -70,7 +68,7 @@ namespace Playmode.Ennemy.Strategies
 
 		private void BackFromEnemyIfTooClose()
 		{
-			if ((distanceBetweenEnemy < maxDistanceBetweenEnemy))
+			if (distanceBetweenEnemy < maxDistanceBetweenEnemy)
 			{
 				mover.RotateTowardsTarget(target.transform);
 				mover.MoveSpeed = speedWhenBacking;
@@ -79,8 +77,7 @@ namespace Playmode.Ennemy.Strategies
 			else
 			{
 				mover.MoveTowardsTarget(target.transform);
-			}
-				
+			}				
 		}
 	}
 }

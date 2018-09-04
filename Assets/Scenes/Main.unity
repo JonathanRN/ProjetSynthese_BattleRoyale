@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newVerticies: []
-  wallAdjustX: 2.8
+  wallAdjustX: 2.1
   wallAdjustY: 1.8
 --- !u!68 &571362460
 EdgeCollider2D:

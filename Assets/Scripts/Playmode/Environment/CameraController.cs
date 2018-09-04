@@ -47,5 +47,16 @@ namespace Playmode.Environment
 			CameraHalfHeight = camera.orthographicSize - 1.5f;
 			CameraHalfWidth = CameraHalfHeight * camera.aspect + 1.5f;
 		}
+		
+		public bool IsObjectOutOfMap(GameObject gameObject)
+		{
+			if (gameObject.transform.position.y >= CameraHalfHeight)
+				return true;
+			if (gameObject.transform.position.y <= -CameraHalfHeight)
+				return true;
+			if (gameObject.transform.position.x >= CameraHalfWidth)
+				return true;
+			return gameObject.transform.position.x <= -CameraHalfWidth;
+		}
 	}
 }

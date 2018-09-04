@@ -376,7 +376,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 3
-  rotateSpeed: 200
+  rotateSpeed: 250
+  outOfRangeRotationSpeed: 5
 --- !u!114 &114365648383534028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,6 +391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 3
   rotateSpeed: 90
+  outOfRangeRotationSpeed: 5
+  rootTransform: {fileID: 0}
 --- !u!114 &114434491710286188
 MonoBehaviour:
   m_ObjectHideFlags: 1

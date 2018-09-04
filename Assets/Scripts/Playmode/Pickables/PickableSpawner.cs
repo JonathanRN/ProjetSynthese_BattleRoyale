@@ -18,12 +18,12 @@ namespace Playmode.Pickables
 		private PickableController pickableController;
 		private GameObject[] pickables;
 
-		private GameController gameController;
+		private CameraController cameraController;
 
 		private void Awake()
 		{
 			pickableController = pickablePrefab.GetComponent<PickableController>();
-			gameController = GameObject.FindWithTag(Tags.GameController).GetComponent<GameController>();
+			cameraController = GameObject.FindWithTag(Tags.MainCamera).GetComponent<CameraController>();
 			pickables = pickableController.pickables;
 		}
 
@@ -77,7 +77,7 @@ namespace Playmode.Pickables
 			for (int i = 0; i < transform.childCount; i++)
 			{
 				var child = transform.GetChild(i).gameObject;
-				if (gameController.IsObjectOutOfMap(child))
+				if (cameraController.IsObjectOutOfMap(child))
 				{
 					Destroy(child);
 				}
