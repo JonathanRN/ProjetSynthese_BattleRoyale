@@ -4,42 +4,51 @@ namespace Playmode.Environment
 {
 	public class CameraController : MonoBehaviour
 	{
-
-		// Use this for initialization
-		private Camera camera;
-		private ZoneShrinkingTimer zoneShrinkingTimer;
-		public bool zoneIsShrinking;
-		[SerializeField] public float zoneChangeDelay =30f;
+		[SerializeField] public float ZoneChangeDelay =30f;
 		[SerializeField] private float zoneMinSize = 6f;
 		[SerializeField] private float shrinkingSpeed = 0.01f;
-	
+		
 		public float CameraHalfHeight { get; set; }
 		public float CameraHalfWidth { get; set; }
+		
+		private Camera camera;
+		private ZoneShrinkingTimer zoneShrinkingTimer;
+		
+		public bool ZoneIsShrinking;
 
-		void Awake()
+		private void Awake()
 		{
 			camera = Camera.main;
+			InitializeComponents();
+		}
+
+		private void InitializeComponents()
+		{
 			zoneShrinkingTimer = GetComponent<ZoneShrinkingTimer>();
 		}
 
 		private void OnEnable()
 		{
-			zoneShrinkingTimer.OnZoneChanged += OnZoneChanged;
+			zoneShrinkingTimer.OnZoneChanged += NotifyZoneChanged;
 		}
 
-		// Update is called once per frame
-		void Update ()
+		private void OnDisable()
 		{
-			if (zoneIsShrinking && camera.orthographicSize > zoneMinSize)
+			zoneShrinkingTimer.OnZoneChanged -= NotifyZoneChanged;
+		}
+
+		private void Update ()
+		{
+			if (ZoneIsShrinking && camera.orthographicSize > zoneMinSize)
 			{
 				camera.orthographicSize -= shrinkingSpeed;
 			}
 			FixCameraBounds();
 		}
 
-		private void OnZoneChanged()
+		private void NotifyZoneChanged()
 		{
-			zoneIsShrinking = !zoneIsShrinking;
+			ZoneIsShrinking = !ZoneIsShrinking;
 		}
 
 		private void FixCameraBounds()

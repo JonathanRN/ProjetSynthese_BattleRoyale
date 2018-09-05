@@ -7,38 +7,8 @@
     <e p="C:\Users\Jo\.Rider2018.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Jo\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_TP1 - BattleRoyale.-446192319.00" t="ExcludeRecursive" />
     <e p="C:\Users\Jo\Documents\Unity Projects\TP1 - BattleRoyale" t="IncludeRecursive">
-      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="GitMerge-for-Unity-master" t="Include">
-          <e p="Editor" t="Include">
-            <e p="GameObjectExtensions.cs" t="Include" />
-            <e p="GameObjectMergeActions.cs" t="Include" />
-            <e p="GitMergeWindow.cs" t="Include" />
-            <e p="MergeAction.cs" t="Include" />
-            <e p="MergeActionChangeValues.cs" t="Include" />
-            <e p="MergeActionDeleteComponent.cs" t="Include" />
-            <e p="MergeActionDeleteGameObject.cs" t="Include" />
-            <e p="MergeActionExistence.cs" t="Include" />
-            <e p="MergeActionNewComponent.cs" t="Include" />
-            <e p="MergeActionNewGameObject.cs" t="Include" />
-            <e p="MergeActionParenting.cs" t="Include" />
-            <e p="MergeManager.cs" t="Include" />
-            <e p="MergeManagerPrefab.cs" t="Include" />
-            <e p="MergeManagerScene.cs" t="Include" />
-            <e p="ObjectDictionaries.cs" t="Include" />
-            <e p="ObjectExtensions.cs" t="Include" />
-            <e p="ObjectIDFinder.cs" t="Include" />
-            <e p="Resources" t="Include">
-              <e p="Licenses.txt" t="Include" />
-            </e>
-            <e p="Resources.cs" t="Include" />
-            <e p="SerializedPropertyExtensions.cs" t="Include" />
-            <e p="VCS.cs" t="Include" />
-            <e p="VCSException.cs" t="Include" />
-            <e p="VCSGit.cs" t="Include" />
-          </e>
-        </e>
         <e p="Scripts" t="Include">
           <e p="Playmode" t="Include">
             <e p="Application" t="Include">
@@ -47,26 +17,27 @@
             <e p="Bullet" t="Include">
               <e p="BulletController.cs" t="Include" />
             </e>
-            <e p="Ennemy" t="Include">
-              <e p="BloodSplashController.cs" t="Include" />
+            <e p="Enemy" t="Include">
               <e p="BodyParts" t="Include">
-                <e p="HandController.cs" t="Include" />
-                <e p="SightController.cs" t="Include" />
+                <e p="Hand.cs" t="Include" />
+                <e p="Sight.cs" t="Include" />
+              </e>
+              <e p="Display" t="Include">
+                <e p="BloodParticles.cs" t="Include" />
+                <e p="HealthBar.cs" t="Include" />
+                <e p="WeaponIcon.cs" t="Include" />
               </e>
               <e p="Enemy.cs" t="Include" />
-              <e p="EnnemySpawner.cs" t="Include" />
-              <e p="HealthBarController.cs" t="Include" />
+              <e p="EnemySpawner.cs" t="Include" />
               <e p="Strategies" t="Include">
-                <e p="BaseEnnemyStrategy.cs" t="Include" />
+                <e p="BaseEnemyStrategy.cs" t="Include" />
                 <e p="CamperStrategy.cs" t="Include" />
                 <e p="CarefulStrategy.cs" t="Include" />
                 <e p="CowboyStrategy.cs" t="Include" />
                 <e p="IdleStrategy.cs" t="Include" />
                 <e p="NormalStrategy.cs" t="Include" />
-                <e p="TurnAndShootStragegy.cs" t="Include" />
+                <e p="RotationTimer.cs" t="Include" />
               </e>
-              <e p="TimedRotation.cs" t="Include" />
-              <e p="WeaponIconController.cs" t="Include" />
             </e>
             <e p="Entity" t="Include">
               <e p="Destruction" t="Include">
@@ -74,13 +45,12 @@
                 <e p="RootDestroyer.cs" t="Include" />
               </e>
               <e p="Movement" t="Include">
-                <e p="AnchoredMover.cs" t="Include" />
                 <e p="Mover.cs" t="Include" />
                 <e p="RootMover.cs" t="Include" />
               </e>
               <e p="Senses" t="Include">
-                <e p="EnnemySensor.cs" t="Include" />
-                <e p="EnnemyStimulus.cs" t="Include" />
+                <e p="EnemySensor.cs" t="Include" />
+                <e p="EnemyStimulus.cs" t="Include" />
                 <e p="HitSensor.cs" t="Include" />
                 <e p="HitStimulus.cs" t="Include" />
               </e>
@@ -90,9 +60,8 @@
             </e>
             <e p="Environment" t="Include">
               <e p="CameraController.cs" t="Include" />
-              <e p="GameController.cs" t="Include" />
               <e p="WallController.cs" t="Include" />
-              <e p="WaterController.cs" t="Include" />
+              <e p="WaterZone.cs" t="Include" />
               <e p="ZoneShrinkingTimer.cs" t="Include" />
             </e>
             <e p="Pickables" t="Include">
@@ -123,19 +92,15 @@
                 <e p="Tags.cs" t="Include" />
               </e>
             </e>
-            <e p="WallController.cs" t="Include" />
-            <e p="WaterZone.cs" t="Include" />
             <e p="Weapon" t="Include">
               <e p="WeaponController.cs" t="Include" />
             </e>
           </e>
           <e p="UI" t="Include">
-            <e p="HeadOnDisplay" t="Include">
-              <e p="DropTimerController.cs" t="Include" />
-              <e p="NextZoneTimerController.cs" t="Include" />
-              <e p="NumberOfPlayerLeftController.cs" t="Include" />
-              <e p="WinnerController.cs" t="Include" />
-            </e>
+            <e p="DropTimer.cs" t="Include" />
+            <e p="EnemiesCounter.cs" t="Include" />
+            <e p="NextZoneTimer.cs" t="Include" />
+            <e p="WinnerController.cs" t="Include" />
           </e>
         </e>
       </e>

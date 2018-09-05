@@ -2323,7 +2323,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414215694}
-  - component: {fileID: 1414215695}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -2344,17 +2343,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1414215695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1414215693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a26b8cc1407a1844806102fd678bbf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1452226256
 GameObject:
   m_ObjectHideFlags: 0
@@ -71395,7 +71383,7 @@ GameObject:
   - component: {fileID: 2073673047}
   - component: {fileID: 2073673046}
   m_Layer: 0
-  m_Name: EnnemySpawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71412,7 +71400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b913f8b7fd07f4e882ba239f1b7648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ennemyPrefab: {fileID: 1815521992430954, guid: 88e89628113b2b04eb2c08e350ffdee9,
+  enemyPrefab: {fileID: 1815521992430954, guid: 88e89628113b2b04eb2c08e350ffdee9,
     type: 2}
   colors:
   - {r: 1, g: 1, b: 1, a: 1}
