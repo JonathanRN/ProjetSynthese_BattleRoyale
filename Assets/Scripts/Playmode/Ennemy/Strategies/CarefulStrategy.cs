@@ -13,7 +13,7 @@ namespace Playmode.Ennemy.Strategies
 	{
 		private float speedWhenBacking = 2;
 		private float speedWhenWounded = 5;
-		private bool needMedKit;		
+		private bool needMedKit;
 		private const float minLifeBeforeSearchingMedKit = 20;
 
 		protected override void Act()
@@ -25,7 +25,6 @@ namespace Playmode.Ennemy.Strategies
 			}
 			else
 			{
-				mover.MoveSpeed = 4;
 				if (HasTarget())
 				{
 					BackFromEnemyIfTooClose();
