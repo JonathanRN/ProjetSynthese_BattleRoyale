@@ -8,17 +8,7 @@ namespace Playmode.Entity.Senses
 	public class PickableStimulus : MonoBehaviour
 	{
 		private void OnTriggerEnter2D(Collider2D other)
-		{
-			var sensor = other.transform.root.GetComponentInChildren<Entity.Senses.PickableSensor>();
-			if (sensor.IsSight)
-			{
-				//TODO DO THE THING
-			}
-			else
-			{
-				
-			}
-			
+		{	
 			if(other.CompareTag("Sight"))
             {
                 other.transform.root.GetComponentInChildren<Entity.Senses.PickableSensor>()?.PickableSeen(transform.parent.gameObject);

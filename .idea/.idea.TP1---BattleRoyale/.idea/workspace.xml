@@ -3,7 +3,184 @@
   <component name="ChangeListManager">
     <list default="true" id="852186c5-5d28-49c9-b83c-5b53e6a83566" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TP1---BattleRoyale/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TP1---BattleRoyale/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CarefulStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CarefulStrategy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableSensor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableSensor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableStimulus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableStimulus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/2.0/machine.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/2.0/settings.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/2.0/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.0/machine.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.0/settings.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.0/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.5/machine.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.5/settings.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/4.5/web.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/browscap.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/MonoBleedingEdge/etc/mono/mconfig/config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/Assembly-CSharp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/Assembly-CSharp.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/Mono.Posix.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/Mono.Security.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/System.Configuration.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/System.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/System.Security.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/System.Xml.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/System.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/Unity.TextMeshPro.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/Unity.TextMeshPro.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AIModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AIModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ARModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ARModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AccessibilityModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AccessibilityModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.Analytics.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.Analytics.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AnimationModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AnimationModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AssetBundleModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AssetBundleModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AudioModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.AudioModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.BaselibModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.BaselibModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ClothModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ClothModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.CloudWebServicesModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.CloudWebServicesModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ClusterInputModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ClusterInputModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ClusterRendererModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ClusterRendererModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.CoreModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.CoreModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.CrashReportingModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.CrashReportingModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.DirectorModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.DirectorModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.FacebookModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.FacebookModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.FileSystemHttpModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.FileSystemHttpModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.GameCenterModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.GameCenterModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.GridModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.GridModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.HotReloadModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.HotReloadModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.IMGUIModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.IMGUIModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ImageConversionModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ImageConversionModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.InputModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.InputModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.JSONSerializeModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.JSONSerializeModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.LocalizationModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.LocalizationModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.Networking.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.Networking.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ParticleSystemModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ParticleSystemModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ParticlesLegacyModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ParticlesLegacyModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.PerformanceReportingModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.PerformanceReportingModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.Physics2DModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.Physics2DModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.PhysicsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.PhysicsModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ProfilerModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ProfilerModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ScreenCaptureModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.ScreenCaptureModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SharedInternalsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SharedInternalsModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SpatialTracking.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SpatialTracking.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SpriteMaskModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SpriteMaskModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SpriteShapeModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SpriteShapeModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.StandardEvents.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.StandardEvents.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.StreamingModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.StreamingModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.StyleSheetsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.StyleSheetsModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SubstanceModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.SubstanceModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TLSModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TLSModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TerrainModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TerrainModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TerrainPhysicsModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TextRenderingModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TextRenderingModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TilemapModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TilemapModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.Timeline.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.Timeline.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TimelineModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.TimelineModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UI.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UI.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UIElementsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UIElementsModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UIModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UIModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UNETModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UNETModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UmbraModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UmbraModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityAnalyticsModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityConnectModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityConnectModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestAudioModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestTextureModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.UnityWebRequestWWWModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.VRModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.VRModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.VehiclesModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.VehiclesModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.VideoModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.VideoModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.WindModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.WindModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.XRModule.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.XRModule.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/UnityEngine.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Managed/mscorlib.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Resources/unity default resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/Resources/unity_builtin_extra" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/app.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/boot.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/globalgamemanagers" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/globalgamemanagers.assets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/level0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/level1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/sharedassets0.assets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/sharedassets1.assets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Buildtest/Tp1_Data/sharedassets1.assets.resS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,11 +205,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CowboyStrategy.cs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CowboyStrategy.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CowboyStrategy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+            <state relative-caret-position="170">
+              <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
               <folding>
                 <marker date="1536072957995" expanded="false" signature="6:194" ph="..." />
                 <marker date="1536072957995" expanded="true" signature="232:1497" ph="{...}" />
@@ -56,11 +233,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CarefulStrategy.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CarefulStrategy.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CarefulStrategy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+            <state relative-caret-position="306">
+              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
               <folding>
                 <marker date="1536172003001" expanded="false" signature="6:222" ph="..." />
                 <marker date="1536172003001" expanded="true" signature="260:1658" ph="{...}" />
@@ -87,10 +264,11 @@
       <file leaf-file-name="Enemy.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Enemy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3451">
+            <state relative-caret-position="340">
               <caret line="214" column="31" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
               <folding>
                 <marker date="1536074207574" expanded="false" signature="6:324" ph="..." />
+                <marker date="1536074207574" expanded="true" signature="351:7998" ph="{...}" />
                 <marker date="1536074207574" expanded="true" signature="389:7996" ph="{...}" />
                 <marker date="1536074207574" expanded="true" signature="1896:1988" ph="{...}" />
                 <marker date="1536074207574" expanded="true" signature="2031:3244" ph="{...}" />
@@ -118,6 +296,57 @@
                 <marker date="1536074207574" expanded="true" signature="7729:7840" ph="{...}" />
                 <marker date="1536074207574" expanded="true" signature="7872:7913" ph="{...}" />
                 <marker date="1536074207574" expanded="true" signature="7945:7993" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PickableStimulus.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableStimulus.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <marker date="1536173607222" expanded="false" signature="6:113" ph="..." />
+                <marker date="1536173607222" expanded="true" signature="147:635" ph="{...}" />
+                <marker date="1536173607222" expanded="true" signature="196:633" ph="{...}" />
+                <marker date="1536173607222" expanded="true" signature="249:630" ph="{...}" />
+                <marker date="1536173607222" expanded="true" signature="287:451" ph="{...}" />
+                <marker date="1536173607222" expanded="true" signature="468:626" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PickableSensor.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableSensor.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+              <folding>
+                <marker date="1536173543032" expanded="false" signature="6:78" ph="..." />
+                <marker date="1536173543032" expanded="true" signature="112:911" ph="{...}" />
+                <marker date="1536173543032" expanded="true" signature="231:909" ph="{...}" />
+                <marker date="1536173543032" expanded="true" signature="442:477" ph="{...}" />
+                <marker date="1536173543032" expanded="true" signature="532:594" ph="{...}" />
+                <marker date="1536173543032" expanded="true" signature="644:711" ph="{...}" />
+                <marker date="1536173543032" expanded="true" signature="673:707" ph="{...}" />
+                <marker date="1536173543032" expanded="true" signature="773:903" ph="{...}" />
+                <marker date="1536173543032" expanded="true" signature="823:893" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pickable.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/Pickable.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+              <folding>
+                <marker date="1536072958057" expanded="false" signature="6:106" ph="..." />
+                <marker date="1536072958057" expanded="true" signature="154:257" ph="{...}" />
+                <marker date="1536072958057" expanded="true" signature="158:210" ph="/* TODO ... */" />
               </folding>
             </state>
           </provider>
@@ -231,9 +460,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CowboyStrategy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CamperStrategy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/Pickable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/HeadOnDisplay/DropTimerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GitMerge-for-Unity-master/Editor/MergeManagerPrefab.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableSensor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableSpawner.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/TimedRotation.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -269,6 +500,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/BodyParts/HandController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CarefulStrategy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableSensor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableStimulus.cs" />
       </list>
     </option>
   </component>
@@ -281,7 +514,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -303,6 +536,39 @@
             <path>
               <item name="" type="ad4990d8:FileSystemViewPaneBase$ProjectViewPaneTreeStructure$createRoot$1" />
               <item name="TP1---BattleRoyale" type="483dac07:UnityExplorerNode$Root" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="ad4990d8:FileSystemViewPaneBase$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TP1---BattleRoyale" type="483dac07:UnityExplorerNode$Root" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="ad4990d8:FileSystemViewPaneBase$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TP1---BattleRoyale" type="483dac07:UnityExplorerNode$Root" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="ad4990d8:FileSystemViewPaneBase$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TP1---BattleRoyale" type="483dac07:UnityExplorerNode$Root" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="ad4990d8:FileSystemViewPaneBase$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TP1---BattleRoyale" type="483dac07:UnityExplorerNode$Root" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="ad4990d8:FileSystemViewPaneBase$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="TP1---BattleRoyale" type="483dac07:UnityExplorerNode$Root" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
+              <item name="" type="1045f7f1:UnityExplorerNode" />
               <item name="" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
@@ -372,12 +638,12 @@
       <workItem from="1535897636155" duration="3685000" />
       <workItem from="1535985603952" duration="5826000" />
       <workItem from="1536073220513" duration="3174000" />
-      <workItem from="1536170764183" duration="944000" />
+      <workItem from="1536170764183" duration="6000000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66223000" />
+    <option name="totallyTimeSpent" value="71279000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -390,20 +656,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32838285" />
       <window_info anchor="right" id="Errors In Solution" order="3" weight="0.32980332" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50075644" side_tool="true" weight="0.60561055" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.50075644" side_tool="true" visible="true" weight="0.32838285" />
       <window_info anchor="bottom" id="Unit Tests" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49924356" visible="true" weight="0.32838285" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21104388" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21104388" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Unity" order="8" />
       <window_info anchor="right" id="Database" order="3" weight="0.32942432" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49924356" weight="0.31683168" />
@@ -414,7 +680,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="NuGet" order="7" />
@@ -455,13 +720,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CamperStrategy.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableType.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -582,14 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/Pickable.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableStimulus.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/GitMerge-for-Unity-master/Editor/SerializedPropertyExtensions.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -690,12 +940,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/Pickable.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding>
+            <marker date="1536072958057" expanded="false" signature="6:106" ph="..." />
+            <marker date="1536072958057" expanded="true" signature="154:257" ph="{...}" />
+            <marker date="1536072958057" expanded="true" signature="158:210" ph="/* TODO ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableSensor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding>
+            <marker date="1536173543032" expanded="false" signature="6:78" ph="..." />
+            <marker date="1536173543032" expanded="true" signature="112:911" ph="{...}" />
+            <marker date="1536173543032" expanded="true" signature="231:909" ph="{...}" />
+            <marker date="1536173543032" expanded="true" signature="442:477" ph="{...}" />
+            <marker date="1536173543032" expanded="true" signature="532:594" ph="{...}" />
+            <marker date="1536173543032" expanded="true" signature="644:711" ph="{...}" />
+            <marker date="1536173543032" expanded="true" signature="673:707" ph="{...}" />
+            <marker date="1536173543032" expanded="true" signature="773:903" ph="{...}" />
+            <marker date="1536173543032" expanded="true" signature="823:893" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CarefulStrategy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <marker date="1536172003001" expanded="false" signature="6:222" ph="..." />
+            <marker date="1536172003001" expanded="true" signature="260:1658" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="313:1656" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="509:981" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="581:614" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="622:977" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="648:751" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="792:827" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="860:922" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="931:972" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="1021:1107" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="1141:1345" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="1236:1295" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="1303:1341" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="1387:1653" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="1446:1580" ph="{...}" />
+            <marker date="1536172003001" expanded="true" signature="1588:1645" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Enemy.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3451">
+        <state relative-caret-position="340">
           <caret line="214" column="31" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
           <folding>
             <marker date="1536074207574" expanded="false" signature="6:324" ph="..." />
+            <marker date="1536074207574" expanded="true" signature="351:7998" ph="{...}" />
             <marker date="1536074207574" expanded="true" signature="389:7996" ph="{...}" />
             <marker date="1536074207574" expanded="true" signature="1896:1988" ph="{...}" />
             <marker date="1536074207574" expanded="true" signature="2031:3244" ph="{...}" />
@@ -727,10 +1034,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Pickables/PickableStimulus.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <marker date="1536173607222" expanded="false" signature="6:113" ph="..." />
+            <marker date="1536173607222" expanded="true" signature="147:635" ph="{...}" />
+            <marker date="1536173607222" expanded="true" signature="196:633" ph="{...}" />
+            <marker date="1536173607222" expanded="true" signature="249:630" ph="{...}" />
+            <marker date="1536173607222" expanded="true" signature="287:451" ph="{...}" />
+            <marker date="1536173607222" expanded="true" signature="468:626" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CowboyStrategy.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        <state relative-caret-position="170">
+          <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
           <folding>
             <marker date="1536072957995" expanded="false" signature="6:194" ph="..." />
             <marker date="1536072957995" expanded="true" signature="232:1497" ph="{...}" />
@@ -749,32 +1071,6 @@
             <marker date="1536072957995" expanded="true" signature="1193:1287" ph="{...}" />
             <marker date="1536072957995" expanded="true" signature="1330:1422" ph="{...}" />
             <marker date="1536072957995" expanded="true" signature="1453:1492" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Playmode/Ennemy/Strategies/CarefulStrategy.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding>
-            <marker date="1536172003001" expanded="false" signature="6:222" ph="..." />
-            <marker date="1536172003001" expanded="true" signature="260:1658" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="313:1656" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="509:981" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="581:614" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="622:977" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="648:751" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="792:827" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="860:922" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="931:972" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="1021:1107" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="1141:1345" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="1236:1295" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="1303:1341" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="1387:1653" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="1446:1580" ph="{...}" />
-            <marker date="1536172003001" expanded="true" signature="1588:1645" ph="{...}" />
           </folding>
         </state>
       </provider>
