@@ -219,7 +219,7 @@ Prefab:
     - target: {fileID: 20949617845223440, guid: 230ab0c34db524c43ae59c0592efac69,
         type: 2}
       propertyPath: orthographic size
-      value: 29.876556
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4078808605034538, guid: 230ab0c34db524c43ae59c0592efac69, type: 2}
       propertyPath: m_LocalScale.y
