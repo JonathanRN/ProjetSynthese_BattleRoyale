@@ -1,7 +1,7 @@
 ﻿using System;
 using Playmode.Entity.Destruction;
+using Playmode.Entity.Movement;
 using Playmode.Entity.Senses;
-using Playmode.Movement;
 using UnityEngine;
 
 namespace Playmode.Bullet
@@ -71,7 +71,7 @@ namespace Playmode.Bullet
 		private void Act()
 		{
 			if (IsAlive)
-				mover.Move(Mover.Foward);
+				mover.Move(Mover.Forward);
 			else
 				destroyer.Destroy();
 		}

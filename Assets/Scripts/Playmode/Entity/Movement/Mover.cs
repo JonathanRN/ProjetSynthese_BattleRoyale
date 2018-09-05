@@ -1,22 +1,22 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Playmode.Movement
+namespace Playmode.Entity.Movement
 {
     public abstract class Mover : MonoBehaviour
     {
-        public static readonly Vector3 Foward = Vector3.up;
+        [SerializeField] protected float OutOfRangeRotationSpeed = 5f;
+        
+        public static readonly Vector3 Forward = Vector3.up;
         public static readonly Vector3 Backward = Vector3.down;
         
         public const float Clockwise = 1f;
-        public const float normalRotateSpeed = 200f;
-        public const float hitReactRotateSpeed = 400f;
+        public const float NormalRotateSpeed = 200f;
+        public const float HitReactRotateSpeed = 400f;
         
         public float MoveSpeed = 4;
-        public float RotateSpeed = normalRotateSpeed;
-
-        [SerializeField] protected float outOfRangeRotationSpeed = 5f;
-
+        public float RotateSpeed = NormalRotateSpeed;
+        
         protected void Awake()
         {
             ValidateSerialisedFields(); 
@@ -41,6 +41,5 @@ namespace Playmode.Movement
         public abstract void RotateTowardsARotation(Quaternion rotation);
 
         public abstract void HitReact();
-
     }
 }

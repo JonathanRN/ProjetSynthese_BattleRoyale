@@ -14,19 +14,19 @@ namespace Playmode.Environment
 
 		private void OnEnable()
 		{
-			StartCoroutine(ChangeRotationRoutine());
+			StartCoroutine(ZoneShrinkRoutine());
 		}
 
-		private IEnumerator ChangeRotationRoutine()
+		private IEnumerator ZoneShrinkRoutine()
 		{
 			while (true)
 			{
 				yield return new WaitForSeconds(timeBeforeShrink);
-				OnZoneChanged();
+				NotifyZoneChanged();
 			}
 		}
 
-		public void ZoneChanged()
+		private void NotifyZoneChanged()
 		{
 			if (OnZoneChanged != null) OnZoneChanged();
 		}
