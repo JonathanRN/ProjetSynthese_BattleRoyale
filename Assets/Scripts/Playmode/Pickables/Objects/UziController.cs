@@ -1,12 +1,14 @@
-﻿using Playmode.Ennemy;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Playmode.Util.Values;
 using UnityEngine;
 
-public class UziController : Pickable
+namespace Playmode.Pickables.Objects
 {
-	public override void Use(GameObject enemy)
+	public class UziController : Pickable
 	{
-		
+		public override PickableTypes Type => PickableTypes.Uzi;
+
+		public override void Use(GameObject enemy)
+		{
+		}
 	}
 }

@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Playmode.Util.Values
 {
+	//Special thanks to Peter
 	public static class ArrayExtensions
 	{
 		public static T GetRandom<T> (this T[] array)

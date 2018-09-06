@@ -1,29 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Playmode.Pickables;
 using UnityEngine;
 
 namespace Playmode.Entity.Senses
 {
-	public delegate void PickableSensorEventHandler(GameObject pickable);
+	public delegate void PickableSensorEventHandler(Pickable pickable);
 
 	public class PickableSensor : MonoBehaviour
 	{
 		public event PickableSensorEventHandler OnPickUp;
         public event PickableSensorEventHandler OnPickableSeen;
-
-		public bool IsSight => CompareTag("Sight");
 		
-		public void PickUp(GameObject pickable)
+		public void PickUp(Pickable pickable)
 		{
 			NotifyPickUp(pickable);
 		}
 
-        public void PickableSeen(GameObject pickable)
+        public void PickableSeen(Pickable pickable)
         {
             NotifyPickableSeen(pickable);
         }
 
-		private void NotifyPickUp(GameObject pickable)
+		private void NotifyPickUp(Pickable pickable)
 		{
 			if (OnPickUp != null)
 			{
@@ -31,7 +28,7 @@ namespace Playmode.Entity.Senses
 			}
 		}
 
-        private void NotifyPickableSeen(GameObject pickable)
+        private void NotifyPickableSeen(Pickable pickable)
         {
             if (OnPickableSeen != null)
             {

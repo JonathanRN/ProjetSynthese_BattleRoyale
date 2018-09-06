@@ -46,7 +46,7 @@ namespace Playmode.Enemy.Strategies
 		private void SearchForMedKit()
 		{
 			Mover.MoveSpeed = SpeedWhenWounded;
-			if (Pickable != null && PickableType.IsMedKit())
+			if (Pickable != null && Pickable.IsMedicalKit())
 			{
 				Mover.MoveTowardsTarget(Pickable.transform);
 			}

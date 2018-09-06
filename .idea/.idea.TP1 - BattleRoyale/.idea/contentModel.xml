@@ -34,7 +34,6 @@
                 <e p="CamperStrategy.cs" t="Include" />
                 <e p="CarefulStrategy.cs" t="Include" />
                 <e p="CowboyStrategy.cs" t="Include" />
-                <e p="IdleStrategy.cs" t="Include" />
                 <e p="NormalStrategy.cs" t="Include" />
                 <e p="RotationTimer.cs" t="Include" />
               </e>
@@ -53,6 +52,8 @@
                 <e p="EnemyStimulus.cs" t="Include" />
                 <e p="HitSensor.cs" t="Include" />
                 <e p="HitStimulus.cs" t="Include" />
+                <e p="PickableSensor.cs" t="Include" />
+                <e p="PickableStimulus.cs" t="Include" />
               </e>
               <e p="Status" t="Include">
                 <e p="Health.cs" t="Include" />
@@ -66,17 +67,12 @@
             </e>
             <e p="Pickables" t="Include">
               <e p="Objects" t="Include">
-                <e p="MedicalKitController.cs" t="Include" />
-                <e p="ShotgunController.cs" t="Include" />
+                <e p="MedicalKit.cs" t="Include" />
+                <e p="Shotgun.cs" t="Include" />
                 <e p="UziController.cs" t="Include" />
-                <e p="WeaponChange.cs" t="Include" />
               </e>
               <e p="Pickable.cs" t="Include" />
-              <e p="PickableController.cs" t="Include" />
-              <e p="PickableSensor.cs" t="Include" />
               <e p="PickableSpawner.cs" t="Include" />
-              <e p="PickableStimulus.cs" t="Include" />
-              <e p="PickableType.cs" t="Include" />
             </e>
             <e p="Util" t="Include">
               <e p="Collections" t="Include">

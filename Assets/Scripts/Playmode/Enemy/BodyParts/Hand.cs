@@ -7,7 +7,6 @@ namespace Playmode.Enemy.BodyParts
 {
 	public class Hand : MonoBehaviour
 	{
-		private Mover mover;
 		public WeaponController WeaponController;
 		private Sight sight;
 
@@ -18,7 +17,6 @@ namespace Playmode.Enemy.BodyParts
 
 		private void InitializeComponent()
 		{
-			mover = GetComponent<RootMover>();
 			sight = transform.parent.GetComponentInChildren<Sight>();
 		}
 		

@@ -1,4 +1,5 @@
 ﻿using Playmode.Entity.Movement;
+using Playmode.Pickables;
 using UnityEngine;
 
 namespace Playmode.Enemy.Strategies
@@ -6,7 +7,7 @@ namespace Playmode.Enemy.Strategies
 	public class CamperStrategy : BaseEnemyStrategy
 	{
 		private bool isNextToMedKit;
-		private GameObject savedMedKit;
+		private Pickable savedMedKit;
 		private const int MinimumDistanceToPickable = 2;
 
 		protected override void Act()
@@ -77,12 +78,12 @@ namespace Playmode.Enemy.Strategies
 
 		private bool HasFoundMedKit()
 		{
-			return Pickable != null && PickableType.IsMedKit();
+			return Pickable != null && Pickable.IsMedicalKit();
 		}
 
 		private bool HasFoundWeapon()
 		{
-			return Pickable != null && PickableType.IsWeapon();
+			return Pickable != null && Pickable.IsWeapon();
 		}
 
 		private void MoveNextToMedKit()

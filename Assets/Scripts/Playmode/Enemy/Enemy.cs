@@ -8,6 +8,7 @@ using Playmode.Entity.Movement;
 using Playmode.Entity.Senses;
 using Playmode.Entity.Status;
 using Playmode.Environment;
+using Playmode.Pickables;
 using Playmode.Util.Values;
 using UnityEngine;
 
@@ -234,21 +235,21 @@ namespace Playmode.Enemy
 			destroyer.Destroy();
 		}
 		
-		private void OnPickUp(GameObject pickable)
+		private void OnPickUp(Pickable pickable)
 		{
-			var type = pickable.GetComponentInChildren<PickableType>();
+			var type = pickable.Type;
 
-			if (type.GetType() == PickableTypes.Shotgun)
+			if (type == PickableTypes.Shotgun)
 			{
 				hand.Hold(Instantiate(shotgunPrefab));
 			}
-			else if (type.GetType() == PickableTypes.Uzi)
+			else if (type == PickableTypes.Uzi)
 			{
 				hand.Hold(Instantiate(uziPrefab));
 			}
 
-			pickable.gameObject.GetComponentInChildren<Pickable>().Use(gameObject);
-			Destroy(pickable.gameObject);
+			pickable.Use(gameObject);
+			Destroy(pickable.transform.parent.gameObject);
 		}
 
 		public void ShootTowardsTarget(Transform target)

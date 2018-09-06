@@ -1,11 +1,21 @@
 ﻿using Playmode.Util.Values;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Pickable : MonoBehaviour
+namespace Playmode.Pickables
 {
-	//TODO
-	//public abstract PickableTypes Type { get;}
-	public abstract void Use(GameObject enemy);
+	public abstract class Pickable : MonoBehaviour
+	{
+		public abstract PickableTypes Type { get;}
+		public abstract void Use(GameObject enemy);
+
+		public bool IsWeapon()
+		{
+			return Type != PickableTypes.MedicalKit;
+		}
+
+		public bool IsMedicalKit()
+		{
+			return Type == PickableTypes.MedicalKit;
+		}
+	}
 }

@@ -1,37 +1,40 @@
-﻿using Playmode.Pickables;
-using Playmode.Util.Values;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class WinnerController : MonoBehaviour
+namespace UI
 {
-	private Text text;
-	
-	private EnemiesCounter _enemiesCounter;
-
-	[SerializeField] private GameObject[] objectsToDisable;
-
-	private void Awake()
+	public class WinnerController : MonoBehaviour
 	{
-		text = GetComponent<Text>();
-		_enemiesCounter = transform.parent.GetComponentInChildren<EnemiesCounter>();
-		text.text = "";
-	}
+		[SerializeField] private GameObject[] objectsToDisable;
+		
+		private Text text;
+		private EnemiesCounter enemiesCounter;
 
-	private void Update()
-	{
-		if (!_enemiesCounter.ThereIsAWinner()) return;
-		text.text = "Winner Winner Chicken Dinner";
-		DisableObjects();
-	}
-
-	private void DisableObjects()
-	{
-		foreach (var obj in objectsToDisable)
+		private void Awake()
 		{
-			obj.SetActive(false);
+			InitializeComponents();
+			text.text = "";
+		}
+
+		private void InitializeComponents()
+		{
+			text = GetComponent<Text>();
+			enemiesCounter = transform.parent.GetComponentInChildren<EnemiesCounter>();
+		}
+
+		private void Update()
+		{
+			if (!enemiesCounter.IsThereAWinner()) return;
+			text.text = "Winner Winner Chicken Dinner";
+			DisableObjects();
+		}
+
+		private void DisableObjects()
+		{
+			foreach (var obj in objectsToDisable)
+			{
+				obj.SetActive(false);
+			}
 		}
 	}
 }

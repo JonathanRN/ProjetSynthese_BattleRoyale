@@ -1,31 +1,36 @@
-﻿using Playmode.Pickables;
-using Playmode.Util.Values;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Playmode.Util.Values;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemiesCounter : MonoBehaviour {
+namespace UI
+{
+	public class EnemiesCounter : MonoBehaviour {
 	
-	private Text text;
+		private Text text;
 
-	private void Awake()
-	{
-		text = GetComponent<Text>();
-	}
+		private void Awake()
+		{
+			InitializeComponents();
+		}
 
-	private float CountPlayersLeft()
-	{
-		 return GameObject.FindGameObjectsWithTag(Tags.Enemy).Length;
-	}
+		private void InitializeComponents()
+		{
+			text = GetComponent<Text>();
+		}
 
-	public bool ThereIsAWinner()
-	{
-		return CountPlayersLeft() < 2;
-	}
+		private float CountEnemiesLeft()
+		{
+			return GameObject.FindGameObjectsWithTag(Tags.Enemy).Length;
+		}
 
-	private void Update()
-	{
-		text.text = "Enemies left: " + CountPlayersLeft().ToString();
+		public bool IsThereAWinner()
+		{
+			return CountEnemiesLeft() < 2;
+		}
+
+		private void Update()
+		{
+			text.text = "Enemies left: " + CountEnemiesLeft();
+		}
 	}
 }

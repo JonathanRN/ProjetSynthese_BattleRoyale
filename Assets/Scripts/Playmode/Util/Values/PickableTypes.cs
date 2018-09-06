@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Playmode.Util.Values
+﻿namespace Playmode.Util.Values
 {
 	public enum PickableTypes
 	{

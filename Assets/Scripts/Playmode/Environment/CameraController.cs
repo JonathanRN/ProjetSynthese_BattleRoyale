@@ -11,14 +11,14 @@ namespace Playmode.Environment
 		public float CameraHalfHeight { get; set; }
 		public float CameraHalfWidth { get; set; }
 		
-		private Camera camera;
+		private Camera mainCamera;
 		private ZoneShrinkingTimer zoneShrinkingTimer;
 		
 		public bool ZoneIsShrinking;
 
 		private void Awake()
 		{
-			camera = Camera.main;
+			mainCamera = Camera.main;
 			InitializeComponents();
 		}
 
@@ -39,9 +39,9 @@ namespace Playmode.Environment
 
 		private void Update ()
 		{
-			if (ZoneIsShrinking && camera.orthographicSize > zoneMinSize)
+			if (ZoneIsShrinking && mainCamera.orthographicSize > zoneMinSize)
 			{
-				camera.orthographicSize -= shrinkingSpeed;
+				mainCamera.orthographicSize -= shrinkingSpeed;
 			}
 			FixCameraBounds();
 		}
@@ -53,8 +53,8 @@ namespace Playmode.Environment
 
 		private void FixCameraBounds()
 		{
-			CameraHalfHeight = camera.orthographicSize - 1.5f;
-			CameraHalfWidth = CameraHalfHeight * camera.aspect + 1.5f;
+			CameraHalfHeight = mainCamera.orthographicSize - 1.5f;
+			CameraHalfWidth = CameraHalfHeight * mainCamera.aspect + 1.5f;
 		}
 		
 		public bool IsObjectOutOfMap(GameObject gameObject)

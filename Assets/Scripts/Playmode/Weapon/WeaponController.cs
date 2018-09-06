@@ -1,6 +1,4 @@
-﻿using Playmode.Ennemy.BodyParts;
-using System;
-using Playmode.Pickables.Objects;
+﻿using System;
 using Playmode.Util.Values;
 using UnityEngine;
 
@@ -9,15 +7,14 @@ namespace Playmode.Weapon
 	public class WeaponController : MonoBehaviour
 	{
 		[Header("Behaviour")] [SerializeField] private GameObject bulletPrefab;
-		[SerializeField] public float fireDelayInSeconds = 1f;
+		[SerializeField] public float FireDelayInSeconds = 1f;
+		[SerializeField] public PickableTypes WeaponType;
 
 		private float lastTimeShotInSeconds;
-		private int nbOfShotgunBullets = 6;
+		private const int NbOfShotgunBullets = 6;
 		private GameObject[] shotgunBullets;
 
-		private bool CanShoot => Time.time - lastTimeShotInSeconds > fireDelayInSeconds;
-
-		[SerializeField] public PickableTypes WeaponType;
+		private bool CanShoot => Time.time - lastTimeShotInSeconds > FireDelayInSeconds;
 
 		private void Awake()
 		{
@@ -27,14 +24,14 @@ namespace Playmode.Weapon
 
 		private void ValidateSerialisedFields()
 		{
-			if (fireDelayInSeconds < 0)
+			if (FireDelayInSeconds < 0)
 				throw new ArgumentException("FireRate can't be lower than 0.");
 		}
 
 		private void InitializeComponent()
 		{
 			lastTimeShotInSeconds = 0;
-			shotgunBullets = new GameObject[nbOfShotgunBullets];
+			shotgunBullets = new GameObject[NbOfShotgunBullets];
 		}
 		
 		public void Shoot()
@@ -60,7 +57,7 @@ namespace Playmode.Weapon
 
 		private void ShootWithShotgun()
 		{
-			for (int i = 0; i < nbOfShotgunBullets; i++)
+			for (int i = 0; i < NbOfShotgunBullets; i++)
 			{
 				shotgunBullets[i] = Instantiate(bulletPrefab, transform.position, transform.rotation);
 				if (i % 2 == 0)

@@ -1,6 +1,7 @@
 ﻿using Playmode.Entity.Movement;
 using Playmode.Entity.Senses;
 using Playmode.Environment;
+using Playmode.Pickables;
 using Playmode.Util.Values;
 using UnityEngine;
 
@@ -14,8 +15,7 @@ namespace Playmode.Enemy.Strategies
 		protected EnemySensor EnemySensor;
 		protected GameObject Target;
 		protected PickableSensor PickableSensor;
-		protected GameObject Pickable;
-		protected PickableType PickableType;
+		protected Pickable Pickable;
 
 		protected float DistanceBetweenEnemy;
 		protected float MaxDistanceBetweenEnemy = 5f;
@@ -66,15 +66,14 @@ namespace Playmode.Enemy.Strategies
 			Target = null;
 		}
 
-		protected void OnPickableSeen(GameObject pickable)
+		protected void OnPickableSeen(Pickable pickable)
 		{
-			PickableType = pickable.GetComponentInChildren<PickableType>();
 			this.Pickable = pickable;
 		}
 
 		protected bool IsPickableAWeapon()
 		{
-			return Pickable != null && PickableType.IsWeapon();
+			return Pickable != null && Pickable.IsWeapon();
 		}
 
 		protected void CalculateDistanceBetweenEnemies()
