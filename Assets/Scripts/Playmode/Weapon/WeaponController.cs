@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Playmode.Weapon
 {
+	//BEN_REVIEW : Vous avez commencé un renommage, mais vous avez oublié d'enlever "Controller" de WeaponController.
 	public class WeaponController : MonoBehaviour
 	{
 		[Header("Behaviour")] [SerializeField] private GameObject bulletPrefab;
@@ -36,6 +37,7 @@ namespace Playmode.Weapon
 		
 		public void Shoot()
 		{
+			//BEN_CORRECTION : Rider n'a pas toujours raison sur tout. Préférer un "if/else" pour la lisibilité.
 			if (!CanShoot) return;
 
 			if (WeaponType == PickableTypes.Shotgun)
@@ -57,6 +59,7 @@ namespace Playmode.Weapon
 
 		private void ShootWithShotgun()
 		{
+			//BEN_CORRECTION : Votre algorythme marche seulement pour un nombre pair de bullets. Défaut de logique.
 			for (int i = 0; i < NbOfShotgunBullets; i++)
 			{
 				shotgunBullets[i] = Instantiate(bulletPrefab, transform.position, transform.rotation);

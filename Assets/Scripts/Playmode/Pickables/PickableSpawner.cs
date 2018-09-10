@@ -11,6 +11,7 @@ namespace Playmode.Pickables
 	public class PickableSpawner : MonoBehaviour
 	{
 		[Header("Timer")]
+		//BEN_CORRECTION : Aurait du être private. Si vous en avez besoin à l'extérieur, créer une propriété.
 		[SerializeField] public float SpawnTimeDelay = 5f;
 		
 		[Header("Pickup prefabs")]
@@ -53,12 +54,21 @@ namespace Playmode.Pickables
 
 		private void SpawnPickable(Transform childTransform)
 		{
+			//BEN_REVIEW : Hein ? Pourquoi ?
+			//
+			//			   ...
+			//
+			//			   Ah, je viens de comprendre. C'est pour ne pas spawner deux Pickables au même endroit.
+			//
+			//			   Une méthode d'extension aurait pu vous aider. Me voir.
 			if (childTransform.childCount <= 0)
 			{
 				Instantiate(pickables.GetRandom(), childTransform.position, Quaternion.identity, childTransform);
 			}
 		}
 
+		//BEN_CORRECTION : L'objet devrait se détruire lui même lorsqu'il est hors de la caméra. Intrusion dans les responsabilités
+		//				   d'une autre classe.
 		private void DestroyOutOfMapSpawners()
 		{
 			for (int i = 0; i < transform.childCount; i++)

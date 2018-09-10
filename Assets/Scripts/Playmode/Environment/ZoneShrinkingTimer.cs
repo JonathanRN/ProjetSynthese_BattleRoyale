@@ -10,6 +10,7 @@ namespace Playmode.Environment
 
 		public event ZoneChangedEventHandler OnZoneChanged;
 
+		//BEN_REVIEW : SerializeFields sont en haut (en premier) par convention.
 		[SerializeField] private float timeBeforeShrink = 10f;
 
 		private void OnEnable()

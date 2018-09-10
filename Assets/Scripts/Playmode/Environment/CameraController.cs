@@ -4,7 +4,8 @@ namespace Playmode.Environment
 {
 	public class CameraController : MonoBehaviour
 	{
-		[SerializeField] public float ZoneChangeDelay =30f;
+		//BEN_CORRECTION : Devrait être private. Ne JAMAIS faire d'attribut public. DON'T SHOW YOUR PRIVATE MEMBERS IN PUBLIC!!!
+		[SerializeField] private float zoneChangeDelay =30f;
 		[SerializeField] private float zoneMinSize = 6f;
 		[SerializeField] private float shrinkingSpeed = 0.01f;
 		
@@ -14,7 +15,10 @@ namespace Playmode.Environment
 		private Camera mainCamera;
 		private ZoneShrinkingTimer zoneShrinkingTimer;
 		
+		//BEN_CORRECTION : Devrait être une propriété. Attribut public.
 		public bool ZoneIsShrinking;
+
+		public float ZoneChangeDelay => zoneChangeDelay;
 
 		private void Awake()
 		{

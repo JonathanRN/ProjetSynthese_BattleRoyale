@@ -9,6 +9,7 @@ namespace Playmode.Environment
 		{
 			if (other.GetComponent<HitSensor>() == null) return;
 			
+			//BEN_CORRECTION : Manque un "using".
 			other.transform.root.GetComponentInChildren<Enemy.Enemy>().SetSpeedToSwim();
 		}
 

@@ -24,7 +24,9 @@ namespace UI
 
 		private void Update()
 		{
+			//BEN_CORRECTION : Rider n'a pas toujours raison sur tout. Préférer un "if/else" pour la lisibilité.
 			if (!enemiesCounter.IsThereAWinner()) return;
+			//BEN_CORRECTION : String devrait être un SerializeField.
 			text.text = "Winner Winner Chicken Dinner";
 			DisableObjects();
 		}

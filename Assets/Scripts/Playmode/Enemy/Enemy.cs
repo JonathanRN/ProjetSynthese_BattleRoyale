@@ -42,9 +42,9 @@ namespace Playmode.Enemy
 		public float senseRotation = 1f;
 		private float originalMoveSpeed;
 
-		private float randomBehaviour;
-		public Health Health { get; set; }
-		public bool IsUnderFire { get; set; }
+		private float randomBehaviour; //BEN_CORRECTION : Nommage. Je devrais être capable de comprendre à quoi sert l'attribut en un coup d'oeil.
+		public Health Health { get; set; } //BEN_CORRECTION : set devrait être private.
+		public bool IsUnderFire { get; set; } //BEN_CORRECTION : set devrait être private.
 		
 		private Mover mover;
 		private Destroyer destroyer;
@@ -102,7 +102,7 @@ namespace Playmode.Enemy
 			transformer = transform.root;
 			rotationTimer = GetComponent<RotationTimer>();
 
-			var rootTransform = transform.root;
+			var rootTransform = transform.root; //BEN_CORRECTION : Erreur de logique. Voir trois lignes plus haut.
 			hitSensor = rootTransform.GetComponentInChildren<HitSensor>();
 			pickableSensor = rootTransform.GetComponentInChildren<PickableSensor>();
 			hand = handPrefab.GetComponent<Hand>();

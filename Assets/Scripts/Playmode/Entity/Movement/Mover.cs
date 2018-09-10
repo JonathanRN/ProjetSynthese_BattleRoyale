@@ -5,6 +5,7 @@ namespace Playmode.Entity.Movement
 {
     public abstract class Mover : MonoBehaviour
     {
+        //BEN_REVIEW : Débutez par une minuscule même si c'est protected.
         [SerializeField] protected float OutOfRangeRotationSpeed = 5f;
         
         public static readonly Vector3 Forward = Vector3.up;
@@ -14,6 +15,7 @@ namespace Playmode.Entity.Movement
         public const float NormalRotateSpeed = 200f;
         public const float HitReactRotateSpeed = 400f;
         
+        //BEN_CORRECTION : Attributs devraient être privés. Créez propriétés si accès extérieur nécessaire.
         public float MoveSpeed = 4;
         public float RotateSpeed = NormalRotateSpeed;
         

@@ -17,6 +17,10 @@ namespace Playmode.Enemy.Strategies
 			{				
 				if (DistanceBetweenEnemy <= MaxDistanceBetweenEnemy)
 				{
+					//BEN_REVIEW : Je suis d'avis que vos strarégies auraient pu utiliser directement "Hand".
+					//			   Après tout, vous le faites déjà avec "Mover".
+					//
+					//			   C'est le défaut de vos stratégies et de la classe "Ennemy" en général. Me voir pour de plus amples explications.
 					Enemy.ShootTowardsTarget(Target.transform);
 				    Mover.Move(Vector3.left);
 				}

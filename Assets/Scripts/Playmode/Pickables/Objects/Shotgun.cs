@@ -9,6 +9,7 @@ namespace Playmode.Pickables.Objects
 
 		public override void Use(GameObject enemy)
 		{
+			//BEN_CORRECTION : Ça fait rien ? Erreur de design.
 		}
 	}
 }

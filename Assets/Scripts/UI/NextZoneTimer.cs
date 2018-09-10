@@ -49,10 +49,12 @@ namespace UI
 		{
 			if (cameraController.ZoneIsShrinking)
 			{
+				//BEN_CORRECTION : String devrait être un SerializeField.
 				text.text = "Next zone in: Shrinking";
 			}
 			else
 			{
+				//BEN_CORRECTION : String devrait être un SerializeField.
 				text.text = "Next zone in: " + countDownTimer;		
 			}
 			if (countDownTimer <= 0)
